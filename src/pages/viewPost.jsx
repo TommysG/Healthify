@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "../css/postView.css";
 import Navbar from "../components/Navbar";
 import PostView from "../components/PostView";
 import NavList from "../components/NavList";
+import Reply from "../components/Reply";
 
 export class viewPost extends Component {
 	render() {
@@ -21,11 +21,8 @@ export class viewPost extends Component {
 						date="21 Feb"
 						content="Next his only boy meet the fat rose when. Do repair at we misery wanted remove remain income. Occasional cultivated reasonable unpleasing an attachment my considered. Having ask and coming object seemed put did admire figure. Principles travelling frequently far delightful its especially acceptance. "
 					/>
-					<PostView
-						title="Reply2"
-						date="22 Feb"
-						content="Next his only boy meet the fat rose when. Do repair at we misery wanted remove remain income. Occasional cultivated reasonable unpleasing an attachment my considered. Having ask and coming object seemed put did admire figure. Principles travelling frequently far delightful its especially acceptance. "
-					/>
+
+					<Reply />
 					<button className="replyButton">Reply!</button>
 				</div>
 			</div>
