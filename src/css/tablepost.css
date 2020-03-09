@@ -1,0 +1,43 @@
+#title {
+  text-align: center;
+  font-family: arial, sans-serif;
+}
+
+#students {
+  background-color: white;
+  text-align: center;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid rgba(100, 100, 100, 0.1);
+  border-style: none none solid none;
+}
+
+#students td {
+  padding: 24px 0;
+}
+
+#students tr:nth-child(even) {
+  background-color: #f2f4f6;
+}
+
+#students tr:hover {
+}
+
+#students th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #f8f9fa;
+  border: none;
+  font-weight: normal;
+}
+
+#topic {
+  border: 1px solid rgba(100, 100, 100, 0.1);
+  border-style: none none none solid;
+}
+
+#date {
+  border: 1px solid rgba(100, 100, 100, 0.1);
+  border-style: none solid none none;
+}

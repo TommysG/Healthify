@@ -1,0 +1,19 @@
+.categories-container {
+  width: 400px;
+  border: 1px solid #707070;
+  float: left;
+  margin-left: 100px;
+}
+
+.categories {
+  width: auto;
+}
+
+.categories a {
+  display: table;
+  width: auto;
+}
+
+.right-container {
+  display: grid;
+}
