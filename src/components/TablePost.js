@@ -79,6 +79,30 @@ export class TablePost extends Component {
               replies="13"
               date="9/3/2020"
             ></Post>
+            <Post
+              id="3"
+              topic="This is a topic"
+              category="Category"
+              user="Tommys Gian"
+              replies="13"
+              date="9/3/2020"
+            ></Post>
+            <Post
+              id="3"
+              topic="This is a topic"
+              category="Category"
+              user="Tommys Gian"
+              replies="13"
+              date="9/3/2020"
+            ></Post>
+            <Post
+              id="3"
+              topic="This is a topic"
+              category="Category"
+              user="Tommys Gian"
+              replies="13"
+              date="9/3/2020"
+            ></Post>
           </tbody>
         </table>
       </div>

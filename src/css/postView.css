@@ -1,185 +1,185 @@
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-	font-family: Arial, Helvetica, sans-serif;
-	line-height: 1.4;
-	background-color: lightgoldenrodyellow;
+  line-height: 1.4;
 }
 
 a {
-	color: #333;
-	text-decoration: none;
+  color: #333;
+  text-decoration: none;
 }
 
 ul.breadcrumb {
-	padding: 10px 16px;
-	list-style: none;
-	background-color: lightgrey;
+  padding: 10px 16px;
+  list-style: none;
+  background-color: white;
 }
 
 ul.breadcrumb li {
-	display: inline;
+  display: inline;
 }
 
 ul.breadcrumb li + li:before {
-	padding: 8px;
-	color: black;
-	content: ">\00a0";
+  padding: 8px;
+  color: black;
+  content: ">\00a0";
 }
 
 ul.breadcrumb li a {
-	color: #0275d8;
-	text-decoration: none;
+  color: #0275d8;
+  text-decoration: none;
 }
 
 ul.breadcrumb li a:hover {
-	color: #01447e;
-	text-decoration: underline;
+  color: #01447e;
+  text-decoration: underline;
 }
 
 .breadcrumbContainer {
-	margin-top: 100px;
-	position: relative;
-	display: block;
-	margin-left: 33%;
-	justify-items: start;
-	width: 602px;
+  margin-top: 100px;
+  position: relative;
+  display: block;
+  margin-left: 25%;
+  justify-items: start;
+  width: 802px;
+
+  border: 1px solid blue;
 }
 
 .postContainer {
-	margin-top: 60px;
-	float: left;
-	position: relative;
-	display: block;
-	border: 1px solid grey;
-	background: white;
+  margin-top: 60px;
+  width: 800px;
+  float: left;
+  position: relative;
+  display: block;
+  border: 1px solid blue;
+  background: white;
 }
 
 .replyButton {
-	height: 40px;
-	margin-top: 50px;
-	margin-bottom: 100px;
-	border: 1px solid Blue;
-	background-color: white;
-	color: blue;
-	width: 100px;
-	float: right;
+  height: 40px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  border: 1px solid Blue;
+  background-color: white;
+  color: blue;
+  width: 100px;
+  float: right;
 }
 
 .replyButton:hover {
-	color: white;
-	background-color: blue;
-	cursor: pointer;
-}
-
-.userInfo {
-	height: 250px;
-	width: 100px;
-	float: left;
-}
-
-.userProfile {
-	margin: 20%;
-}
-
-.userStats {
-	margin-top: 30px;
-	text-align: center;
+  color: white;
+  background-color: blue;
+  cursor: pointer;
 }
 
 .postInfo {
-	height: 250px;
-	width: 500px;
-	float: left;
-	border-left: 1px solid grey;
+  height: 250px;
+  width: 678px;
+  float: left;
+  border-left: 1px solid blue;
 }
 
 .postHeader {
-	height: 50px;
-	display: flex;
+  width: 678px;
+  height: 50px;
+  display: flex;
 }
 
 .postTitle {
-	padding-top: 15px;
-	padding-left: 30px;
-	flex: left;
-	width: 400px;
-	border-bottom: 1px solid grey;
+  padding-top: 15px;
+  padding-left: 30px;
+  flex: left;
+  width: 580px;
+  border-bottom: 1px solid blue;
 }
 
 .postDate {
-	padding-top: 15px;
-	text-align: center;
-	flex: left;
-	width: 100px;
-	font-style: italic;
-	border-bottom: 1px solid grey;
+  padding-top: 15px;
+  text-align: center;
+  flex: left;
+  width: 100px;
+  font-style: italic;
+  border-bottom: 1px solid blue;
 }
 
 .postBody {
-	padding-top: 30px;
-	padding-left: 30px;
-	padding-right: 30px;
-	text-align: justify;
-	height: 200px;
-	position: relative;
-	font-style: normal;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: justify;
+  height: 200px;
+  position: relative;
+  font-style: normal;
+}
+
+.likebar {
+  margin-top: 40px;
+  text-align: end;
+}
+
+.likebar a:hover {
+  cursor: pointer;
+}
+
+.view-container {
+  background-color: lightgoldenrodyellow;
 }
 
 .mainContainer {
-	position: relative;
-	display: grid;
-	margin-left: 33%;
-	justify-items: end;
+  position: relative;
+  display: grid;
+  margin-left: 25%;
+  justify-items: end;
 
-	width: 602px;
+  width: 602px;
 }
 
 .topnav {
-	border-bottom: 1px solid rgba(112, 112, 112, 0.3);
-	overflow: hidden;
-	position: absolute;
-	width: 100%;
-	z-index: 9999;
-	background-color: white;
-	margin-bottom: 20px;
+  border-bottom: 1px solid rgba(112, 112, 112, 0.3);
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  z-index: 9999;
+  background-color: white;
+  margin-bottom: 20px;
 }
 
 .topnav .logo {
-	color: #707070;
-	text-align: center;
-	font-size: 24px;
-	float: left;
-	position: absolute;
-	left: 0;
-	top: 50%;
-	transform: translateY(-50%);
+  color: #707070;
+  text-align: center;
+  font-size: 24px;
+  float: left;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .topnav a {
-	float: right;
-	color: #707070;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-	font-size: 20px;
+  float: right;
+  color: #707070;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
 }
 
 .topnav a:hover {
-	background-color: #f0f0f0;
-	color: black;
+  background-color: #f0f0f0;
+  color: black;
 }
 
 .topnav a.active {
-	background-color: #70bee9;
-	color: white;
+  background-color: #70bee9;
+  color: white;
 }
 
 .topnav a.active:hover {
-	background-color: #60b1dd;
-	color: white;
+  background-color: #60b1dd;
+  color: white;
 }

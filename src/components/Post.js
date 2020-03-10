@@ -4,9 +4,9 @@ const Post = ({ id, topic, category, user, replies, date }) => {
   return (
     <tr>
       <td id="topic">
-        <a href={"#" + id}>{topic}</a>
+        <a href={"/viewpost#" + id}>{topic}</a>
       </td>
-      <td>
+      <td id="category">
         <li>{category}</li>
       </td>
       <td>

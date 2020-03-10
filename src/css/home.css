@@ -1,0 +1,58 @@
+.home {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  position: relative;
+  overflow: auto;
+}
+
+.home-container {
+  position: absolute;
+  max-width: 100%;
+  width: 100%;
+  margin-top: 57px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: inline-block;
+}
+
+.post-container {
+  margin-bottom: 50px;
+  width: 1202px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  position: absolute;
+}
+
+.homenav-container {
+  width: 100%;
+  background-color: white;
+  background-color: white;
+  border: 1px solid #e9ecee;
+  border-style: none none solid none;
+}
+
+.home-nav {
+  height: 100px;
+  display: flex;
+  width: 1202px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  position: relative;
+}
+
+.first-container {
+  width: 15%;
+  height: 100%;
+  border-right: 1px solid #e9ecee;
+}
+
+.search-container {
+  width: 50%;
+  height: 100%;
+  border-right: 1px solid #e9ecee;
+}
+
+.third-container {
+  width: 35%;
+  height: 100%;
+}

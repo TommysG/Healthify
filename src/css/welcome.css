@@ -36,27 +36,3 @@
   margin: 0;
   font-size: 92px;
 }
-
-.home {
-  min-height: 100vh;
-  background-color: #f8f9fa;
-  position: relative;
-  overflow: auto;
-}
-
-.home-container {
-  position: absolute;
-  max-width: 100%;
-  width: 100%;
-  margin-top: 75px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  display: inline-block;
-}
-
-.post-container {
-  margin-bottom: 50px;
-  width: 700px;
-  float: left;
-  margin-left: 100px;
-}
