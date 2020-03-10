@@ -1,26 +1,29 @@
 import React, { Component } from "react";
-import TablePost from "../components/TablePost";
-import Search from "../components/Search";
+import Post from "../components/Post";
 
 import "../css/home.css";
-import HomeMenu from "../components/HomeMenu";
-
+import SideBlock from "../components/SideBlock";
+import HomeNav from "../components/HomeNav";
 export class home extends Component {
   render() {
     return (
       <div className="home">
-        <div className="home-container">
-          <div className="homenav-container">
-            <div className="home-nav">
-              <div className="first-container">Something goes here</div>
-              <div className="search-container">
-                <Search></Search>
-              </div>
-              <div className="third-container">Something goes here</div>
-            </div>
+        <div>
+          <HomeNav></HomeNav>
+        </div>
+        <div className="container">
+          <div className="row">
             <div className="post-container">
-              <HomeMenu></HomeMenu>
-              <TablePost />
+              <Post></Post>
+              <Post></Post>
+              <Post></Post>
+              <Post></Post>
+              <Post></Post>
+              <Post></Post>
+            </div>
+            <div className="column-container">
+              <SideBlock></SideBlock>
+              <SideBlock></SideBlock>
             </div>
           </div>
         </div>

@@ -20,8 +20,8 @@ export class login extends Component {
               name="pass"
               placeholder="Password"
             />
-            <button
-              type="submit"
+            <a
+              type="button"
               href="/home"
               style={{
                 marginTop: "5px",
@@ -30,7 +30,7 @@ export class login extends Component {
               }}
             >
               Sumbit
-            </button>
+            </a>
             <div className="forgot-pass">
               <span className="txt1">Forgot</span>
               <a className="txt2" href="#forgot">

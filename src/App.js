@@ -6,7 +6,7 @@ import {
   Redirect
 } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar";
+/*import Navbar from "./components/Navbar";*/
 
 import welcome from "./pages/welcome";
 import home from "./pages/home";
@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar />
+        {/*<Navbar />*/}
         <Router>
           <Switch>
             <Route exact path="/" component={welcome} />

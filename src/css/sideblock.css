@@ -1,0 +1,77 @@
+.side-block {
+  background-color: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px #c9cccd;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.side-block a:hover {
+  text-decoration: underline;
+}
+
+.side-block h3 {
+  color: rgb(54, 56, 56);
+  font-size: 14px;
+  font-family: "Open Sans Bold", sans-serif;
+  margin: 0px;
+  padding: 20px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.line {
+  height: 1px;
+  line-height: 1px;
+  border-bottom: 1px solid rgb(241, 241, 241);
+}
+
+.categories {
+  font-size: 14px;
+  color: purple;
+  font-family: "Open Sans Light", sans-serif;
+  padding: 20px;
+}
+
+.list {
+  margin: 0px;
+  padding: 0px;
+}
+
+.list li {
+  list-style: none;
+  display: block;
+  line-height: 30px;
+}
+
+ul li a {
+  color: #363838;
+}
+
+/* Badge */
+ul.list .badge {
+  background-color: rgb(189, 195, 199);
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+  font-family: "Open Sans Bold", sans-serif;
+  margin-top: 7px;
+}
+
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: rgb(153, 153, 153);
+  padding: 3px 7px;
+  border-radius: 10px;
+}
+
+.pull-right {
+  float: right;
+}

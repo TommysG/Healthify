@@ -3,11 +3,13 @@ import "../css/search.css";
 
 const Search = () => {
   return (
-    <div className="inputWithIcon">
-      <input className="search" type="text" placeholder="Search in forum" />
-      <i className="material-icons" aria-hidden="true">
-        search
-      </i>
+    <div className="search-box">
+      <form>
+        <input className="search" type="text" placeholder="Search Topics" />
+        <button type="button" className="search-button">
+          <i className="fa fa-search"></i>
+        </button>
+      </form>
     </div>
   );
 };
