@@ -1,5 +1,4 @@
 .userInfo {
-<<<<<<< HEAD
   height: 250px;
   width: 120px;
   float: left;
@@ -12,18 +11,4 @@
 .userStats {
   margin-top: 30px;
   text-align: center;
-=======
-	height: 250px;
-	width: 120px;
-	float: left;
-}
-
-.userProfilePicture {
-	margin: 20%;
-}
-
-.userStats {
-	margin-top: 30px;
-	text-align: center;
->>>>>>> 8b1a7d2fba4050db26cc4e2859304b874113bf59
 }

@@ -14,15 +14,9 @@ a {
 }
 
 ul.breadcrumb {
-<<<<<<< HEAD
   padding: 10px 16px;
   list-style: none;
   background-color: white;
-=======
-	padding: 10px 16px;
-	list-style: none;
-	background-color: white;
->>>>>>> 8b1a7d2fba4050db26cc4e2859304b874113bf59
 }
 
 ul.breadcrumb li {
@@ -46,7 +40,6 @@ ul.breadcrumb li a:hover {
 }
 
 .breadcrumbContainer {
-<<<<<<< HEAD
   margin-top: 100px;
   position: relative;
   display: block;
@@ -65,26 +58,6 @@ ul.breadcrumb li a:hover {
   display: block;
   border: 1px solid blue;
   background: white;
-=======
-	margin-top: 100px;
-	position: relative;
-	display: block;
-	margin-left: 25%;
-	justify-items: start;
-	width: 802px;
-
-	border: 1px solid blue;
-}
-
-.postContainer {
-	margin-top: 60px;
-	width: 800px;
-	float: left;
-	position: relative;
-	display: block;
-	border: 1px solid blue;
-	background: white;
->>>>>>> 8b1a7d2fba4050db26cc4e2859304b874113bf59
 }
 
 .replyButton {
@@ -105,7 +78,6 @@ ul.breadcrumb li a:hover {
 }
 
 .postInfo {
-<<<<<<< HEAD
   height: 250px;
   width: 678px;
   float: left;
@@ -152,35 +124,6 @@ ul.breadcrumb li a:hover {
 
 .likebar a:hover {
   cursor: pointer;
-=======
-	height: 250px;
-	width: 678px;
-	float: left;
-	border-left: 1px solid blue;
-}
-
-.postHeader {
-	width: 678px;
-	height: 50px;
-	display: flex;
-}
-
-.postTitle {
-	padding-top: 15px;
-	padding-left: 30px;
-	flex: left;
-	width: 580px;
-	border-bottom: 1px solid blue;
-}
-
-.postDate {
-	padding-top: 15px;
-	text-align: center;
-	flex: left;
-	width: 100px;
-	font-style: italic;
-	border-bottom: 1px solid blue;
->>>>>>> 8b1a7d2fba4050db26cc4e2859304b874113bf59
 }
 
 .view-container {
@@ -188,26 +131,23 @@ ul.breadcrumb li a:hover {
 }
 
 .likebar {
-	margin-top: 40px;
-	text-align: end;
+  margin-top: 40px;
+  text-align: end;
 }
 
 .likebar a:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .mainContainer {
-<<<<<<< HEAD
   position: relative;
   display: grid;
   margin-left: 25%;
   justify-items: end;
-=======
-	position: relative;
-	display: grid;
-	margin-left: 25%;
-	justify-items: end;
->>>>>>> 8b1a7d2fba4050db26cc4e2859304b874113bf59
+  position: relative;
+  display: grid;
+  margin-left: 25%;
+  justify-items: end;
 
   width: 602px;
 }

@@ -1,5 +1,4 @@
 textarea {
-<<<<<<< HEAD
   height: 150px;
   width: 680px;
   resize: none;
@@ -27,33 +26,4 @@ textarea {
   width: 120px;
   height: 150px;
   float: left;
-=======
-	height: 150px;
-	width: 680px;
-	resize: none;
-	padding: 20px;
-	border: 1px solid blue;
-}
-
-.main {
-	margin-top: 60px;
-	width: 802px;
-	position: relative;
-}
-
-.replyBody {
-	text-align: justify;
-	height: 150px;
-	position: relative;
-	font-style: normal;
-}
-
-.replier {
-	border-left: 1px solid blue;
-	border-top: 1px solid blue;
-	border-bottom: 1px solid blue;
-	width: 120px;
-	height: 150px;
-	float: left;
->>>>>>> 8b1a7d2fba4050db26cc4e2859304b874113bf59
 }
