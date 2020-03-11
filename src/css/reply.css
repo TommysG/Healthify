@@ -1,29 +1,25 @@
-textarea {
-  height: 150px;
-  width: 680px;
-  resize: none;
-  padding: 20px;
-  border: 1px solid blue;
-}
-
 .main {
-  margin-top: 60px;
-  width: 802px;
-  position: relative;
+	margin-top: 60px;
+	width: 802px;
+	position: relative;
+	box-shadow: rgb(201, 204, 205) 0px 1px 2px;
 }
 
 .replyBody {
-  text-align: justify;
-  height: 150px;
-  position: relative;
-  font-style: normal;
+	text-align: justify;
+	height: 150px;
+	position: relative;
+	font-style: normal;
 }
 
 .replier {
-  border-left: 1px solid blue;
-  border-top: 1px solid blue;
-  border-bottom: 1px solid blue;
-  width: 120px;
-  height: 150px;
-  float: left;
+	background-color: white;
+	border-right: 1px solid grey;
+	width: 120px;
+	height: 188px;
+	float: left;
+}
+
+.ck {
+	height: 150px;
 }
