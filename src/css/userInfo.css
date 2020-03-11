@@ -1,15 +1,14 @@
 .userInfo {
-	height: 250px;
-	width: 120px;
+	width: 20%;
 	float: left;
-	border-right: 1px solid grey;
 }
 
 .userProfilePicture {
 	margin: 20%;
+	height: 70%;
 }
 
 .userStats {
-	margin-top: 30px;
+	height: 30%;
 	text-align: center;
 }

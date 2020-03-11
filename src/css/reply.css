@@ -1,7 +1,10 @@
-.main {
+.replyContainer {
 	margin-top: 60px;
-	width: 802px;
+	height: 188px;
+	float: left;
+	width: 100%;
 	position: relative;
+	display: block;
 	box-shadow: rgb(201, 204, 205) 0px 1px 2px;
 }
 
@@ -13,13 +16,16 @@
 }
 
 .replier {
+	height: 100%;
+	width: 20%;
 	background-color: white;
 	border-right: 1px solid grey;
-	width: 120px;
-	height: 188px;
 	float: left;
 }
 
-.ck {
-	height: 150px;
+.replyArea {
+	padding: 30px;
+	height: 100%;
+	width: 80%;
+	resize: none;
 }

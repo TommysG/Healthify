@@ -1,199 +1,105 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 a {
-  color: #333;
-  text-decoration: none;
-}
-
-ul.breadcrumb {
-  padding: 10px 16px;
-  list-style: none;
-  background-color: white;
-  margin-bottom: 0;
-}
-
-ul.breadcrumb li {
-  display: inline;
-}
-
-ul.breadcrumb li + li:before {
-  padding: 8px;
-  color: black;
-  content: ">\00a0";
-}
-
-ul.breadcrumb li a {
-  color: #0275d8;
-  text-decoration: none;
-}
-
-ul.breadcrumb li a:hover {
-  color: #01447e;
-  text-decoration: underline;
-}
-
-.breadcrumbContainer {
-  margin-top: 100px;
-  position: relative;
-  display: block;
-  margin-left: 25%;
-  justify-items: start;
-  width: 802px;
-
-  border: 1px solid blue;
+	color: #333;
+	text-decoration: none;
 }
 
 .postContainer {
-  box-shadow: rgb(201, 204, 205) 0px 1px 2px;
-  margin-top: 60px;
-  width: 802px;
-  float: left;
-  position: relative;
-  display: block;
-  background: white;
+	box-shadow: rgb(201, 204, 205) 0px 1px 2px;
+	margin-top: 60px;
+	width: 100%;
+	float: left;
+	position: relative;
+	display: block;
+	background: white;
+	overflow: hidden;
 }
 
 .replyButton {
-  height: 40px;
-  margin-top: 50px;
-  margin-bottom: 100px;
-  background-color: white;
-  color: blue;
-  width: 100px;
-  float: right;
+	height: 40px;
+	margin-top: 50px;
+	margin-bottom: 100px;
+	background-color: white;
+	color: blue;
+	width: 100px;
+	float: right;
 
-  border: 1px solid blue;
+	border: 1px solid blue;
 }
 
 .replyButton:hover {
-  color: white;
-  background-color: blue;
-  cursor: pointer;
+	color: white;
+	background-color: blue;
+	cursor: pointer;
 }
 
 .postInfo {
-  height: 250px;
-  width: 678px;
-  float: left;
+	height: 250px;
+	width: 80%;
+	float: left;
 }
 
 .postHeader {
-  width: 678px;
-  height: 50px;
-  display: flex;
+	height: 20%;
+	display: flex;
+	border-left: 1px solid grey;
 }
 
 .postTitle {
-  padding-top: 15px;
-  padding-left: 30px;
-  flex: left;
-  width: 580px;
-  border-bottom: 1px solid grey;
+	padding-top: 15px;
+	padding-left: 30px;
+	width: 70%;
+	flex: left;
+	border-bottom: 1px solid grey;
 }
 
 .postDate {
-  padding-top: 15px;
-  text-align: center;
-  flex: left;
-  width: 100px;
-  font-style: italic;
-  border-bottom: 1px solid grey;
+	width: 30%;
+	padding-top: 15px;
+	text-align: center;
+	flex: left;
+	font-style: italic;
+	border-bottom: 1px solid grey;
 }
 
 .postBody {
-  padding-top: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
-  text-align: justify;
-  height: 200px;
-  position: relative;
-  font-style: normal;
+	height: 85%;
 }
 
-.likebar {
-  margin-top: 40px;
-  text-align: end;
+.postContent {
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: justify;
+	height: 80%;
+	width: 100%;
+	position: relative;
+	font-style: normal;
+	border-left: 1px solid grey;
 }
 
 .likebar a:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .heart-icon:hover {
-  color: red;
+	color: red;
 }
 
 .view-container {
-  background-color: #ecf0f1;
+	background-color: #ecf0f1;
 }
 
 .likebar {
-  margin-top: 40px;
-  text-align: end;
+	height: 20%;
+	text-align: end;
 }
 
 .likebar a:hover {
-  cursor: pointer;
-}
-
-.mainContainer {
-  position: relative;
-  display: grid;
-  margin-left: 25%;
-  justify-items: end;
-  position: relative;
-  display: grid;
-  margin-left: 25%;
-  justify-items: end;
-
-  width: 602px;
-}
-
-.topnav {
-  border-bottom: 1px solid rgba(112, 112, 112, 0.3);
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-  z-index: 9999;
-  background-color: white;
-  margin-bottom: 20px;
-}
-
-.topnav .logo {
-  color: #707070;
-  text-align: center;
-  font-size: 24px;
-  float: left;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.topnav a {
-  float: right;
-  color: #707070;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.topnav a:hover {
-  background-color: #f0f0f0;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #70bee9;
-  color: white;
-}
-
-.topnav a.active:hover {
-  background-color: #60b1dd;
-  color: white;
+	cursor: pointer;
 }
