@@ -6,8 +6,6 @@
 }
 
 .nav-container {
-  width: 1170px;
-  margin: auto;
   height: 69px;
 }
 
@@ -31,10 +29,6 @@
   border-right: 1px solid #eaeaea;
 }
 
-.row {
-  height: 100%;
-}
-
 .first-container h2 {
   vertical-align: middle;
   display: table-cell;
@@ -55,4 +49,9 @@
 }
 
 .search-container {
+}
+
+.home-nav .row,
+.home-nav .container {
+  height: 100%;
 }

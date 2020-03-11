@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import Container from "react-bootstrap/Container";
 
 export class login extends Component {
   render() {
     return (
-      <div className="box-container">
-        <img src="images/doctors.png" alt="logo"></img>
+      <Container className="box-container">
         <div className="login-container">
           <form className="login-form">
             <span className="login-title">Member Login</span>
@@ -46,7 +46,7 @@ export class login extends Component {
             </div>
           </form>
         </div>
-      </div>
+      </Container>
     );
   }
 }

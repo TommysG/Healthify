@@ -4,30 +4,34 @@ import Post from "../components/Post";
 import "../css/home.css";
 import SideBlock from "../components/SideBlock";
 import HomeNav from "../components/HomeNav";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 export class home extends Component {
   render() {
     return (
-      <div className="home">
+      <Container className="home" fluid={true}>
         <div>
           <HomeNav></HomeNav>
         </div>
-        <div className="container">
-          <div className="row">
-            <div className="post-container">
+        <Container className="post-container">
+          <Row>
+            <Col lg={8} md={8} xs={12}>
               <Post></Post>
               <Post></Post>
               <Post></Post>
               <Post></Post>
               <Post></Post>
               <Post></Post>
-            </div>
-            <div className="column-container">
+            </Col>
+            <Col lg={4} md={4}>
               <SideBlock></SideBlock>
               <SideBlock></SideBlock>
-            </div>
-          </div>
-        </div>
-      </div>
+            </Col>
+          </Row>
+        </Container>
+      </Container>
     );
   }
 }

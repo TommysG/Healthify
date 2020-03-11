@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../css/welcome.css";
+import Button from "react-bootstrap/Button";
 
 export class welcome extends Component {
   render() {
@@ -11,10 +12,11 @@ export class welcome extends Component {
           <p className="healthify">HEALTHIFY</p>
           <p className="description">Good health and well-being.</p>
           <div style={{}} className="join-button">
-            <button
+            <Button
               href="/login"
               variant="contained"
               color="primary"
+              className="btn btn-secondary"
               style={{
                 background: "#4D4D4D",
                 color: "#f0f0f0",
@@ -23,7 +25,7 @@ export class welcome extends Component {
               onClick={onclicked => console.log("Clicked")}
             >
               Join
-            </button>
+            </Button>
           </div>
         </div>
       </div>

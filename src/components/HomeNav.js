@@ -1,6 +1,8 @@
 import React from "react";
 import "../css/homenav.css";
 import Search from "../components/Search";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 const HomeNav = () => {
   return (
@@ -11,8 +13,8 @@ const HomeNav = () => {
         alt="logo"
       ></img>
       <div className="home-nav">
-        <div className="nav-container">
-          <div className="row">
+        <Container>
+          <Row>
             <div className="first-container">
               <h2>Healthify</h2>
             </div>
@@ -22,8 +24,8 @@ const HomeNav = () => {
             <div className="third-container">
               <div className="search-container"></div>
             </div>
-          </div>
-        </div>
+          </Row>
+        </Container>
       </div>
     </div>
   );
