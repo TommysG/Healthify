@@ -17,7 +17,7 @@
   object-fit: cover;
 }
 
-.first-container {
+.healthify-logo {
   float: left;
   position: relative;
   min-height: 1px;
@@ -29,29 +29,77 @@
   border-right: 1px solid #eaeaea;
 }
 
-.first-container h2 {
-  vertical-align: middle;
-  display: table-cell;
+.healthify-logo h2 {
+  margin-top: 15px;
   color: #4d4d4d;
 }
 
-.second-container {
-  float: left;
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+.first-container {
   height: 100%;
-  width: 63%;
+}
+
+.second-container {
+  height: 100%;
 }
 
 .third-container {
-}
-
-.search-container {
+  height: 100%;
+  width: 26%;
+  margin-left: 15px;
+  float: left;
 }
 
 .home-nav .row,
 .home-nav .container {
   height: 100%;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle,
+.show > .btn-primary.dropdown-toggle:focus {
+  color: #697683;
+  background-color: transparent;
+  border-color: transparent;
+  outline: none;
+  box-shadow: none;
+
+  -webkit-box-shadow: none;
+}
+
+.new-topic {
+  background: #82aada;
+  border: none;
+  margin-top: 34.5px;
+  margin-right: 30px;
+  transform: translatey(-50%);
+}
+
+.profile-img {
+  border-radius: 50%;
+  margin-top: 15px;
+}
+
+.profile-button {
+  border: none;
+  margin-top: 38px;
+  transform: translatey(-50%);
+}
+
+.notif-ico {
+  margin-top: 34px;
+  margin-right: 20px;
+  transform: translatey(-50%);
+  height: 100%;
+}
+
+.btn-container {
+  z-index: 1000;
+  position: relative;
+}
+
+.dropdown-toggle {
+  box-shadow: none !important;
 }

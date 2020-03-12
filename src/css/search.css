@@ -9,6 +9,7 @@
   height: 38px;
   transition: 0.3s;
   width: 40%;
+  float: right;
 }
 
 .search::placeholder {
@@ -39,14 +40,14 @@
   box-shadow: none;
   background-color: #697683;
   color: #ffffff;
-  padding: 9px 8px;
-  border-radius: 5px;
+  padding: 7px 8px;
   text-align: center;
   outline: none;
-  cursor: pointer;
+  float: right;
+  padding-bottom: 5px;
 }
 
 .search-box {
-  margin-top: 34.5px;
+  margin-top: 15px;
   transform: translatey(-50%);
 }

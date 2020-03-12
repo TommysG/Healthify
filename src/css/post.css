@@ -82,9 +82,9 @@ i {
 }
 
 .empty {
+  border-bottom: solid 1px #f1f1f1;
+  padding: 18px 0 25px 0;
   text-align: center;
-  border-bottom: 1px solid rgb(241, 241, 241);
-  padding: 61px 0px 25px;
 }
 
 .time,
@@ -95,4 +95,32 @@ i {
   text-align: center;
   line-height: 29px;
   border-bottom: 1px solid rgb(241, 241, 241);
+}
+
+.time {
+  border-bottom: none;
+}
+
+.post .empty .commentbg {
+  background-color: #bdc3c7;
+  border-radius: 2px;
+  display: inline-block;
+  padding: 12px 17px;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Open Sans Bold", sans-serif;
+  position: relative;
+}
+
+.post .empty .commentbg .mark {
+  width: 11px;
+  height: 11px;
+  background-color: #bdc3c7;
+  position: absolute;
+  bottom: 0;
+  left: 43%;
+  margin-bottom: -5px;
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
