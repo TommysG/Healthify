@@ -1,6 +1,8 @@
 .userInfo {
 	width: 20%;
 	float: left;
+	background: white;
+	box-shadow: rgb(201, 204, 205) 0px 1px 2px;
 }
 
 .userProfilePicture {
