@@ -1,3 +1,71 @@
-.input-email {
-  background: red;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #707d80;
+}
+
+.login-form {
+  width: 300px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1f1f1f;
+  text-align: center;
+}
+
+.login-form h1 {
+  color: #177dac;
+  text-transform: uppercase;
+  font-size: 10000;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #177dac;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  width: 250px;
+  border-color: rgb(8, 114, 31);
+}
+
+.login-form a[type="submit"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid rgb(6, 131, 33);
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: #aeb2b3;
+  font-style: sans-serif;
+  border-radius: 24px;
+  transition: 0.25 s;
+  cursor: pointer;
+}
+
+.login-form a[type="submit"]:hover {
+  background-color: rgb(6, 131, 33);
+}
+
+.login-form a[type="forgot"] {
+  color: #aeb2b3;
+  font-family: sans-serif;
 }

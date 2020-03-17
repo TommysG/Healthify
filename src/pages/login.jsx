@@ -8,12 +8,12 @@ export class login extends Component {
       <Container className="box-container">
         <div className="login-container">
           <form className="login-form">
-            <span className="login-title">Member Login</span>
+            <h1>Login</h1>
             <input
               className="input-email"
               type="text"
-              name="email"
-              placeholder="Email"
+              name="email-user"
+              placeholder="Email or Username"
             />
             <input
               className="input-pass"
@@ -21,21 +21,12 @@ export class login extends Component {
               name="pass"
               placeholder="Password"
             />
-            <a
-              type="button"
-              href="/home"
-              style={{
-                marginTop: "5px",
-                backgroundColor: "#4d4d4d",
-                color: "white"
-              }}
-            >
+            <a type="submit" href="/home">
               Sumbit
             </a>
             <div className="forgot-pass">
-              <span className="txt1">Forgot</span>
-              <a className="txt2" href="#forgot">
-                Username / Password?
+              <a type="forgot" name="" href="/home">
+                Forgot Username / Password?
               </a>
             </div>
 
