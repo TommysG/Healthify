@@ -36,3 +36,9 @@
   margin: 0;
   font-size: 92px;
 }
+
+#login,
+#login:hover {
+  color: white;
+  text-decoration: none;
+}

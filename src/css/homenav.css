@@ -103,3 +103,11 @@
 .dropdown-toggle {
   box-shadow: none !important;
 }
+
+.new-topic a {
+  color: white;
+}
+
+.new-topic a:hover {
+  text-decoration: none;
+}
