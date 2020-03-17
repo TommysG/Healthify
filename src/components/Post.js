@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/post.css";
 
-const Post = ({ id, topic, body, user, replies, time }) => {
+const Post = ({ id, title, body, user, replies, time }) => {
   return (
     <div className="post">
       <div className="wrapper left">
@@ -15,9 +15,7 @@ const Post = ({ id, topic, body, user, replies, time }) => {
         </div>
         <div className="post-text left">
           <h2>
-            <a href={"/viewpost#" + id} className="topic">
-              {topic}
-            </a>
+            <p className="title">{title}</p>
           </h2>
           <p className="body">{body}</p>
         </div>
