@@ -11,6 +11,7 @@ function viewPost({ match }) {
     if (item.id.toString() === match.params.id)
       return (
         <PostView
+          key={item.id}
           id={item.id}
           title={item.title}
           content={item.body}
@@ -24,12 +25,15 @@ function viewPost({ match }) {
     if (item.id.toString() === match.params.id) {
       return (
         <div key={item.id}>
-          <PostView
-            id={item.id}
-            title={item.postReplies.title}
-            content={item.postReplies.content}
-            date={item.postReplies.date}
-          ></PostView>
+          {item.postReplies.map(reply => (
+            <PostView
+              key={reply.id}
+              id={reply.id}
+              title={reply.title}
+              content={reply.content}
+              date={reply.date}
+            ></PostView>
+          ))}
         </div>
       );
     }

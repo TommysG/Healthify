@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
+import { Link } from "react-router-dom";
 
 const HomeNav = () => {
   return (
@@ -28,12 +29,8 @@ const HomeNav = () => {
             </Col>
             <Col lg={4} md={4} className="second-container">
               <ButtonToolbar className="btn-toolbar btn-container">
-                <Button
-                  className="new-topic"
-                  variant="secondary"
-                  href="/createPost"
-                >
-                  Create Topic
+                <Button className="new-topic" variant="secondary">
+                  <Link to="/createpost">Create Topic </Link>
                 </Button>
                 <i className="fas fa-bell notif-ico"></i>
                 <img

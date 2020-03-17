@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "../css/welcome.css";
 import Button from "react-bootstrap/Button";
 
+import { Link } from "react-router-dom";
+
 export class welcome extends Component {
   render() {
     return (
@@ -24,7 +26,9 @@ export class welcome extends Component {
               }}
               onClick={onclicked => console.log("Clicked")}
             >
-              Join
+              <Link id="login" to="/login">
+                Login
+              </Link>
             </Button>
           </div>
         </div>

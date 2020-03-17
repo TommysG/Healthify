@@ -13,6 +13,17 @@ import { Link } from "react-router-dom";
 import data from "../data.json";
 
 function home() {
+  const posts = data.map(item => (
+    <Post
+      key={item.id}
+      id={item.id}
+      title={<Link to={`/viewpost/${item.id}`}>{item.title}</Link>}
+      body={item.body}
+      replies={item.replies}
+      time={item.time}
+    ></Post>
+  ));
+
   return (
     <Container className="home" fluid={true}>
       <div>
@@ -21,15 +32,7 @@ function home() {
       <Container className="post-container">
         <Row>
           <Col lg={8} md={8} xs={12}>
-            {data.map(item => (
-              <Post
-                id={item.id}
-                title={<Link to={`/viewpost/${item.id}`}>{item.title}</Link>}
-                body={item.body}
-                replies={item.replies}
-                time={item.time}
-              ></Post>
-            ))}
+            {posts}
           </Col>
           <Col lg={4} md={4}>
             <SideBlock></SideBlock>
