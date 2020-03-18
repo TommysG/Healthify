@@ -2,18 +2,25 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: #707d80;
+  background: #505050;
+}
+
+.backround2 {
+  width: 5px;
+  height: 5px;
+  position: absolute;
 }
 
 .login-form {
-  width: 300px;
-  padding: 40px;
+  width: 450px;
+  padding: 60px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #1f1f1f;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .login-form h1 {
@@ -63,9 +70,15 @@ body {
 
 .login-form a[type="submit"]:hover {
   background-color: rgb(6, 131, 33);
+  text-decoration: none;
 }
 
 .login-form a[type="forgot"] {
-  color: #aeb2b3;
+  color: #177dac;
+  font-family: sans-serif;
+}
+
+.login-form a[type="txt2"] {
+  color: #177dac;
   font-family: sans-serif;
 }

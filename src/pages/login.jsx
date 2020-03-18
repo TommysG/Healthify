@@ -7,7 +7,12 @@ export class login extends Component {
     return (
       <Container className="box-container">
         <div className="login-container">
-          <form className="login-form">
+          <form className="login-form" method="post">
+            <img
+              className="background2"
+              src="images/user_icon.png"
+              alt="logo"
+            ></img>
             <h1>Login</h1>
             <input
               className="input-email"
@@ -21,6 +26,7 @@ export class login extends Component {
               name="pass"
               placeholder="Password"
             />
+
             <a type="submit" href="/home">
               Sumbit
             </a>
@@ -31,9 +37,8 @@ export class login extends Component {
             </div>
 
             <div className="create-account">
-              <a className="txt2" href="#newAcount">
+              <a type="txt2" href="/home">
                 Create your Account
-                <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
               </a>
             </div>
           </form>
