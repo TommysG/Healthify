@@ -1,14 +1,23 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background: #505050;
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 
-.backround2 {
-  width: 5px;
-  height: 5px;
-  position: absolute;
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: rgb(255, 255, 255);
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: rgb(174, 177, 211);
 }
 
 .login-form {
@@ -18,7 +27,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #1f1f1f;
+  background: white;
   text-align: center;
   box-sizing: border-box;
 }
@@ -29,7 +38,7 @@ body {
   font-size: 10000;
 }
 
-.login-form input[type="text"],
+.login-box input[type="text"],
 .login-form input[type="password"] {
   border: 0;
   background: none;
@@ -40,7 +49,7 @@ body {
   padding: 14px 10px;
   width: 200px;
   outline: none;
-  color: white;
+  color: rgb(0, 0, 0);
   border-radius: 24px;
   transition: 0.25s;
 }
@@ -48,7 +57,12 @@ body {
 .login-form input[type="text"]:focus,
 .login-form input[type="password"]:focus {
   width: 250px;
-  border-color: rgb(8, 114, 31);
+  border-color: rgb(0, 0, 0);
+}
+
+.icon {
+  color: #177dac;
+  min-width: 10px;
 }
 
 .login-form a[type="submit"] {
@@ -57,11 +71,11 @@ body {
   display: block;
   margin: 20px auto;
   text-align: center;
-  border: 2px solid rgb(6, 131, 33);
+  border: 2px solid #177dac;
   padding: 14px 10px;
   width: 200px;
   outline: none;
-  color: #aeb2b3;
+  color: black;
   font-style: sans-serif;
   border-radius: 24px;
   transition: 0.25 s;
@@ -69,7 +83,7 @@ body {
 }
 
 .login-form a[type="submit"]:hover {
-  background-color: rgb(6, 131, 33);
+  background-color: #177dac;
   text-decoration: none;
 }
 
@@ -81,4 +95,24 @@ body {
 .login-form a[type="txt2"] {
   color: #177dac;
   font-family: sans-serif;
+}
+
+/* If you want the content centered horizontally and vertically */
+
+.signup-form h1 {
+  color: #177dac;
+  text-transform: uppercase;
+  font-size: 10000;
+}
+
+.signup-form {
+  width: 450px;
+  padding: 60px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(174, 177, 211);
+  text-align: center;
+  box-sizing: border-box;
 }
