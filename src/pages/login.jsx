@@ -49,12 +49,8 @@ export class login extends Component {
         </div>
 
         <div class="split right">
-          <form className="signup-form" method="post">
-            <div class="title2">
-              <h1>Healthify</h1>
-              <h1>Sign Up</h1>
-            </div>
-          </form>
+          <img className="background" src="images/doctors.png" alt="logo"></img>
+          <form className="signup-form" method="post"></form>
         </div>
       </Container>
     );

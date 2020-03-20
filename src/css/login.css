@@ -17,25 +17,33 @@
 /* Control the right side */
 .right {
   right: 0;
-  background-color: rgb(174, 177, 211);
+}
+
+.background {
+  max-height: 100%;
+  float: right;
+  background-repeat: no-repeat;
 }
 
 .login-form {
-  width: 450px;
-  padding: 60px;
+  width: 380px;
+  padding: 10px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
+  background: rgb(255, 255, 255);
   text-align: center;
   box-sizing: border-box;
 }
 
 .login-form h1 {
-  color: #177dac;
+  color: #343a40;
   text-transform: uppercase;
   font-size: 10000;
+  border: 2px solid #343a40;
+  border-radius: 24px;
+  padding: 10px 10px;
 }
 
 .login-box input[type="text"],
@@ -45,45 +53,45 @@
   display: block;
   margin: 20px auto;
   text-align: center;
-  border: 2px solid #177dac;
+  border: 2px solid #343a40;
   padding: 14px 10px;
   width: 200px;
   outline: none;
-  color: rgb(0, 0, 0);
-  border-radius: 24px;
+  color: #343a40;
+  border-radius: 14px;
   transition: 0.25s;
 }
 
 .login-form input[type="text"]:focus,
 .login-form input[type="password"]:focus {
   width: 250px;
-  border-color: rgb(0, 0, 0);
+  border-color: #343a40;
 }
 
 .icon {
-  color: #177dac;
+  color: #343a40;
   min-width: 10px;
 }
 
 .login-form a[type="submit"] {
   border: 0;
-  background: none;
+  background: #343a40;
   display: block;
   margin: 20px auto;
   text-align: center;
-  border: 2px solid #177dac;
+  border: 2px solid #343a40;
   padding: 14px 10px;
   width: 200px;
   outline: none;
-  color: black;
+  color: white;
   font-style: sans-serif;
-  border-radius: 24px;
+  border-radius: 14px;
   transition: 0.25 s;
   cursor: pointer;
 }
 
 .login-form a[type="submit"]:hover {
-  background-color: #177dac;
+  background-color: #485058;
   text-decoration: none;
 }
 
@@ -99,12 +107,6 @@
 
 /* If you want the content centered horizontally and vertically */
 
-.signup-form h1 {
-  color: #177dac;
-  text-transform: uppercase;
-  font-size: 10000;
-}
-
 .signup-form {
   width: 450px;
   padding: 60px;
@@ -112,7 +114,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgb(174, 177, 211);
+  background: none;
   text-align: center;
   box-sizing: border-box;
 }
