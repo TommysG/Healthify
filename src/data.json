@@ -1,0 +1,76 @@
+[
+  {
+    "id": 1,
+    "title": "What is the source of coronavirus",
+    "body": "Coronaviruses are a large family of viruses. Some cause illness in people, and others, such as canine and feline coronaviruses, only infect animals. Rarely, animal coronaviruses that infect animals have emerged to infect people and can spread between people. This is suspected to have occurred for the virus that causes COVID-19. Middle East Respiratory Syndrome (MERS) and Severe Acute Respiratory Syndrome (SARS) are two other examples of coronaviruses that originated from animals and then spread to people. More information about the source and spread of COVID-19 is available on the Situation Summary: Source and Spread of the Virus.",
+    "replies": "105",
+    "time": "2h",
+    "postReplies": [
+      {
+        "id": 1,
+        "title": "Try to reply",
+        "date": "Feb 21",
+        "content": "Proident in labore esse voluptate dolore qui in occaecat deserunt laborum id mollit."
+      },
+      {
+        "id": 2,
+        "title": "Try to reply 2",
+        "date": "March 17",
+        "content": "Proident in labore esse voluptate dolore qui in occaecat deserunt laborum id mollit."
+      },
+      {
+        "id": 3,
+        "title": "Try to reply 3",
+        "date": "March 18",
+        "content": "Proident in labore esse voluptate dolore qui in occaecat deserunt laborum id mollit."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Can someone who has had COVID-19 spread the illness to others?",
+    "body": "The virus that causes COVID-19 is spreading from person-to-person. Someone who is actively sick with COVID-19 can spread the illness to others. That is why CDC recommends that these patients be isolated either in the hospital or at home (depending on how sick they are) until they are better and no longer pose a risk of infecting others.",
+    "replies": "52",
+    "time": "5h",
+    "postReplies": [
+      {
+        "id": 1,
+        "title": "This a replying",
+        "date": "Feb 21",
+        "content": "Ut fugiat dolor reprehenderit et tempor deserunt sint ullamco et nulla commodo ad eiusmod do. Ex laborum reprehenderit et duis nostrud sit. Ut ex dolor minim amet."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Title 3",
+    "body": "Body 3",
+    "replies": "105",
+    "time": "7h",
+    "postReplies": []
+  },
+  {
+    "id": 4,
+    "title": "Title 4",
+    "body": "Body 4",
+    "replies": "105",
+    "time": "7h",
+    "postReplies": []
+  },
+  {
+    "id": 5,
+    "title": "Title 5",
+    "body": "Body 5",
+    "replies": "105",
+    "time": "7h",
+    "postReplies": []
+  },
+  {
+    "id": 6,
+    "title": "Title 6",
+    "body": "Body 6",
+    "replies": "105",
+    "time": "7h",
+    "postReplies": []
+  }
+]
