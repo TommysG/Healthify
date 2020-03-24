@@ -1,5 +1,5 @@
 .Main {
-  height: 937px;
+  height: 100vh;
   position: relative;
   top: 0;
   left: 0;
@@ -37,8 +37,7 @@
   font-size: 92px;
 }
 
-#login,
-#login:hover {
+#login, #login:hover {
   color: white;
   text-decoration: none;
 }

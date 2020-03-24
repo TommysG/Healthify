@@ -23,15 +23,20 @@ const HomeNav = () => {
           <Row>
             <Col lg={8} md={8} xs={12} className="first-container">
               <Col xs={1} className="healthify-logo">
-                <h2>Healthify</h2>
+                <a href="/home">
+                  <h2>Healthify</h2>
+                </a>
               </Col>
               <Search></Search>
             </Col>
             <Col lg={4} md={4} className="second-container">
               <ButtonToolbar className="btn-toolbar btn-container">
-                <Button className="new-topic" variant="secondary">
-                  <Link to="/createpost">Create Topic </Link>
-                </Button>
+                <Link to="/createpost">
+                  <Button className="new-topic" variant="secondary">
+                    Create Topic
+                  </Button>
+                </Link>
+
                 <i className="fas fa-bell notif-ico"></i>
                 <img
                   className="profile-img"
@@ -40,7 +45,9 @@ const HomeNav = () => {
                   height="37px"
                 ></img>
                 <DropdownButton className="profile-button" title={""}>
-                  <DropdownItem eventKey="1">Settings</DropdownItem>
+                  <DropdownItem eventKey="1" as={Link} to="/settings">
+                    Settings
+                  </DropdownItem>
                   <DropdownItem eventKey="2">Logout</DropdownItem>
                 </DropdownButton>
               </ButtonToolbar>
