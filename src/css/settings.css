@@ -1,0 +1,75 @@
+.main-container {
+	background-color: #ecf0f1;
+}
+.tab-navigation {
+	border-bottom: 1px solid gray;
+	margin-top: 30px;
+	height: 60px;
+
+	padding-left: 50px;
+	padding-top: 5px;
+}
+
+.display-container {
+	margin-bottom: 50px;
+}
+.basicInfo-container {
+	padding: 10px;
+}
+
+#selected {
+	background-color: transparent;
+	margin-right: 30px;
+	border-bottom: 2px solid red;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+	font-weight: bold;
+	outline: 0;
+}
+
+#unselected {
+	background-color: transparent;
+	margin-right: 30px;
+	border: none;
+	outline: 0;
+}
+
+.header-div {
+	padding-left: 10px;
+	margin-top: 30px;
+	margin-bottom: 5px;
+}
+
+.info-header {
+	color: gray;
+	width: 65%;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.activity-header {
+	color: gray;
+	font-weight: bold;
+	width: 30%;
+	align-items: center;
+	justify-content: center;
+}
+
+.user-settings {
+	border-top: 1px solid lightgray;
+	border-left: 1px solid lightgray;
+	margin-bottom: 50px;
+	height: 300px;
+	width: 65%;
+	margin-right: 10px;
+}
+
+.activity-display {
+	border: 0.5px solid lightgrey;
+	background-color: white;
+	width: 30%;
+	height: 298px;
+	padding-left: 20px;
+	padding-top: 10px;
+}

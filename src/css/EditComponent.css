@@ -1,0 +1,44 @@
+.info-div {
+	background-color: white;
+	border-bottom: 0.5px solid lightgray;
+	border-right: 0.5px solid lightgray;
+	width: 50%;
+	height: 33%;
+	display: flex;
+	float: left;
+	padding: 10px;
+}
+
+.info-container {
+	display: grid;
+	float: left;
+	width: 60%;
+	float: left;
+}
+
+.button-container {
+	display: flex;
+	width: 30%;
+	align-items: center;
+	justify-content: center;
+}
+
+.content {
+	width: 70%;
+}
+
+#header {
+	color: gray;
+}
+
+#editable {
+	font-weight: bold;
+}
+
+#editbtn {
+	background-color: white;
+	height: 35px;
+	width: 35px;
+	border: 1px solid gray;
+	border-radius: 50%;
+}
