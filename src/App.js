@@ -11,6 +11,7 @@ import "./App.css";
 import welcome from "./pages/welcome";
 import home from "./pages/home";
 import login from "./pages/login";
+import register from "./pages/register";
 import viewPost from "./pages/viewPost";
 import createPost from "./pages/createPost";
 import settings from "./pages/settings";
@@ -25,6 +26,7 @@ class App extends Component {
             <Route exact path="/" component={welcome} />
             <Route path="/home" component={home} />
             <Route path="/login" component={login} />
+            <Route path="/register" component={register} />
             <Route exact path="/about" component={welcome} />
             <Route exact path="/contact" component={welcome} />
             <Route exact path="/viewpost" component={viewPost}>
