@@ -32,13 +32,3 @@
   background-color: #f0f0f0;
   color: black;
 }
-
-.topnav a.active {
-  background-color: #70bee9;
-  color: white;
-}
-
-.topnav a.active:hover {
-  background-color: #60b1dd;
-  color: white;
-}

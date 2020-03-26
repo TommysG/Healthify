@@ -31,7 +31,7 @@ const HomeNav = () => {
             </Col>
             <Col lg={4} md={4} className="second-container">
               <ButtonToolbar className="btn-toolbar btn-container">
-                <Link to="/createpost">
+                <Link to="/createpost" style={{ height: "100%" }}>
                   <Button className="new-topic" variant="secondary">
                     Create Topic
                   </Button>

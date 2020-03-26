@@ -1,11 +1,12 @@
 .main-container {
 	background-color: #ecf0f1;
+	line-height: 1.5;
 }
+
 .tab-navigation {
 	border-bottom: 1px solid gray;
 	margin-top: 30px;
 	height: 60px;
-
 	padding-left: 50px;
 	padding-top: 5px;
 }
@@ -13,6 +14,7 @@
 .display-container {
 	margin-bottom: 50px;
 }
+
 .basicInfo-container {
 	padding: 10px;
 }

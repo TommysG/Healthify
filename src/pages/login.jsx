@@ -6,15 +6,15 @@ export class login extends Component {
   render() {
     return (
       <Container className="split">
-        <div class="left">
+        <div className="left">
           <form className="login-form" method="post">
-            <div class="title">
+            <div className="title">
               <h1>Healthify</h1>
               <h1>Login</h1>
             </div>
 
-            <div class="login-box">
-              <i class="fa fa-user icon"></i>
+            <div className="login-box">
+              <i className="fa fa-user icon"></i>
               <input
                 className="input-email"
                 type="text"
@@ -48,7 +48,7 @@ export class login extends Component {
           </form>
         </div>
 
-        <div class="split right">
+        <div className="split right">
           <img className="background" src="images/doctors.png" alt="logo"></img>
           <form className="signup-form" method="post"></form>
         </div>

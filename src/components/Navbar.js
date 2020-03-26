@@ -9,7 +9,7 @@ const Navbar = () => {
       <nav className="topnav">
         <label className="logo">Healthify</label>
         <Link to="/login">Login</Link>
-        <Link to="/contanct">Contact</Link>
+        <Link to="/contact">Contact</Link>
         <Link to="/about">About</Link>
         <Link to="/" className="active">
           Home
