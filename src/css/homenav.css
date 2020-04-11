@@ -3,6 +3,7 @@
   border-bottom: 1px solid rgb(201, 204, 205);
   background-color: white;
   box-shadow: rgb(201, 204, 205) 0px 1px 2px;
+  line-height: 1.5;
 }
 
 .home-nav a {
@@ -112,4 +113,14 @@
 
 .new-topic a:hover {
   text-decoration: none;
+}
+
+.topnav-home {
+  width: unset;
+  position: relative;
+  float: left;
+}
+
+.topnav-home a {
+  padding: 19.5px 16px;
 }

@@ -34,7 +34,7 @@
 
 .user-info {
   width: 15%;
-  padding: 20px 0 15px 15px;
+  padding: 20px 15px 15px 15px;
 }
 
 .post .avatar {
@@ -87,8 +87,7 @@ i {
   text-align: center;
 }
 
-.time,
-.replies {
+.time, .replies {
   color: rgb(157, 166, 170);
   font-size: 12px;
   font-family: "Open Sans Regular", sans-serif;
@@ -123,4 +122,43 @@ i {
   transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+  .post .empty .commentbg {
+    font-size: 12px;
+    padding: 7px;
+    min-width: 35px;
+  }
+}
+
+@media (max-width: 767px) {
+  .post .empty .commentbg {
+    font-size: 12px;
+    padding: 7px;
+    min-width: 35px;
+  }
+}
+
+.info {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.vote {
+  display: inline-block;
+  overflow: hidden;
+  width: 40px;
+  height: 25px;
+  cursor: pointer;
+  background: url('http://i.stack.imgur.com/iqN2k.png');
+  background-position: 0 -25px;
+}
+
+.down-vote {
+  transform: rotate(180deg);
+}
+
+.vote.on {
+  background-position: 0 2px;
 }

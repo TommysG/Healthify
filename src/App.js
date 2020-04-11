@@ -15,6 +15,7 @@ import register from "./pages/register";
 import viewPost from "./pages/viewPost";
 import createPost from "./pages/createPost";
 import settings from "./pages/settings";
+import news from "./pages/news";
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={welcome} />
+            <Route exact path="/news" component={news} />
             <Route path="/home" component={home} />
             <Route path="/login" component={login} />
             <Route path="/signup" component={register} />

@@ -27,6 +27,10 @@ const HomeNav = () => {
                   <h2>Healthify</h2>
                 </a>
               </Col>
+              <nav className="topnav topnav-home">
+                <Link to="/news">News</Link>
+                <Link to="/home">Forum</Link>
+              </nav>
               <Search></Search>
             </Col>
             <Col lg={4} md={4} className="second-container">

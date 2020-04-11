@@ -1,0 +1,259 @@
+.featured-post .feature-image {
+  transition: all 0.3s ease 0s;
+  overflow: hidden;
+}
+
+.featured-post .overlay-bg {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.featured-post img {
+  width: 100%;
+  transition: all 0.3s ease 0s;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.featured-post .top-post-details {
+  position: absolute;
+  bottom: 30px;
+  left: 40px;
+}
+
+.featured-post .top-post-details h4 {
+  color: #fff;
+  margin: 20px 0px;
+}
+
+.featured-post .top-post-details .tags li a {
+  color: #fff;
+}
+
+.top-post-details .tags li {
+  display: inline-block;
+  background: cornflowerblue;
+  color: #fff;
+  padding: 4px 30px;
+  font-weight: 300;
+}
+
+.featured-post .top-post-details .meta li {
+  display: inline-block;
+  color: #fff;
+  margin-right: 10px;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.featured-post .top-post-details .meta li a {
+  color: #fff;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.relative {
+  position: relative;
+}
+
+.feature-image.relative {
+  transition-delay: 500ms;
+}
+
+.feature-image.relative:hover>.overlay-bg {
+  background-color: transparent;
+}
+
+.featured-post:hover .feature-image img {
+  transform: scale(1.045);
+}
+
+.featured-post:hover .top-post-details .tags li, .single-top-post:hover .top-post-details .tags li {
+  background-color: #5781cf;
+}
+
+/*single-post*/
+
+.single-top-post .top-post-details {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+}
+
+.single-top-post {
+  position: relative;
+}
+
+.single-top-post .top-post-details {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+}
+
+.single-top-post .top-post-details .tags li a {
+  color: #fff;
+}
+
+.single-top-post .top-post-details .meta li {
+  display: inline-block;
+  color: #fff;
+  margin-right: 10px;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.single-top-post .top-post-details h4, .single-top-post .top-post-details a {
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.single-top-post .top-post-details a {
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.single-top-post:hover .feature-image img {
+  transform: scale(1.045);
+}
+
+.single-top-post .feature-image img {
+  width: 100%;
+  transition: all 0.3s ease 0s;
+}
+
+.single-top-post .feature-image {
+  overflow: hidden;
+}
+
+.sp-10 {
+  margin-top: 6px;
+}
+
+.single-top-post .feature-image .overlay-bg {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.single-top-post h3 {
+  font-size: 18px;
+}
+
+@media (max-width: 991px) {
+  .top-post-area .top-post-left {
+    margin-bottom: 10px;
+  }
+}
+
+.featured-post img {
+  object-fit: cover;
+  height: 60vh;
+}
+
+.single-top-post img {
+  object-fit: cover;
+  height: 29.5vh;
+}
+
+.featured-post ul, .single-top-post ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/*all news post*/
+
+.single-latest-post {
+  margin-top: 20px;
+}
+
+.single-latest-post .feature-img {
+  overflow: hidden;
+}
+
+.single-latest-post .feature-img .overlay-bg {
+  background: rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease 0s;
+}
+
+.single-latest-post .feature-img img {
+  width: 100%;
+  transition: all 0.3s ease 0s;
+}
+
+.single-latest-post .tags {
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+}
+
+.single-latest-post .tags li {
+  display: inline-block;
+  background: cornflowerblue;
+  color: #fff;
+  padding: 4px 30px;
+  font-weight: 300;
+}
+
+.single-latest-post .tags li a {
+  color: #fff;
+}
+
+.single-latest-post .meta {
+  margin: 10px 0px;
+}
+
+.single-latest-post .excert {
+  margin-bottom: 0px;
+}
+
+.single-latest-post ol, .single-latest-post ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.single-latest-post .meta li {
+  display: inline-block;
+  color: #777777;
+  margin-right: 10px;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.single-latest-post h4 {
+  font-size: 18px;
+}
+
+.single-latest-post h6 {
+  font-family: "Poppins", sans-serif;
+  color: #222222;
+  line-height: 1.2em !important;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-weight: 600;
+}
+
+.single-latest-post:hover .feature-img img {
+  transform: scale(1.1);
+}
+
+.single-latest-post p {
+  color: #777777;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.625em;
+}

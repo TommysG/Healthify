@@ -8,6 +8,11 @@
 
 .side-block a:hover {
   text-decoration: underline;
+  color: cornflowerblue;
+}
+
+.side-block a:hover+span {
+  background-color: cornflowerblue;
 }
 
 .side-block h3 {
@@ -28,7 +33,6 @@
 
 .categories {
   font-size: 14px;
-  color: purple;
   font-family: "Open Sans Light", sans-serif;
   padding: 20px;
 }
@@ -49,6 +53,7 @@ ul li a {
 }
 
 /* Badge */
+
 ul.list .badge {
   background-color: rgb(189, 195, 199);
   font-size: 12px;
