@@ -3,7 +3,7 @@
 	border-bottom: 0.5px solid lightgray;
 	border-right: 0.5px solid lightgray;
 	width: 50%;
-	height: 33%;
+	height: 33.33%;
 	display: flex;
 	float: left;
 	padding: 10px;
@@ -33,12 +33,4 @@
 
 #editable {
 	font-weight: bold;
-}
-
-#editbtn {
-	background-color: white;
-	height: 35px;
-	width: 35px;
-	border: 1px solid gray;
-	border-radius: 50%;
 }

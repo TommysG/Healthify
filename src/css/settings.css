@@ -61,7 +61,7 @@
 .user-settings {
 	border-top: 1px solid lightgray;
 	border-left: 1px solid lightgray;
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 	height: 300px;
 	width: 65%;
 	margin-right: 10px;
@@ -74,4 +74,20 @@
 	height: 298px;
 	padding-left: 20px;
 	padding-top: 10px;
+}
+
+.button-row {
+	width: 65%;
+	padding: 10px;
+}
+
+.changeBtn {
+	padding: 5px;
+	background-color: white;
+	border: 1px solid grey;
+}
+
+.changeBtn:hover {
+	color: cornflowerblue;
+	border: 1px solid cornflowerblue;
 }

@@ -55,6 +55,9 @@ export class settings extends Component {
 								</div>
 							</div>
 						</Row>
+						<Row className="button-row">
+							<button className="changeBtn">Save changes</button>
+						</Row>
 					</Col>
 				</Container>
 			</div>
