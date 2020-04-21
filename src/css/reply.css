@@ -1,6 +1,5 @@
 .replyContainer {
 	margin-top: 60px;
-	height: 188px;
 	float: left;
 	width: 100%;
 	position: relative;
@@ -24,8 +23,9 @@
 }
 
 .replyArea {
-	padding: 30px;
+	margin: 5%;
 	height: 100%;
-	width: 80%;
+	width: 70%;
 	resize: none;
+	background-color: lightgray;
 }

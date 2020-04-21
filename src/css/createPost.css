@@ -1,58 +1,58 @@
 .mainView {
-  background-color: #ecf0f1;
-  line-height: 1.5;
+	background-color: #ecf0f1;
+	line-height: 1.5;
 }
 
 .createPost-container {
-  margin-top: 50px;
-  width: 100%;
+	margin-top: 50px;
+	width: 100%;
 }
 
 .createView {
-  float: left;
-  width: 80%;
-  background: white;
-  box-shadow: rgb(201, 204, 205) 0px 1px 2px;
-  padding: 2% 3% 5% 3%;
+	float: left;
+	width: 85%;
+	background: white;
+	box-shadow: rgb(201, 204, 205) 0px 1px 2px;
+	padding: 2% 3% 5% 3%;
 }
 
 #titleArea {
-  padding-top: 13px;
-  padding-left: 20px;
-  height: 20%;
-  width: 100%;
-  background: #ecf0f1;
-  box-shadow: rgb(201, 204, 205) 0px 1px 2px;
-  resize: none;
-  border: none;
-  outline: none;
+	padding-top: 5px;
+	padding-left: 20px;
+	height: 20%;
+	width: 100%;
+	background: #ecf0f1;
+	box-shadow: rgb(201, 204, 205) 0px 1px 2px;
+	resize: none;
+	border: none;
+	outline: none;
 }
 
 #topicArea {
-  margin-top: 20px;
-  padding: 20px;
-  height: 45%;
-  width: 100%;
-  resize: none;
-  background: #ecf0f1;
-  box-shadow: rgb(201, 204, 205) 0px 1px 2px;
-  border: none;
-  outline: none;
+	margin-top: 20px;
+	padding: 20px;
+	height: 55%;
+	width: 100%;
+	resize: none;
+	background: #ecf0f1;
+	box-shadow: rgb(201, 204, 205) 0px 1px 2px;
+	border: none;
+	outline: none;
 }
 
 .category-div {
-  width: 100%;
-  height: 20%;
-  margin-bottom: 10px;
+	width: 100%;
+	height: 20%;
+	margin-bottom: 10px;
 }
 
 .categoryBtn {
-  text-align: left;
-  position: relative;
-  width: 30%;
-  border: 1px solid grey;
+	text-align: left;
+	position: relative;
+	width: 30%;
+	border: 1px solid grey;
 }
 
 .userProfilePicture {
-  height: 35%;
+	height: 35%;
 }

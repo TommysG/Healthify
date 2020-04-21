@@ -1,109 +1,110 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 a {
-  color: #333;
-  text-decoration: none;
+	color: #333;
+	text-decoration: none;
 }
 
 .postContainer {
-  box-shadow: rgb(201, 204, 205) 0px 1px 2px;
-  margin-top: 60px;
-  width: 100%;
-  float: left;
-  position: relative;
-  display: block;
-  background: white;
-  overflow: hidden;
+	box-shadow: rgb(201, 204, 205) 0px 1px 2px;
+	margin-top: 60px;
+	width: 100%;
+	float: left;
+	position: relative;
+	display: block;
+	background: white;
+	overflow: hidden;
 }
 
 .replyButton {
-  height: 40px;
-  margin-top: 50px;
-  margin-bottom: 100px;
-  background-color: white;
-  color: cornflowerblue;
-  width: 100px;
-  float: right;
-  border: 1px solid cornflowerblue;
+	height: 40px;
+	margin-top: 50px;
+	margin-bottom: 100px;
+	background-color: white;
+	color: cornflowerblue;
+	width: 100px;
+	float: right;
+	border: 1px solid cornflowerblue;
 }
 
 .replyButton:hover {
-  color: white;
-  background-color: cornflowerblue;
-  cursor: pointer;
+	color: white;
+	background-color: cornflowerblue;
+	cursor: pointer;
 }
 
 .postInfo {
-  width: 80%;
-  float: left;
+	width: 80%;
+	float: left;
 }
 
 .postHeader {
-  height: 20%;
-  display: flex;
-  border-left: 1px solid grey;
+	width: 100%;
+	height: 20%;
+	display: flex;
+	border-left: 1px solid grey;
 }
 
 .postTitle {
-  padding-top: 15px;
-  padding-left: 30px;
-  width: 70%;
-  flex: left;
-  border-bottom: 1px solid grey;
+	padding-top: 15px;
+	padding-left: 30px;
+	width: 70%;
+	flex: left;
+	border-bottom: 1px solid grey;
 }
 
 .postDate {
-  width: 30%;
-  padding-top: 15px;
-  text-align: center;
-  flex: left;
-  font-style: italic;
-  border-bottom: 1px solid grey;
+	width: 30%;
+	padding-top: 15px;
+	text-align: center;
+	flex: left;
+	font-style: italic;
+	border-bottom: 1px solid grey;
 }
 
 .postBody {
-  height: 85%;
+	height: 85%;
 }
 
 .postContent {
-  padding-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  text-align: justify;
-  height: 80%;
-  width: 100%;
-  position: relative;
-  font-style: normal;
-  border-left: 1px solid grey;
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: justify;
+	height: 80%;
+	width: 100%;
+	position: relative;
+	font-style: normal;
+	border-left: 1px solid grey;
 }
 
 .likebar a:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .heart-icon:hover {
-  color: red;
+	color: red;
 }
 
 .view-container {
-  background-color: #ecf0f1;
-  overflow: hidden;
-  padding: 0;
+	background-color: #ecf0f1;
+	overflow: hidden;
+	padding: 0;
 }
 
 .likebar {
-  height: 20%;
-  text-align: end;
+	height: 20%;
+	text-align: end;
 }
 
 .likebar a:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .style {
-  background-color: #fff3d1;
+	background-color: #fff3d1;
 }

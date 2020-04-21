@@ -1,99 +1,97 @@
 .news {
-  background-color: #ecf0f1;
-  overflow: hidden;
-  padding: 0;
+	background-color: #ecf0f1;
+	overflow: hidden;
+	padding: 0;
 }
 
-.recent-news {}
-
 .section-heading h6 {
-  font-size: 16px;
-  margin-bottom: 0;
-  line-height: 45px !important;
-  height: 45px;
-  min-width: 140px;
-  padding: 0 30px;
-  background-color: cornflowerblue;
-  color: #fff;
-  font-weight: 700;
-  display: inline-block;
-  text-align: center;
+	font-size: 16px;
+	margin-bottom: 0;
+	line-height: 45px !important;
+	height: 45px;
+	min-width: 140px;
+	padding: 0 30px;
+	background-color: cornflowerblue;
+	color: #fff;
+	font-weight: 700;
+	display: inline-block;
+	text-align: center;
 }
 
 .top-post-area {
-  margin-top: 50px;
+	margin-top: 50px;
 }
 
 .section-heading {
-  position: relative;
-  z-index: 1;
-  margin-top: 90px;
-  margin-bottom: 90px;
-  border-bottom: 1px solid #d0d5d8;
+	position: relative;
+	z-index: 1;
+	margin-top: 90px;
+	margin-bottom: 90px;
+	border-bottom: 1px solid #d0d5d8;
 }
 
 .pt-10 {
-  padding-top: 10px;
+	padding-top: 10px;
 }
 
 .container.no-padding {
-  padding-left: 0;
-  padding-right: 0;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .no-padding {
-  padding: 0;
+	padding: 0;
 }
 
 .small-gutters {
-  margin-right: -5px;
-  margin-left: -5px;
+	margin-right: -5px;
+	margin-left: -5px;
 }
 
-.small-gutters>[class*="col-"] {
-  padding-right: 5px;
-  padding-left: 5px;
+.small-gutters > [class*="col-"] {
+	padding-right: 5px;
+	padding-left: 5px;
 }
 
 .news-container {
-  margin-top: 40px;
+	margin-top: 40px;
+	padding: 10px 80px 150px 80px;
 }
 
 .meta li {
-  display: inline-block;
-  color: black;
-  margin-right: 10px;
-  font-weight: 300;
-  font-size: 12px;
+	display: flex;
+	color: black;
+	margin-right: 10px;
+	font-weight: 300;
+	font-size: 12px;
+	float: right;
 }
 
 .tags .category-top {
-  position: absolute;
-  display: inline-block;
-  background: cornflowerblue;
-  color: #fff;
-  padding: 4px 30px;
-  font-weight: 300;
+	position: absolute;
+	display: inline-block;
+	background: cornflowerblue;
+	color: #fff;
+	padding: 4px 30px;
+	font-weight: 300;
 }
 
 .img-view {
-  object-fit: cover;
-  height: 60vh !important;
-  width: 100%;
+	object-fit: cover;
+	height: 60vh !important;
+	width: 100%;
 }
 
 .news-body p {
-  text-align: justify;
-}
-
-.padding-70 {
-  padding: 0px 70px;
+	text-align: justify;
 }
 
 .news-view .news-title {
-  text-align: justify;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .post-list {
-  margin-bottom: 50px;
+	margin-bottom: 50px;
 }
