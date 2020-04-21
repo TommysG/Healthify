@@ -84,6 +84,10 @@ a, a:hover {
   background-color: #5781cf;
 }
 
+.featured-post .top-post-details a {
+  color: white;
+}
+
 /*single-post*/
 
 .single-top-post .top-post-details {
@@ -256,4 +260,9 @@ a, a:hover {
   font-size: 14px;
   font-weight: 300;
   line-height: 1.625em;
+}
+
+.single-latest-post .img-fluid {
+  object-fit: cover;
+  height: 20vh;
 }

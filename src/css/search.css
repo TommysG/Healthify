@@ -8,7 +8,7 @@
   padding: 8px 19px;
   height: 38px;
   transition: 0.3s;
-  width: 40%;
+  width: 35%;
   float: right;
 }
 
@@ -17,8 +17,7 @@
   font-size: 18px;
 }
 
-.search:focus {
-}
+.search:focus {}
 
 .inputWithIcon input[type="text"] {
   padding-left: 50px;

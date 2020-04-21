@@ -3,10 +3,57 @@ import { Container, Row, Col } from "react-bootstrap";
 import "../css/news.css";
 import "../css/card.css";
 import HomeNav from "../components/HomeNav";
-import { Card } from "../components/Card";
+import { CardImage } from "../components/CardImage";
 import { CardNews } from "../components/CardNews";
 
+import { Link } from "react-router-dom";
+
+import newsfile from "../news.json";
+
 function news() {
+  const allNews = newsfile.map((item) => (
+    <CardNews
+      key={item.id}
+      className="featured-post"
+      img={item.image}
+      category={item.category}
+      title={<Link to={`/news/viewnews/${item.id}`}>{item.title}</Link>}
+    ></CardNews>
+  ));
+
+  const featured = (
+    <CardImage
+      className="featured-post"
+      img={newsfile[0].image}
+      category={newsfile[0].category}
+      title={
+        <Link to={`/news/viewnews/${newsfile[0].id}`}>{newsfile[0].title}</Link>
+      }
+    ></CardImage>
+  );
+
+  const featuredRight = (
+    <CardImage
+      className="single-top-post"
+      img={newsfile[1].image}
+      category={newsfile[1].category}
+      title={
+        <Link to={`/news/viewnews/${newsfile[1].id}`}>{newsfile[1].title}</Link>
+      }
+    ></CardImage>
+  );
+
+  const featuredDown = (
+    <CardImage
+      className="single-top-post sp-10"
+      img={newsfile[2].image}
+      category={newsfile[2].category}
+      title={
+        <Link to={`/news/viewnews/${newsfile[2].id}`}>{newsfile[2].title}</Link>
+      }
+    ></CardImage>
+  );
+
   return (
     <div>
       <HomeNav />
@@ -15,26 +62,11 @@ function news() {
           <div className="container no-padding">
             <div className="row small-gutters">
               <Col lg={8} className="top-post-left">
-                <Card
-                  className="featured-post"
-                  img="https://images.unsplash.com/photo-1583324113626-70df0f4deaab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1789&q=80"
-                  category="Health"
-                  title="A Discount Toner Cartridge Is Better Than Ever."
-                ></Card>
+                {featured}
               </Col>
               <Col lg={4} className="top-post-right">
-                <Card
-                  className="single-top-post"
-                  img="https://images.unsplash.com/photo-1580458072512-96ced1f43991?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80"
-                  category="Health"
-                  title="A Discount Toner Cartridge Is Better Than Ever."
-                ></Card>
-                <Card
-                  className="single-top-post sp-10"
-                  img="https://images.unsplash.com/photo-1580917922805-f8f57e08c0ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-                  category="Health"
-                  title="A Discount Toner Cartridge Is Better Than Ever."
-                ></Card>
+                {featuredRight}
+                {featuredDown}
               </Col>
             </div>
           </div>
@@ -46,27 +78,7 @@ function news() {
                 <section className="section-heading">
                   <h6>All news</h6>
                 </section>
-
-                <CardNews
-                  className="featured-post"
-                  img="https://images.unsplash.com/photo-1583324113626-70df0f4deaab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1789&q=80"
-                  category="Health"
-                  title="A Discount Toner Cartridge Is Better Than Ever."
-                ></CardNews>
-
-                <CardNews
-                  className="featured-post"
-                  img="https://images.unsplash.com/photo-1583324113626-70df0f4deaab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1789&q=80"
-                  category="Health"
-                  title="A Discount Toner Cartridge Is Better Than Ever."
-                ></CardNews>
-
-                <CardNews
-                  className="featured-post"
-                  img="https://images.unsplash.com/photo-1583324113626-70df0f4deaab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1789&q=80"
-                  category="Health"
-                  title="A Discount Toner Cartridge Is Better Than Ever."
-                ></CardNews>
+                {allNews}
               </Col>
               <Col lg={4} className="">
                 <section className="section-heading">

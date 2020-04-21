@@ -25,16 +25,15 @@ a {
   margin-top: 50px;
   margin-bottom: 100px;
   background-color: white;
-  color: blue;
+  color: cornflowerblue;
   width: 100px;
   float: right;
-
-  border: 1px solid blue;
+  border: 1px solid cornflowerblue;
 }
 
 .replyButton:hover {
   color: white;
-  background-color: blue;
+  background-color: cornflowerblue;
   cursor: pointer;
 }
 
@@ -103,4 +102,8 @@ a {
 
 .likebar a:hover {
   cursor: pointer;
+}
+
+.style {
+  background-color: #fff3d1;
 }

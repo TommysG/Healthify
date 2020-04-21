@@ -1,139 +1,241 @@
 .signup-title {
-    font-size: 56px;
-    margin-bottom: 15px;
-    color: #20303c;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 400;
+  font-size: 56px;
+  margin-bottom: 15px;
+  color: #20303c;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
 }
 
 .form {
-    display: flex;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .signup-section {
-    display: flex;
+  display: flex;
 }
 
 .signup-email {
-    float: left;
-    width: 360px;
-    margin-right: 71px;
+  float: left;
+  width: 360px;
+  margin-right: 71px;
 }
 
 .signup-social {
-    float: right;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding-left: 71px;
-    border-left: 1px solid rgba(133, 143, 150, 0.8);
+  float: right;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 71px;
+  border-left: 1px solid rgba(133, 143, 150, 0.8);
 }
 
 body {
-    line-height: unset !important;
+  line-height: unset !important;
 }
 
 label {
-    margin-bottom: unset;
+  margin-bottom: unset;
 }
 
 .fa-times {
-    float: right;
+  float: right;
 }
 
 .top-head {
-    margin-top: 70px;
-    width: 100%;
+  margin-top: 70px;
+  width: 100%;
 }
 
 .login-link {
-    font-size: 20px;
-    margin-bottom: 34px;
-    font-weight: 300;
+  font-size: 20px;
+  margin-bottom: 34px;
+  font-weight: 300;
+  text-align: center;
 }
 
 .login-link a {
-    color: lightblue;
-    font-weight: 400;
+  color: lightblue;
+  font-weight: 400;
 }
 
 .login-link a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .btn-container {
-    height: 56px;
-    width: 308px;
-    padding: 4px;
-    border-radius: 1px;
-    margin-bottom: 9px;
+  height: 56px;
+  width: 308px;
+  padding: 4px;
+  border-radius: 1px;
+  margin-bottom: 9px;
 }
 
 .social-btn {
-    padding: 0;
-    border: 1px solid transparent;
-    width: 100%;
-    height: 100%;
-    /* box-shadow: rgb(142, 142, 142) 2px 4px 4px;*/
+  padding: 0;
+  border: 1px solid transparent;
+  width: 100%;
+  height: 100%;
+  /* box-shadow: rgb(142, 142, 142) 2px 4px 4px;*/
 }
 
 .btn-facebook {
-    background-color: #3b5998;
+  background-color: #3b5998;
 }
 
 .btn-google {
-    background-color: #4285f4;
+  background-color: #4285f4;
 }
 
 .btn-google img {
-    padding: 13px !important;
+  padding: 13px !important;
 }
 
 .social-btn img {
-    background-color: #fff;
-    border-radius: 1px;
-    padding: 12px 15px 11px 16px;
-    float: left;
-    width: 46px;
-    height: 46px;
+  background-color: #fff;
+  border-radius: 1px;
+  padding: 12px 15px 11px 16px;
+  float: left;
+  width: 46px;
+  height: 46px;
 }
 
 .social-btn span {
-    text-align: center;
-    color: white;
-    font-family: Roboto, HelveticaNeueW01-55Roma, HelveticaNeueW02-55Roma, HelveticaNeueW10-55Roma, sans-serif, sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: .21px;
-    margin-left: 6px;
-    margin-right: 6px;
-    vertical-align: top;
-    line-height: 48px;
+  text-align: center;
+  color: white;
+  font-family: Roboto, HelveticaNeueW01-55Roma, HelveticaNeueW02-55Roma, HelveticaNeueW10-55Roma, sans-serif, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.21px;
+  margin-left: 6px;
+  margin-right: 6px;
+  vertical-align: top;
+  line-height: 48px;
 }
 
 .signup-btn {
-    color: #3899ec;
-    border: 1px solid #3899ec;
-    border-radius: 20px;
-    background-color: transparent;
-    padding: 12px 45px;
-    transition: background-color .3s, color .3s, background .3s, box-shadow .1s ease-in-out;
+  color: #3899ec;
+  border: 1px solid #3899ec;
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 12px 45px;
+  transition: background-color 0.3s, color 0.3s, background 0.3s, box-shadow 0.1s ease-in-out;
 }
 
 .signup-btn:hover {
-    background-color: #3899ec;
-    color: white;
+  background-color: #3899ec;
+  color: white;
 }
 
 .signup-btn:focus, .social-btn:focus {
-    outline: none;
+  outline: none;
+}
+
+.checkbox {
+  text-align: left;
+  padding-left: 35px;
+  font-weight: 200;
+  display: block;
+  position: relative;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+
+.checkmark {
+  border: 1px solid #c7c7c7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #d4d4d4;
+}
+
+/* On mouse-over, add a grey background color */
+
+.checkbox:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+
+.checkbox input:checked~.checkmark {
+  background-color: #3899ec;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+
+.checkbox input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+
+.checkbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+@media only screen and (max-width: 992px) {
+  .signup-social {
+    display: none;
+  }
+  .signup-email {
+    width: 340px;
+  }
+  .signup-section {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .signup-social {
+    display: none;
+  }
+  .signup-email {
+    margin-right: 0px;
+  }
+  .signup-section {
+    text-align: center;
+  }
 }

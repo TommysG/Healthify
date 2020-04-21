@@ -1,68 +1,39 @@
 .home {
-	background-color: #ecf0f1;
-	overflow: hidden;
-	padding: 0;
-	line-height: 1.5;
+  background-color: #ecf0f1;
+  overflow: hidden;
+  padding: 0;
+  line-height: 1.5;
 }
 
 .post-container {
-	margin-top: 50px;
+  margin-top: 40px;
 }
+
 .filter-div {
-	width: 50%;
-	position: relative;
-	display: inline-block;
+  width: 50%;
+  position: relative;
+  display: inline-block;
 }
 
 .button-div {
-	width: 50%;
+  width: 50%;
 }
 
 .createBtn {
-	padding: 5px;
-	float: right;
-	border: 1px solid grey;
-	background-color: white;
+  float: right;
 }
 
-.dropdown-toggle {
-	padding: 5px;
-	background-color: white;
-	border: 1px solid grey;
-	cursor: pointer;
-}
-
-.dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: #f9f9f9;
-	min-width: 140px;
-	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-	z-index: 1;
-}
-
-.dropdown-content a {
-	color: black;
-	padding: 10px;
-	text-decoration: none;
-	display: block;
-}
-
-.dropdown-content a:hover {
-	background-color: #f1f1f1;
-}
-
-.filter-div:hover .dropdown-content {
-	display: block;
-}
-
-.createBtn:hover {
-	color: cornflowerblue;
-	border: 1px solid cornflowerblue;
+.createBtn a, .createBtn a:hover {
+  color: white;
 }
 
 .header-row {
-	margin-bottom: 20px;
-	padding-left: 15px;
-	padding-right: 15px;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.home-toolbar {
+  justify-content: space-between;
+  width: 100%;
 }

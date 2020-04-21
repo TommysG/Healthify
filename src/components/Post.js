@@ -11,11 +11,6 @@ const Post = ({ id, title, body, user, replies, time }) => {
               src="http://forum.azyrusthemes.com/images/avatar.jpg"
               alt="avatar"
             ></img>
-            <div className="info left">
-              <span className="vote"></span>
-              <span className="votes-number">1000</span>
-              <span className="vote down-vote"></span>
-            </div>
           </div>
         </div>
         <div className="post-text left">
@@ -32,7 +27,7 @@ const Post = ({ id, title, body, user, replies, time }) => {
             <div className="mark"></div>
           </div>
         </div>
-        <div className="replies">
+        <div className="likes">
           <i className="fas fa-heart"></i>
           {replies}
         </div>

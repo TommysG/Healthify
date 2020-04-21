@@ -4,7 +4,6 @@
 	border-right: 0.5px solid lightgray;
 	width: 50%;
 	height: 33.33%;
-	display: flex;
 	float: left;
 	padding: 10px;
 }
@@ -32,5 +31,18 @@
 }
 
 #editable {
-	font-weight: bold;
+	font-weight: 600;
+}
+
+.info-div:hover .fa-edit {
+	visibility: visible;
+	opacity: 1;
+}
+
+.fa-edit {
+	float: right;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0.2s, opacity 0.5s linear;
+	cursor: pointer;
 }

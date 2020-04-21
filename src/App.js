@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
+  Redirect,
 } from "react-router-dom";
 import "./App.css";
 /*import Navbar from "./components/Navbar";*/
@@ -16,6 +16,8 @@ import viewPost from "./pages/viewPost";
 import createPost from "./pages/createPost";
 import settings from "./pages/settings";
 import news from "./pages/news";
+import ScrollView from "./components/ScrollView";
+import viewNews from "./pages/viewNews";
 
 class App extends Component {
   render() {
@@ -23,21 +25,33 @@ class App extends Component {
       <div className="App">
         {/*<Navbar />*/}
         <Router>
-          <Switch>
-            <Route exact path="/" component={welcome} />
-            <Route exact path="/news" component={news} />
-            <Route path="/home" component={home} />
-            <Route path="/login" component={login} />
-            <Route path="/signup" component={register} />
-            <Route exact path="/about" component={welcome} />
-            <Route exact path="/contact" component={welcome} />
-            <Route exact path="/viewpost" component={viewPost}>
-              <Redirect to="/home"></Redirect>
-            </Route>
-            <Route exact path="/settings" component={settings} />
-            <Route path="/viewpost/:id" component={viewPost} />
-            <Route exact path="/createPost" component={createPost} />
-          </Switch>
+          <ScrollView>
+            <Switch>
+              <Route exact path="/" component={welcome} />
+              <Route exact path="/news" component={news} />
+              <Route exact path="/home" component={home} />
+              <Route path="/login" component={login} />
+              <Route path="/signup" component={register} />
+              <Route exact path="/about" component={welcome} />
+              <Route exact path="/contact" component={welcome} />
+
+              <Route exact path="/viewpost" component={viewPost}>
+                <Redirect to="/home"></Redirect>
+              </Route>
+              <Route exact path="/home/viewpost" component={viewPost}>
+                <Redirect to="/home"></Redirect>
+              </Route>
+
+              <Route exact path="/news/viewNews" component={viewNews} />
+
+              <Route exact path="/settings" component={settings} />
+
+              <Route path="/home/viewpost/:id" component={viewPost} />
+              <Route path="/news/viewnews/:id" component={viewNews} />
+
+              <Route exact path="/createPost" component={createPost} />
+            </Switch>
+          </ScrollView>
         </Router>
       </div>
     );

@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/card.css";
 
-export const Card = ({ className, img, category, title }) => {
+export const CardImage = ({ className, img, category, title }) => {
   return (
     <div className={`${className}`}>
       <div className="feature-image relative">
@@ -12,9 +12,7 @@ export const Card = ({ className, img, category, title }) => {
         <ul className="tags">
           <li>{category}</li>
         </ul>
-        <a href="#title">
-          <h4>{title}</h4>
-        </a>
+        <h4>{title}</h4>
         <ul className="meta">
           <li>Tommys Gian</li>
           <li>03 April, 2018</li>

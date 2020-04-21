@@ -87,13 +87,21 @@ i {
   text-align: center;
 }
 
-.time, .replies {
+.time, .likes {
   color: rgb(157, 166, 170);
   font-size: 12px;
   font-family: "Open Sans Regular", sans-serif;
   text-align: center;
   line-height: 29px;
   border-bottom: 1px solid rgb(241, 241, 241);
+}
+
+.fa-heart {
+  cursor: pointer;
+}
+
+.fa-heart:hover {
+  color: #ed1f1f;
 }
 
 .time {
@@ -151,7 +159,7 @@ i {
   width: 40px;
   height: 25px;
   cursor: pointer;
-  background: url('http://i.stack.imgur.com/iqN2k.png');
+  background: url("http://i.stack.imgur.com/iqN2k.png");
   background-position: 0 -25px;
 }
 

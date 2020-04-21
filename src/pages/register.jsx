@@ -18,14 +18,19 @@ export default function register() {
             Already have a Healthify account? <Link to="/login">Log in</Link>
           </p>
           <Row className="signup-section">
-            <Col xs={5} className="signup-email">
-              <Input type="text" label="Email"></Input>
-              <Input type="text" label="Type your email again"></Input>
-              <Input type="password" label="Password"></Input>
-              <Input type="password" label="Type your password again"></Input>
+            <Col xs className="signup-email">
+              <Input type="text" label="Email" />
+              <Input type="text" label="Type your email again" />
+              <Input type="password" label="Password" />
+              <Input type="password" label="Type your password again" />
+              <label className="checkbox">
+                Doctor
+                <input type="checkbox" />
+                <span className="checkmark"></span>
+              </label>
               <button className="signup-btn">Sign Up</button>
             </Col>
-            <div xs={2} className="signup-social">
+            <div className="signup-social">
               <div className="btn-container">
                 <button className="social-btn btn-facebook">
                   <img

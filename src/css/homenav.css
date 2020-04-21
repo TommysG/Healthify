@@ -32,6 +32,7 @@
   text-align: center;
   display: table;
   border-right: 1px solid #eaeaea;
+  padding: 0;
 }
 
 .healthify-logo h2 {
@@ -45,6 +46,9 @@
 
 .second-container {
   height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .third-container {
@@ -80,11 +84,8 @@
 
 .profile-button {
   border: none;
-  margin-top: 38px;
-  transform: translatey(-50%);
-  position: absolute;
-  left: 55%;
-  bottom: 75%;
+  margin-top: 10px;
+  margin-right: 20px;
 }
 
 .notif-ico {
@@ -100,11 +101,14 @@
   position: relative;
 }
 
+.profile-container {
+  width: 100% !important;
+  justify-content: flex-end;
+}
+
 .dropdown-toggle {
   box-shadow: none !important;
-  width: 80px;
-  text-align: right;
-  position: absolute
+  position: absolute;
 }
 
 .new-topic a {
@@ -123,4 +127,35 @@
 
 .topnav-home a {
   padding: 19.5px 16px;
+}
+
+.home-menu {
+  display: none;
+  margin-left: auto;
+  float: right;
+  transform: translateY(50%);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 995px) {
+  .search-box {
+    display: none;
+  }
+  .btn-container {
+    display: none;
+  }
+  .home-menu {
+    display: block;
+  }
+  .first-container {
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+  }
+  .second-container {
+    display: none;
+  }
+  .topnav-home {
+    display: none;
+  }
 }
