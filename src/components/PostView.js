@@ -2,8 +2,10 @@ import React from "react";
 import "../css/postView.css";
 
 const PostView = ({ id, title, date, content, style }) => {
+  let postStyle = `post + ${style}`;
+
   return (
-    <div className="post">
+    <div className={postStyle}>
       <div className="towrap">
         <div className="user-info left">
           <div className="avatar">

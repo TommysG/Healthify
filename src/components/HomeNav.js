@@ -9,7 +9,7 @@ import DropdownItem from "react-bootstrap/DropdownItem";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { Link } from "react-router-dom";
 
-const HomeNav = () => {
+const HomeNav = (props) => {
   return (
     <div>
       <img
@@ -19,7 +19,10 @@ const HomeNav = () => {
       ></img>
       <div className="home-nav">
         <Container>
-          <i className="fas fa-bars fa-2x home-menu" />
+          <i
+            className="fas fa-bars fa-2x home-menu"
+            onClick={props.drawerClickHandler}
+          />
           <Row>
             <Col lg={8} md={8} xs={12} className="first-container">
               <Col xs={1} className="healthify-logo">

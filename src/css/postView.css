@@ -27,6 +27,7 @@ a {
 }
 
 .style {
+  background-color: rgb(229, 236, 250);
   background-color: #fff3d1;
 }
 
@@ -51,10 +52,12 @@ a {
   color: #bdc3c7;
   font-family: "Open Sans Regular", sans-serif;
 }
+
 .post-info-bot .next {
   width: 90px;
   text-align: right;
 }
+
 .right {
   float: right;
 }
@@ -64,8 +67,7 @@ a {
   font-size: 12px;
 }
 
-.up i,
-.down i {
+.up i, .down i {
   font-size: 20px;
   padding-right: 10px;
 }
