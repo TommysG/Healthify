@@ -25,7 +25,7 @@ export default function viewNews({ match }) {
   return (
     <div className="news">
       <HomeNav />
-      <Container className="news-container padding-70">
+      <Container className="news-container">
         <Col>{newsContent}</Col>
       </Container>
     </div>

@@ -1,26 +1,51 @@
 import React from "react";
 
 import "../css/reply.css";
+import { Button } from "react-bootstrap";
 
 const Reply = () => {
-	return (
-		<div className="replyContainer">
-			<div className="replier">
-				<img
-					src="http://www.azyrusthemes.com/forum2/fonts/icons/avatars/A.svg"
-					alt="Avatar"
-					style={{
-						position: "relative",
-						width: "50%",
-						height: "50%",
-						marginLeft: "25%",
-						marginTop: "20%",
-					}}
-				/>
-				<h4 style={{ width: "100%", textAlign: "center" }}>YOU</h4>
-			</div>
-			<textarea className="replyArea" placeholder="Reply..."></textarea>
-		</div>
-	);
+  return (
+    <div className="post">
+      <form action="#" className="form-reply" method="post">
+        <div className="topwrap">
+          <div className="user-info left">
+            <div className="avatar">
+              <img
+                src="http://forum.azyrusthemes.com/images/avatar.jpg"
+                alt="avatar"
+              ></img>
+            </div>
+          </div>
+          <div className="post-text left">
+            <div className="textwraper">
+              <div className="postreply">Post a Reply</div>
+              <textarea
+                name="reply"
+                id="reply"
+                placeholder="Type your message here"
+              ></textarea>
+            </div>
+          </div>
+          <div className="clearfix"></div>
+        </div>
+        <div className="post-info-bot">
+          <div className="right post-reply">
+            <div className="left">
+              <Button
+                type="submit"
+                variant="secondary"
+                className="reply-button"
+              >
+                Reply
+              </Button>
+            </div>
+            <div className="clearfix"></div>
+          </div>
+
+          <div className="clearfix"></div>
+        </div>
+      </form>
+    </div>
+  );
 };
 export default Reply;

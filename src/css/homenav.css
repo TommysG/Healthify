@@ -58,11 +58,17 @@
   float: left;
 }
 
-.home-nav .row, .home-nav .container {
+.home-nav .row,
+.home-nav .container {
   height: 100%;
 }
 
-.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle, .show>.btn-primary.dropdown-toggle:focus {
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle,
+.show > .btn-primary.dropdown-toggle:focus {
   color: #697683;
   background-color: transparent;
   border-color: transparent;
@@ -108,7 +114,6 @@
 
 .dropdown-toggle {
   box-shadow: none !important;
-  position: absolute;
 }
 
 .new-topic a {
@@ -135,6 +140,11 @@
   float: right;
   transform: translateY(50%);
   cursor: pointer;
+}
+
+.fa-bars,
+.fa-bell {
+  color: rgb(157, 166, 170);
 }
 
 @media only screen and (max-width: 995px) {

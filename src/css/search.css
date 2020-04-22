@@ -17,7 +17,8 @@
   font-size: 18px;
 }
 
-.search:focus {}
+.search:focus {
+}
 
 .inputWithIcon input[type="text"] {
   padding-left: 50px;
@@ -30,7 +31,7 @@
 
 .search-button .search-icon {
   color: white;
-  padding-left: 4px;
+  padding: 4px;
   font-size: 18px;
 }
 
@@ -43,7 +44,7 @@
   text-align: center;
   outline: none;
   float: right;
-  padding-bottom: 5px;
+  padding-bottom: 3.5px;
 }
 
 .search-box {

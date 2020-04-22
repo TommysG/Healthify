@@ -1,6 +1,7 @@
 import React from "react";
 import HomeNav from "../components/HomeNav";
 import PostView from "../components/PostView";
+import SideBlock from "../components/SideBlock";
 import Reply from "../components/Reply";
 import { Container, Row, Col } from "react-bootstrap";
 import data from "../data.json";
@@ -43,13 +44,15 @@ function viewPost({ match }) {
   return (
     <div className="view-container">
       <HomeNav />
-      <Container className="main-container">
+      <Container className="post-container">
         <Row>
-          <Col lg={12} md={12} xs={12}>
+          <Col lg={8} md={8}>
             {post}
             {replies}
             <Reply />
-            <button className="replyButton">Reply!</button>
+          </Col>
+          <Col lg={4} md={4}>
+            <SideBlock></SideBlock>
           </Col>
         </Row>
       </Container>

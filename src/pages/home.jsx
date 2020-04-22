@@ -44,9 +44,11 @@ function home() {
                   <DropdownItem eventKey="3">Most Liked</DropdownItem>
                 </DropdownButton>
 
-                <Button variant="secondary" className="createBtn">
-                  <a href="/createpost">New Topic</a>
-                </Button>
+                <a href="/createpost">
+                  <Button variant="secondary" className="createBtn">
+                    New Topic
+                  </Button>
+                </a>
               </ButtonToolbar>
             </Row>
             {posts}

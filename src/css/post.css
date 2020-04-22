@@ -75,7 +75,8 @@
   border-bottom: 1px solid rgb(241, 241, 241);
 }
 
-i {
+.fa-heart,
+.fa-clock {
   color: rgb(157, 166, 170);
   margin-right: 5px;
   font-size: 15px;
@@ -87,7 +88,8 @@ i {
   text-align: center;
 }
 
-.time, .likes {
+.time,
+.likes {
   color: rgb(157, 166, 170);
   font-size: 12px;
   font-family: "Open Sans Regular", sans-serif;
