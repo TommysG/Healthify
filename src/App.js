@@ -44,7 +44,7 @@ class App extends Component {
 
               <Route exact path="/news/viewNews" component={viewNews} />
 
-              <Route exact path="/settings" component={settings} />
+              <Route exact path="/home/settings" component={settings} />
 
               <Route path="/home/viewpost/:id" component={viewPost} />
               <Route path="/news/viewnews/:id" component={viewNews} />

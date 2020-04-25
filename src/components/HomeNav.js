@@ -46,7 +46,7 @@ const HomeNav = (props) => {
                   height="37px"
                 ></img>
                 <DropdownButton className="profile-button" title={""}>
-                  <DropdownItem eventKey="1" as={Link} to="/settings">
+                  <DropdownItem eventKey="1" as={Link} to="/home/settings">
                     Settings
                   </DropdownItem>
                   <DropdownItem eventKey="2">Logout</DropdownItem>

@@ -3,7 +3,6 @@
   position: relative;
   top: 0;
   left: 0;
-  overflow: hidden;
 }
 
 .background {
@@ -11,9 +10,17 @@
   float: right;
 }
 
+.background-image {
+  background: url(/images/doctors.png);
+  height: 100%;
+  display: flex;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .decor {
   z-index: 2;
-  transform: translate(0, -100%);
   width: 35%;
   margin: 0;
 }
@@ -39,8 +46,132 @@
   font-size: 92px;
 }
 
-#login,
-#login:hover {
+#login, #login:hover {
   color: white;
   text-decoration: none;
+}
+
+.footer-box {
+  background-color: #3e4551;
+  color: white;
+}
+
+.foot-container {
+  text-align: center;
+}
+
+.footer-line {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.auto {
+  margin-left: auto;
+}
+
+.btn-floating {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 0;
+  margin: 10px;
+  overflow: hidden;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  width: 47px;
+  height: 47px;
+}
+
+.btn-fb {
+  background-color: #3b5998;
+}
+
+.btn-floating i {
+  display: inline-block;
+  width: inherit;
+  color: #fff;
+  text-align: center;
+}
+
+.btn-floating i {
+  font-size: 1.25rem;
+  line-height: 47px;
+}
+
+.btn-tw {
+  color: #fff;
+  background-color: #55acee;
+}
+
+.btn-gplus {
+  color: #fff;
+  background-color: #dd4b39;
+}
+
+.btn-gplus:hover {
+  color: #fff;
+  background-color: #e15f4f;
+}
+
+.btn-fb:hover {
+  color: #fff;
+  background-color: #4264aa;
+}
+
+.btn-tw:hover {
+  color: #fff;
+  background-color: #6cb7f0;
+}
+
+.btn-floating:hover {
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.footer-copyright {
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.footer-copyright a {
+  color: #fff;
+}
+
+/*Register for free design*/
+
+.btn-rounded {
+  border-radius: 10em;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #ff3547 !important;
+  padding: .84rem 2.14rem;
+  font-size: .81rem;
+  text-transform: uppercase;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #ff4f5e;
+}
+
+.btn:hover, .btn:focus, .btn:active {
+  outline: 0;
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
 }

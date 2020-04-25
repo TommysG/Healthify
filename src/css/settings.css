@@ -3,14 +3,6 @@
   line-height: 1.5;
 }
 
-.tab-navigation {
-  border-bottom: 1px solid gray;
-  margin-top: 30px;
-  height: 60px;
-  padding-left: 50px;
-  padding-top: 5px;
-}
-
 .display-container {
   margin-bottom: 50px;
 }
@@ -104,4 +96,14 @@
 .submit-button a[type="submit"]:hover {
   background-color: #485058;
   text-decoration: none;
+}
+
+.react-tabs {
+  margin-top: 50px;
+}
+
+.react-tabs__tab--selected {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid red;
 }
