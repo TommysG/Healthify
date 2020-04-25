@@ -1,109 +1,120 @@
 .main-container {
-  background-color: #ecf0f1;
-  line-height: 1.5;
+	background-color: #ecf0f1;
+	line-height: 1.5;
 }
 
 .display-container {
-  margin-bottom: 50px;
+	margin-bottom: 50px;
 }
 
 .basicInfo-container {
-  padding: 10px;
+	padding: 10px;
 }
 
 .Pass-conatiner {
-  padding: 10px;
+	padding: 10px;
 }
 
 #selected {
-  background-color: transparent;
-  margin-right: 30px;
-  border-bottom: 2px solid red;
-  border-right: none;
-  border-left: none;
-  border-top: none;
-  font-weight: bold;
-  outline: 0;
+	background-color: transparent;
+	margin-right: 30px;
+	border-bottom: 2px solid red;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+	font-weight: bold;
+	outline: 0;
 }
 
 #unselected {
-  background-color: transparent;
-  margin-right: 30px;
-  border: none;
-  outline: 0;
+	background-color: transparent;
+	margin-right: 30px;
+	border: none;
+	outline: 0;
 }
 
 .header-div {
-  padding-left: 10px;
-  margin-top: 30px;
-  margin-bottom: 5px;
+	padding-left: 10px;
+	margin-top: 30px;
+	margin-bottom: 5px;
 }
 
 .info-header {
-  color: gray;
-  width: 65%;
-  font-weight: bold;
-  margin-right: 10px;
+	color: gray;
+	width: 65%;
+	font-weight: bold;
+	margin-right: 10px;
 }
 
 .activity-header {
-  color: gray;
-  font-weight: bold;
-  width: 30%;
-  align-items: center;
-  justify-content: center;
+	color: gray;
+	font-weight: bold;
+	width: 30%;
+	align-items: center;
+	justify-content: center;
 }
 
 .user-settings {
-  border-top: 1px solid lightgray;
-  border-left: 1px solid lightgray;
-  margin-bottom: 50px;
-  height: 300px;
-  width: 65%;
-  margin-right: 10px;
+	border-top: 1px solid lightgray;
+	border-left: 1px solid lightgray;
+	margin-bottom: 50px;
+	height: 300px;
+	width: 65%;
+	margin-right: 10px;
+}
+
+.pass-settings {
+	border: 1px solid lightgray;
+	margin-bottom: 50px;
+	height: 300px;
+	width: 65%;
+	margin-right: 10px;
+	padding-top: 20px;
+	padding-left: 20px;
+	background-color: white;
 }
 
 .activity-display {
-  border: 0.5px solid lightgrey;
-  background-color: white;
-  width: 30%;
-  height: 298px;
-  padding-left: 20px;
-  padding-top: 10px;
+	border: 0.5px solid lightgrey;
+	background-color: white;
+	width: 30%;
+	height: 298px;
+	padding-left: 20px;
+	padding-top: 10px;
 }
 
 .containerr {
-  width: 700px;
+	width: 700px;
 }
 
 .submit-button a[type="submit"] {
-  border: 0;
-  background: #82aada;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
+	border: 0;
+	background: #82aada;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
 
-  padding: 10px 5px;
-  width: 200px;
-  outline: none;
-  color: white;
-  font-style: sans-serif;
-  border-radius: 8px;
-  transition: 0.25 s;
-  cursor: pointer;
+	padding: 10px 5px;
+	width: 200px;
+	outline: none;
+	color: white;
+	font-style: sans-serif;
+	border-radius: 8px;
+	transition: 0.25 s;
+	cursor: pointer;
 }
 
 .submit-button a[type="submit"]:hover {
-  background-color: #485058;
-  text-decoration: none;
+	background-color: #485058;
+	text-decoration: none;
 }
 
 .react-tabs {
-  margin-top: 50px;
+	margin-top: 50px;
 }
 
 .react-tabs__tab--selected {
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid red;
+	background: transparent;
+	border: none;
+	border-bottom: 2px solid red;
 }
