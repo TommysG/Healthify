@@ -37,6 +37,19 @@
   padding: 20px 15px 15px 15px;
 }
 
+.title {
+  margin-bottom: 0;
+}
+
+.user-name {
+  font-size: 12px;
+  overflow: hidden;
+  font-style: italic;
+  color: #363838;
+  border-bottom: 1px solid #b6b9bb;
+  margin-bottom: 15px;
+}
+
 .post .avatar {
   width: 37px;
   margin-left: 5px;
@@ -171,4 +184,10 @@
 
 .vote.on {
   background-position: 0 2px;
+}
+
+@media (max-width: 545px) {
+  .avatar {
+    display: none;
+  }
 }

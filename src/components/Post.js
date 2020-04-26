@@ -15,6 +15,7 @@ const Post = ({ id, title, body, user, replies, time }) => {
         </div>
         <div className="post-text left">
           <h2>
+            <div className="user-name">Posted by: user1234</div>
             <p className="title">{title}</p>
           </h2>
           <p className="body">{body}</p>
