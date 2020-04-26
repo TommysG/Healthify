@@ -38,24 +38,20 @@ export class welcome extends Component {
         {/*<img className="background" src="images/doctors.png" alt="logo"></img>*/}
         <div className="background-image">
           <img className="decor" src="images/decor.png" alt="logo"></img>
-          <div className="header">
-            <p className="healthify">HEALTHIFY</p>
-            <p className="description">Good health and well-being.</p>
-            <div style={{}} className="join-button">
-              <Link id="login" to="/signup">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className="btn btn-secondary"
-                  style={{
-                    padding: "10px 40px",
-                  }}
-                  onClick={(onclicked) => console.log("Clicked")}
-                >
-                  Join
-                </Button>
-              </Link>
-            </div>
+        </div>
+        <div className="header">
+          <p className="healthify">HEALTHIFY</p>
+          <p className="description">Good health and well-being.</p>
+          <div>
+            <Link id="login" to="/signup">
+              <Button
+                variant="secondary"
+                className="join-button"
+                onClick={(onclicked) => console.log("Clicked")}
+              >
+                Join
+              </Button>
+            </Link>
           </div>
         </div>
         <Footer></Footer>

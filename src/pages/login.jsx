@@ -5,11 +5,13 @@ import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
+import Navbar from "../components/Navbar";
 
 export class login extends Component {
   render() {
     return (
       <div className="login-page">
+        <Navbar></Navbar>
         <Container fluid className="login-container">
           <header className="top-head"></header>
           <div className="form">

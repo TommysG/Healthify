@@ -17,91 +17,92 @@ import data from "../data.json";
 import Button from "react-bootstrap/Button";
 
 import NavButton from "../components/NavButton";
+import { Poll } from "../components/Poll";
 
 export class home extends Component {
-	state = {
-		sideDrawerOpen: false,
-	};
+  state = {
+    sideDrawerOpen: false,
+  };
 
-	drawerToggleClickHandler = () => {
-		this.setState((prevState) => {
-			return { sideDrawerOpen: !prevState.sideDrawerOpen };
-		});
-	};
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
+    });
+  };
 
-	backdropClickHandler = () => {
-		this.setState({ sideDrawerOpen: false });
-	};
+  backdropClickHandler = () => {
+    this.setState({ sideDrawerOpen: false });
+  };
 
-	render() {
-		let backdrop;
+  render() {
+    let backdrop;
 
-		if (this.state.sideDrawerOpen) {
-			backdrop = <BackdropHome click={this.backdropClickHandler} />;
-		}
+    if (this.state.sideDrawerOpen) {
+      backdrop = <BackdropHome click={this.backdropClickHandler} />;
+    }
 
-		const posts = data.map((item) => (
-			<Post
-				key={item.id}
-				id={item.id}
-				title={<Link to={`/home/viewpost/${item.id}`}>{item.title}</Link>}
-				body={item.body}
-				replies={item.replies}
-				time={item.time}
-			></Post>
-		));
-		return (
-			<Container className="home" fluid={true}>
-				<HomeNav drawerClickHandler={this.drawerToggleClickHandler}></HomeNav>
-				<SideDrawerHome show={this.state.sideDrawerOpen} />
-				{backdrop}
+    const posts = data.map((item) => (
+      <Post
+        key={item.id}
+        id={item.id}
+        title={<Link to={`/home/viewpost/${item.id}`}>{item.title}</Link>}
+        body={item.body}
+        replies={item.replies}
+        time={item.time}
+      ></Post>
+    ));
+    return (
+      <Container className="home" fluid={true}>
+        <HomeNav drawerClickHandler={this.drawerToggleClickHandler}></HomeNav>
+        <SideDrawerHome show={this.state.sideDrawerOpen} />
+        {backdrop}
 
-				<Container className="post-container">
-					<Row>
-						<Col lg={8} md={8} xs={12}>
-							<Row className="header-row">
-								<ButtonToolbar className="btn-toolbar home-toolbar">
-									<DropdownButton variant="secondary" title={"Sort By"}>
-										<DropdownItem eventKey="1">Recent</DropdownItem>
-										<DropdownItem eventKey="2">Most Viewed</DropdownItem>
-										<DropdownItem eventKey="3">Most Liked</DropdownItem>
-									</DropdownButton>
+        <Container className="post-container">
+          <Row>
+            <Col lg={8} md={8}>
+              <Row className="header-row">
+                <ButtonToolbar className="btn-toolbar home-toolbar">
+                  <DropdownButton variant="secondary" title={"Sort By"}>
+                    <DropdownItem eventKey="1">Recent</DropdownItem>
+                    <DropdownItem eventKey="2">Most Viewed</DropdownItem>
+                    <DropdownItem eventKey="3">Most Liked</DropdownItem>
+                  </DropdownButton>
 
-									<a href="/createpost">
-										<Button variant="secondary" className="createBtn">
-											New Topic
-										</Button>
-									</a>
-								</ButtonToolbar>
-							</Row>
-							{posts}
-							<ul class="breadcrumb">
-								<li>
-									<NavButton number="1" />
-								</li>
-								<li>
-									<NavButton number="2" />
-								</li>
-								<li>
-									<NavButton number="3" />
-								</li>
-								<li>
-									<NavButton number="4" />
-								</li>
-								<li>
-									<NavButton number=">" />
-								</li>
-							</ul>
-						</Col>
-						<Col lg={4} md={4}>
-							<SideBlock></SideBlock>
-							<SideBlock></SideBlock>
-						</Col>
-					</Row>
-				</Container>
-			</Container>
-		);
-	}
+                  <a href="/createpost">
+                    <Button variant="secondary" className="createBtn">
+                      New Topic
+                    </Button>
+                  </a>
+                </ButtonToolbar>
+              </Row>
+              {posts}
+              <ul className="breadcrumb">
+                <li>
+                  <NavButton number="1" />
+                </li>
+                <li>
+                  <NavButton number="2" />
+                </li>
+                <li>
+                  <NavButton number="3" />
+                </li>
+                <li>
+                  <NavButton number="4" />
+                </li>
+                <li>
+                  <NavButton number={<i className="fas fa-angle-right" />} />
+                </li>
+              </ul>
+            </Col>
+            <Col lg={4} md={4}>
+              <SideBlock></SideBlock>
+              <Poll></Poll>
+            </Col>
+          </Row>
+        </Container>
+      </Container>
+    );
+  }
 }
 
 export default home;

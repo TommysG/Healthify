@@ -11,7 +11,7 @@
   color: cornflowerblue;
 }
 
-.side-block a:hover+span {
+.side-block a:hover + span {
   background-color: cornflowerblue;
 }
 
@@ -79,4 +79,84 @@ ul.list .badge {
 
 .pull-right {
   float: right;
+}
+
+/*poll of the week*/
+.side-block .block-poll {
+  font-size: 14px;
+  color: #363838;
+  font-family: "Open Sans Light", sans-serif;
+}
+.side-block .block-poll {
+  padding: 20px;
+}
+
+table.poll {
+  width: 100%;
+}
+
+.progress-div {
+  background-color: #ecf0f1;
+  height: 31px;
+  border-radius: 2px;
+  box-shadow: none;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+#one .progress-bar {
+  background-color: #9b59b6;
+}
+
+#two .progress-bar {
+  background-color: #e67e22;
+}
+
+#three .progress-bar {
+  background-color: teal;
+}
+
+.progress-bar {
+  font-size: 14px;
+  color: #ffffff;
+  font-family: "Open Sans Bold", sans-serif;
+  line-height: 31px;
+  text-align: left;
+  padding-left: 10px;
+  box-shadow: none;
+  height: 31px;
+}
+
+.progress {
+  height: 31px;
+}
+
+td.chbox {
+  vertical-align: top;
+}
+
+.chbox {
+  width: 50px;
+}
+
+.poll input[type="radio"] {
+  display: none;
+}
+
+.poll input[type="radio"]:checked + label {
+  background: url(http://forum.azyrusthemes.com/images/radio.jpg) -31px 0 no-repeat;
+}
+
+.poll input[type="radio"] + label {
+  display: inline-block;
+  width: 31px;
+  height: 31px;
+  background: url(http://forum.azyrusthemes.com/images/radio.jpg) 0 0 no-repeat;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.poll label {
+  margin-bottom: 0;
+  margin-left: 20px;
 }

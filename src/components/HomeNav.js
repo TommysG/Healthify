@@ -18,7 +18,7 @@ const HomeNav = (props) => {
         alt="logo"
       ></img>
       <div className="home-nav">
-        <Container>
+        <Container className="home-container">
           <i
             className="fas fa-bars fa-2x home-menu"
             onClick={props.drawerClickHandler}
@@ -30,7 +30,7 @@ const HomeNav = (props) => {
                   <h2>Healthify</h2>
                 </a>
               </Col>
-              <nav className="topnav topnav-home">
+              <nav className="topnav-home">
                 <Link to="/news">News</Link>
                 <Link to="/home">Forum</Link>
               </nav>
@@ -49,7 +49,9 @@ const HomeNav = (props) => {
                   <DropdownItem eventKey="1" as={Link} to="/home/settings">
                     Settings
                   </DropdownItem>
-                  <DropdownItem eventKey="2">Logout</DropdownItem>
+                  <DropdownItem eventKey="2" as={Link} to="/">
+                    Logout
+                  </DropdownItem>
                 </DropdownButton>
               </ButtonToolbar>
             </Col>

@@ -18,25 +18,39 @@
   z-index: 100;
 }
 
+.topnav-home a {
+  float: right;
+  color: #4d4d4d;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.topnav-home a:hover {
+  background-color: #ecf0f1;
+}
+
 .nav-image {
   opacity: 0.9;
   position: relative;
   width: 100%;
   height: 20vh;
   object-fit: cover;
+
+  animation: fade 1s ease-in;
 }
 
 .healthify-logo {
   float: left;
   position: relative;
   min-height: 1px;
-  padding-left: 15px;
+  padding-left: 0px;
   padding-right: 15px;
   height: 100%;
   text-align: center;
   display: table;
   border-right: 1px solid #eaeaea;
-  padding: 0;
 }
 
 .healthify-logo h2 {
@@ -62,11 +76,17 @@
   float: left;
 }
 
-.home-nav .row, .home-nav .container {
+.home-nav .row,
+.home-nav .container {
   height: 100%;
 }
 
-.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle, .show>.btn-primary.dropdown-toggle:focus {
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle,
+.show > .btn-primary.dropdown-toggle:focus {
   color: #697683;
   background-color: transparent;
   border-color: transparent;
@@ -140,7 +160,8 @@
   cursor: pointer;
 }
 
-.fa-bars, .fa-bell {
+.fa-bars,
+.fa-bell {
   color: rgb(157, 166, 170);
 }
 
@@ -164,5 +185,14 @@
   }
   .topnav-home {
     display: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

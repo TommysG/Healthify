@@ -7,9 +7,12 @@ import { Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 
+import Navbar from "../components/Navbar";
+
 export default function register() {
   return (
     <div className="signup-page">
+      <Navbar />
       <Container fluid className="register-container">
         <header className="top-head"></header>
         <div className="form">

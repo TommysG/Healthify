@@ -17,6 +17,19 @@
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+
+  animation: fade 0.5s ease-in;
+}
+
+.join-button {
+  background-color: #494e56;
+  color: white;
+  padding: 10px 40px;
+}
+
+.join-button:hover {
+  background-color: #494e56;
+  color: white;
 }
 
 .decor {
@@ -39,6 +52,7 @@
   margin: 0;
   margin-left: 5px;
   font-size: 32px;
+  margin-bottom: 15px;
 }
 
 .healthify {
@@ -46,13 +60,14 @@
   font-size: 92px;
 }
 
-#login, #login:hover {
+#login,
+#login:hover {
   color: white;
   text-decoration: none;
 }
 
 .footer-box {
-  background-color: #3e4551;
+  background-color: #494e56;
   color: white;
 }
 
@@ -81,7 +96,8 @@
   vertical-align: middle;
   cursor: pointer;
   border-radius: 50%;
-  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
+    0 4px 15px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -131,7 +147,8 @@
 }
 
 .btn-floating:hover {
-  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -154,8 +171,8 @@
 .btn-danger {
   color: #fff;
   background-color: #ff3547 !important;
-  padding: .84rem 2.14rem;
-  font-size: .81rem;
+  padding: 0.84rem 2.14rem;
+  font-size: 0.81rem;
   text-transform: uppercase;
 }
 
@@ -164,9 +181,12 @@
   background-color: #ff4f5e;
 }
 
-.btn:hover, .btn:focus, .btn:active {
+.btn:hover,
+.btn:focus,
+.btn:active {
   outline: 0;
-  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
+    0 4px 15px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
 
