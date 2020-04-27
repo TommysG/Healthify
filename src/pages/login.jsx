@@ -51,18 +51,12 @@ export class login extends Component {
                   </button>
                 </Link>
                 <div className="sm-btns">
-                  <button className="sm-social-btn">
-                    <img
-                      src="https://static.parastorage.com/services/login-statics/1.742.0/images/facebook-logo.svg"
-                      alt="img"
-                    ></img>
-                  </button>
-                  <button className="sm-social-btn">
-                    <img
-                      src="https://static.parastorage.com/services/login-statics/1.742.0/images/google-logo.svg"
-                      alt="img"
-                    ></img>
-                  </button>
+                  <a className="btn-floating btn-fb" href="#index">
+                    <i className="fab fa-facebook-f"> </i>
+                  </a>
+                  <a className="btn-floating btn-gplus" href="#index">
+                    <i className="fab fa-google-plus-g"> </i>
+                  </a>
                 </div>
               </Col>
               <div className="login-social">

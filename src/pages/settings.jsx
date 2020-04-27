@@ -116,13 +116,12 @@ export class settings extends Component {
                       </div>
                     </div>
                   </Row>
-
-                  <Button variant="secondary" type="submit">
-                    Save
-                  </Button>
                 </Col>
               </Container>
             </TabPanel>
+            <Button variant="secondary" type="submit" className="save-settings">
+              Save
+            </Button>
           </Tabs>
         </Container>
       </div>

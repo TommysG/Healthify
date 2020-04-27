@@ -128,12 +128,12 @@ label {
 
 .login-btn {
   color: #3899ec;
-  border: 1px solid #3899ec;
+  border: 1.5px solid #7eb9ea;
   border-radius: 20px;
   background-color: transparent;
   padding: 12px 45px;
   transition: background-color 0.3s, color 0.3s, background 0.3s, box-shadow 0.1s ease-in-out;
-  font-family: unset;
+  font-weight: 600;
 }
 
 .login-btn:hover {
@@ -187,10 +187,16 @@ label {
   border-radius: 50%;
   outline: none;
   background-color: transparent;
+  transition: 0.2s ease-in-out;
+}
+
+.sm-social-btn:hover img, .sm-social-btn:hover {
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
 }
 
 .sm-social-btn img {
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 1px;
   padding: 12px 15px 11px 16px;
   float: left;
@@ -198,4 +204,5 @@ label {
   height: 46px;
   border-radius: 40%;
   padding: 13px !important;
+  transition: 0.2s ease-in-out;
 }

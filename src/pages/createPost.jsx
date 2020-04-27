@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import CreatePostComponent from "../components/createComponent";
 import HomeNav from "../components/HomeNav";
 import SideBlock from "../components/SideBlock";
+import Footer from "../components/Footer";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import BackdropHome from "../components/Backdrop/BackdropHome";
@@ -45,6 +46,7 @@ export class createPost extends Component {
             </Col>
           </Row>
         </Container>
+        <Footer />
       </div>
     );
   }

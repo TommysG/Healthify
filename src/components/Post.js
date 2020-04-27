@@ -7,10 +7,7 @@ const Post = ({ id, title, body, user, replies, time }) => {
       <div className="wrapper left">
         <div className="user-info left">
           <div className="avatar">
-            <img
-              src="http://forum.azyrusthemes.com/images/avatar.jpg"
-              alt="avatar"
-            ></img>
+            <img src="/images/avatar.jpg" alt="avatar"></img>
           </div>
         </div>
         <div className="post-text left">

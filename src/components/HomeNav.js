@@ -12,11 +12,7 @@ import { Link } from "react-router-dom";
 const HomeNav = (props) => {
   return (
     <div>
-      <img
-        className="nav-image"
-        src="https://www.doctorshospital.gr/img/homepage/slider/4.jpg"
-        alt="logo"
-      ></img>
+      <img className="nav-image" src="/images/navimage.jpg" alt="logo"></img>
       <div className="home-nav">
         <Container className="home-container">
           <i

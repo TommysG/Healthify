@@ -93,7 +93,6 @@
 	display: block;
 	margin: 20px auto;
 	text-align: center;
-
 	padding: 10px 5px;
 	width: 200px;
 	outline: none;
@@ -113,8 +112,25 @@
 	margin-top: 50px;
 }
 
+.react-tabs__tab {
+	position: unset;
+}
+
 .react-tabs__tab--selected {
 	background: transparent;
 	border: none;
 	border-bottom: 2px solid red;
+}
+
+.react-tabs__tab:focus {
+	background-color: transparent;
+	border-bottom: 2px solid red;
+	outline: 0;
+	box-shadow: none;
+}
+
+.save-settings {
+	margin-left: 25px;
+	padding: 7px 30px;
+	margin-bottom: 40px;
 }

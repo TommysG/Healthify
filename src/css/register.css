@@ -128,11 +128,12 @@ label {
 
 .signup-btn {
   color: #3899ec;
-  border: 1px solid #3899ec;
+  border: 1.5px solid #7eb9ea;
   border-radius: 20px;
   background-color: transparent;
   padding: 12px 45px;
   transition: background-color 0.3s, color 0.3s, background 0.3s, box-shadow 0.1s ease-in-out;
+  font-weight: 600;
 }
 
 .signup-btn:hover {
