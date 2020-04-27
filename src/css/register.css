@@ -116,7 +116,8 @@ label {
 .social-btn span {
   text-align: center;
   color: white;
-  font-family: Roboto, HelveticaNeueW01-55Roma, HelveticaNeueW02-55Roma, HelveticaNeueW10-55Roma, sans-serif, sans-serif;
+  font-family: Roboto, HelveticaNeueW01-55Roma, HelveticaNeueW02-55Roma,
+    HelveticaNeueW10-55Roma, sans-serif, sans-serif;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.21px;
@@ -128,12 +129,12 @@ label {
 
 .signup-btn {
   color: #3899ec;
-  border: 1.5px solid #7eb9ea;
+  border: 1px solid #3899ec;
   border-radius: 20px;
   background-color: transparent;
   padding: 12px 45px;
-  transition: background-color 0.3s, color 0.3s, background 0.3s, box-shadow 0.1s ease-in-out;
-  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s, background 0.3s,
+    box-shadow 0.1s ease-in-out;
 }
 
 .signup-btn:hover {
@@ -141,7 +142,8 @@ label {
   color: white;
 }
 
-.signup-btn:focus, .social-btn:focus {
+.signup-btn:focus,
+.social-btn:focus {
   outline: none;
 }
 
@@ -184,13 +186,13 @@ label {
 
 /* On mouse-over, add a grey background color */
 
-.checkbox:hover input~.checkmark {
+.checkbox:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
 
-.checkbox input:checked~.checkmark {
+.checkbox input:checked ~ .checkmark {
   background-color: #3899ec;
 }
 
@@ -204,7 +206,7 @@ label {
 
 /* Show the checkmark when checked */
 
-.checkbox input:checked~.checkmark:after {
+.checkbox input:checked ~ .checkmark:after {
   display: block;
 }
 

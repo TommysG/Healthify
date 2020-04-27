@@ -116,7 +116,8 @@ label {
 .social-btn span {
   text-align: center;
   color: white;
-  font-family: Roboto, HelveticaNeueW01-55Roma, HelveticaNeueW02-55Roma, HelveticaNeueW10-55Roma, sans-serif, sans-serif;
+  font-family: Roboto, HelveticaNeueW01-55Roma, HelveticaNeueW02-55Roma,
+    HelveticaNeueW10-55Roma, sans-serif, sans-serif;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.21px;
@@ -128,12 +129,12 @@ label {
 
 .login-btn {
   color: #3899ec;
-  border: 1.5px solid #7eb9ea;
+  border: 1px solid #3899ec;
   border-radius: 20px;
   background-color: transparent;
   padding: 12px 45px;
-  transition: background-color 0.3s, color 0.3s, background 0.3s, box-shadow 0.1s ease-in-out;
-  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s, background 0.3s,
+    box-shadow 0.1s ease-in-out;
 }
 
 .login-btn:hover {
@@ -141,7 +142,8 @@ label {
   color: white;
 }
 
-.login-btn:focus, .social-btn:focus {
+.login-btn:focus,
+.social-btn:focus {
   outline: none;
 }
 
@@ -190,7 +192,8 @@ label {
   transition: 0.2s ease-in-out;
 }
 
-.sm-social-btn:hover img, .sm-social-btn:hover {
+.sm-social-btn:hover img,
+.sm-social-btn:hover {
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease-in-out;
 }
