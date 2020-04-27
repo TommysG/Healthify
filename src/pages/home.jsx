@@ -18,6 +18,7 @@ import Button from "react-bootstrap/Button";
 
 import NavButton from "../components/NavButton";
 import { Poll } from "../components/Poll";
+import Footer from "../components/Footer";
 
 export class home extends Component {
   state = {
@@ -100,6 +101,7 @@ export class home extends Component {
             </Col>
           </Row>
         </Container>
+        <Footer />
       </Container>
     );
   }

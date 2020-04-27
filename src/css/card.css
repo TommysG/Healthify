@@ -18,6 +18,7 @@
 .featured-post img {
   width: 100%;
   transition: all 0.3s ease 0s;
+  min-height: 350px;
 }
 
 .img-fluid {
@@ -169,6 +170,7 @@ a, a:hover {
 .single-top-post img {
   object-fit: cover;
   height: 29.5vh;
+  min-height: 200px;
 }
 
 .featured-post ul, .single-top-post ul {
@@ -265,4 +267,5 @@ a, a:hover {
 .single-latest-post .img-fluid {
   object-fit: cover;
   height: 20vh;
+  min-height: 200px;
 }

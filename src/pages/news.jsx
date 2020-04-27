@@ -5,6 +5,7 @@ import "../css/card.css";
 import HomeNav from "../components/HomeNav";
 import { CardImage } from "../components/CardImage";
 import { CardNews } from "../components/CardNews";
+import Footer from "../components/Footer";
 import BackdropHome from "../components/Backdrop/BackdropHome";
 import SideDrawerHome from "../components/SideDrawer/SideDrawerHome";
 
@@ -88,8 +89,11 @@ export class news extends Component {
         <SideDrawerHome show={this.state.sideDrawerOpen} />
         {backdrop}
         <Container fluid className="news">
-          <section className="top-post-area pt-10">
+          <section className="top-post-area">
             <div className="container no-padding">
+              <section className="section-heading top-posts">
+                <h6>Most Recent</h6>
+              </section>
               <div className="row small-gutters">
                 <Col lg={8} className="top-post-left">
                   {featured}
@@ -111,14 +115,15 @@ export class news extends Component {
                   {allNews}
                 </Col>
                 <Col lg={4} className="">
-                  <section className="section-heading">
-                    <h6>Editor's pick</h6>
-                  </section>
+                  {/*<section className="section-heading">
+                  <h6>Editor's pick</h6>
+    </section>*/}
                 </Col>
               </Row>
             </div>
           </section>
         </Container>
+        <Footer />
       </div>
     );
   }

@@ -46,8 +46,9 @@
   overflow: hidden;
   font-style: italic;
   color: #7b7b7b;
-  border-bottom: 1px solid #b6b9bb;
+  border-bottom: 1px solid #f1f1f1;
   margin-bottom: 15px;
+  padding-bottom: 5px;
 }
 
 .post .avatar {
@@ -65,8 +66,9 @@
 
 .post .post-text {
   width: 85%;
-  padding-right: 30px;
-  padding-top: 20px;
+  padding-right: 15px;
+  /* padding-top: 20px;*/
+  padding-top: 15px;
   padding-bottom: 15px;
   color: #989c9e;
   font-size: 14px;

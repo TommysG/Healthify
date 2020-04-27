@@ -16,6 +16,7 @@ const PostView = ({ id, title, date, content, style }) => {
           </div>
         </div>
         <div className="post-text left">
+          <div className="user-name">Posted by: user1234</div>
           <h2>{title}</h2>
           <p>{content}</p>
         </div>
@@ -31,24 +32,8 @@ const PostView = ({ id, title, date, content, style }) => {
           </a>
         </div>
 
-        <div className="prev left">
-          <a href="#index">
-            <i className="fa fa-reply"></i>
-          </a>
-        </div>
-
         <div className="posted left">
           <i className="fa fa-clock-o"></i> {date}
-        </div>
-
-        <div className="next right">
-          <a href="#index">
-            <i className="fa fa-share"></i>
-          </a>
-
-          <a href="#index">
-            <i className="fa fa-flag"></i>
-          </a>
         </div>
 
         <div className="clearfix"></div>

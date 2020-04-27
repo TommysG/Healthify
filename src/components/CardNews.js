@@ -17,8 +17,7 @@ export const CardNews = ({ className, img, category, title }) => {
         <h4>{title}</h4>
         <ul className="meta">
           <li>Tommys Gian</li>
-          <li>03 April, 2019</li>
-          <li>06 Comments</li>
+          <li>03 April, 2020</li>
         </ul>
         <p className="excert">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
