@@ -17,7 +17,6 @@
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
-
   animation: fade 0.5s ease-in;
 }
 
@@ -60,8 +59,7 @@
   font-size: 92px;
 }
 
-#login,
-#login:hover {
+#login, #login:hover {
   color: white;
   text-decoration: none;
 }
@@ -96,8 +94,7 @@
   vertical-align: middle;
   cursor: pointer;
   border-radius: 50%;
-  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
-    0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -147,8 +144,7 @@
 }
 
 .btn-floating:hover {
-  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -181,12 +177,9 @@
   background-color: #ff4f5e;
 }
 
-.btn:hover,
-.btn:focus,
-.btn:active {
+.btn:hover, .btn:focus, .btn:active {
   outline: 0;
-  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
-    0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
 
@@ -194,4 +187,29 @@
   color: #fff;
   background-color: #c82333;
   border-color: #bd2130;
+}
+
+@media (max-width: 700px) {
+  .header {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .healthify {
+    font-size: 64px;
+  }
+  .description {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 320px) {
+  .healthify {
+    font-size: 45px;
+  }
+  .description {
+    font-size: 20px;
+  }
 }

@@ -6,12 +6,34 @@ import { Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import Navbar from "../components/Navbar";
+import Backdrop from "../components/Backdrop/Backdrop";
+import SideDrawer from "../components/SideDrawer/SideDrawer";
 
 export class login extends Component {
+  state = {
+    sideDrawerOpen: false,
+  };
+
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
+    });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({ sideDrawerOpen: false });
+  };
   render() {
+    let backdrop;
+
+    if (this.state.sideDrawerOpen) {
+      backdrop = <Backdrop click={this.backdropClickHandler} />;
+    }
     return (
       <div className="login-page">
-        <Navbar></Navbar>
+        <Navbar drawerClickHandler={this.drawerToggleClickHandler} />
+        <SideDrawer show={this.state.sideDrawerOpen} />
+        {backdrop}
         <Container fluid className="login-container">
           <header className="top-head"></header>
           <div className="form">
@@ -23,9 +45,25 @@ export class login extends Component {
               <Col xs className="login-email">
                 <Input type="text" label="Email"></Input>
                 <Input type="password" label="Password"></Input>
-                <button className="login-btn" href="/home">
-                  Login
-                </button>
+                <Link to="/home">
+                  <button className="login-btn" href="/home">
+                    Login
+                  </button>
+                </Link>
+                <div className="sm-btns">
+                  <button className="sm-social-btn">
+                    <img
+                      src="https://static.parastorage.com/services/login-statics/1.742.0/images/facebook-logo.svg"
+                      alt="img"
+                    ></img>
+                  </button>
+                  <button className="sm-social-btn">
+                    <img
+                      src="https://static.parastorage.com/services/login-statics/1.742.0/images/google-logo.svg"
+                      alt="img"
+                    ></img>
+                  </button>
+                </div>
               </Col>
               <div className="login-social">
                 <div className="btn-container">

@@ -17,9 +17,6 @@
 	font-size: 18px;
 }
 
-.search:focus {
-}
-
 .inputWithIcon input[type="text"] {
 	padding-left: 50px;
 }
@@ -37,7 +34,6 @@
 
 .search-box {
 	margin-top: 15px;
-	transform: translatey(-50%);
 }
 
 /* ________________________ */
@@ -49,20 +45,24 @@
 }
 
 .search-button {
-	border: solid 1px black;
+	border: solid 1px #6c757d;
 	box-shadow: none;
-	background-color: black;
+	background-color: #6c757d;
 	color: #ffffff;
 	padding: 7px 8px;
 	text-align: center;
 	outline: none;
 	float: right;
 	padding-bottom: 3.5px;
-	border-radius: 0px 20px 20px 0px;
 }
+
 .filter-button {
-	background-color: black;
+	background-color: #6c757d;
 	border-radius: 20px 0px 0px 20px;
+}
+
+.filter-button .dropdown-toggle {
+	color: white;
 }
 
 .search-field {

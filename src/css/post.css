@@ -45,7 +45,7 @@
   font-size: 12px;
   overflow: hidden;
   font-style: italic;
-  color: #363838;
+  color: #7b7b7b;
   border-bottom: 1px solid #b6b9bb;
   margin-bottom: 15px;
 }
@@ -88,8 +88,7 @@
   border-bottom: 1px solid rgb(241, 241, 241);
 }
 
-.fa-heart,
-.fa-clock {
+.fa-heart, .fa-clock {
   color: rgb(157, 166, 170);
   margin-right: 5px;
   font-size: 15px;
@@ -101,8 +100,7 @@
   text-align: center;
 }
 
-.time,
-.likes {
+.time, .likes {
   color: rgb(157, 166, 170);
   font-size: 12px;
   font-family: "Open Sans Regular", sans-serif;

@@ -25,6 +25,7 @@
 
 .login-section {
   display: flex;
+  padding-bottom: 50px;
 }
 
 .login-email {
@@ -115,8 +116,7 @@ label {
 .social-btn span {
   text-align: center;
   color: white;
-  font-family: Roboto, HelveticaNeueW01-55Roma, HelveticaNeueW02-55Roma,
-    HelveticaNeueW10-55Roma, sans-serif, sans-serif;
+  font-family: Roboto, HelveticaNeueW01-55Roma, HelveticaNeueW02-55Roma, HelveticaNeueW10-55Roma, sans-serif, sans-serif;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.21px;
@@ -132,8 +132,7 @@ label {
   border-radius: 20px;
   background-color: transparent;
   padding: 12px 45px;
-  transition: background-color 0.3s, color 0.3s, background 0.3s,
-    box-shadow 0.1s ease-in-out;
+  transition: background-color 0.3s, color 0.3s, background 0.3s, box-shadow 0.1s ease-in-out;
   font-family: unset;
 }
 
@@ -142,8 +141,7 @@ label {
   color: white;
 }
 
-.login-btn:focus,
-.social-btn:focus {
+.login-btn:focus, .social-btn:focus {
   outline: none;
 }
 
@@ -151,13 +149,14 @@ label {
   .login-social {
     display: none;
   }
-
   .login-email {
     width: 340px;
   }
-
   .login-section {
     text-align: center;
+  }
+  .sm-btns {
+    display: block;
   }
 }
 
@@ -165,12 +164,38 @@ label {
   .login-social {
     display: none;
   }
-
   .login-email {
     margin-right: 0px;
   }
-
   .login-section {
     text-align: center;
   }
+}
+
+@media (min-width: 1001px) {
+  .sm-btns {
+    display: none;
+  }
+}
+
+/*resize buttons social*/
+
+.sm-social-btn {
+  margin-right: 10px;
+  margin-top: 15px;
+  border: 1px solid #3899ec;
+  border-radius: 50%;
+  outline: none;
+  background-color: transparent;
+}
+
+.sm-social-btn img {
+  background-color: #fff;
+  border-radius: 1px;
+  padding: 12px 15px 11px 16px;
+  float: left;
+  width: 46px;
+  height: 46px;
+  border-radius: 40%;
+  padding: 13px !important;
 }
