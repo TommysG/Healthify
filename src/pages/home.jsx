@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Post from "../components/Post";
 
 import "../css/home.css";
 import SideBlock from "../components/SideBlock";
@@ -12,17 +11,21 @@ import Col from "react-bootstrap/Col";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
-import { Link } from "react-router-dom";
-import data from "../data.json";
 import Button from "react-bootstrap/Button";
-
-import NavButton from "../components/NavButton";
 import { Poll } from "../components/Poll";
 import Footer from "../components/Footer";
+import { Posts } from "../components/Posts";
+import Pagination from "../components/Pagination";
 
 export class home extends Component {
   state = {
     sideDrawerOpen: false,
+    items: [],
+    isLoaded: false,
+    error: null,
+    currentPage: 1,
+    postsPerPage: 5,
+    postUpvotes: 0
   };
 
   drawerToggleClickHandler = () => {
@@ -35,23 +38,97 @@ export class home extends Component {
     this.setState({ sideDrawerOpen: false });
   };
 
+  //shows posts
+  showPosts = () => {
+    fetch("http://localhost:3100/api/posts", {
+      "method": "GET",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      // "body": JSON.stringify({
+      //   name: this.state.name,
+      //   notes: this.state.notes
+      // })
+    })
+    .then(response => response.json())
+    .then(response => {
+      console.log(response);
+      this.setState({
+        isLoaded: true,
+        items: response
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      this.setState({
+        isLoaded: true,
+        error: err
+      })
+    });
+  }
+
+  componentDidMount(){
+    this.showPosts()
+  }
+
+  //check if votes are updated
+  //and updates the posts component
+  componentDidUpdate(prevProps, prevState){
+    //check if number of upvotes changed
+    if (prevState.postUpvotes !== this.state.postUpvotes) {
+      console.log("upvotes before: " + prevState.postUpvotes)
+      console.log("upvotes now: " + this.state.postUpvotes)
+      this.showPosts() // fetching again all the posts
+    }
+  }
+
+  //handles upvote on posts
+   handleUpvote = (e) => {
+     console.log(e.target.id)
+    fetch("http://localhost:3100/api/upvotePost", {
+      "method": "POST",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      "body": JSON.stringify({
+        "user_id": "user2@gmail.com",
+        "post_id": e.target.id 
+      })
+    })
+    .then(response => {
+      console.log(response)
+      this.setState({postUpvotes: this.state.postUpvotes + 1})
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
+  //handle click on categories
+  categoryClick = (event) =>{
+    console.log(event.target.innerText)
+  }
+
   render() {
     let backdrop;
+    const {isLoaded, error, items } = this.state;
+    const {currentPage, postsPerPage} = this.state;
+    
+     // Get current posts
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = items.slice(indexOfFirstPost, indexOfLastPost);
 
+    //change page
+    const paginate = pageNumber => this.setState({currentPage: pageNumber})
+
+    //handles responsive sideDrawer
     if (this.state.sideDrawerOpen) {
       backdrop = <BackdropHome click={this.backdropClickHandler} />;
     }
 
-    const posts = data.map((item) => (
-      <Post
-        key={item.id}
-        id={item.id}
-        title={<Link to={`/home/viewpost/${item.id}`}>{item.title}</Link>}
-        body={item.body}
-        replies={item.replies}
-        time={item.time}
-      ></Post>
-    ));
     return (
       <Container className="home" fluid={true}>
         <HomeNav drawerClickHandler={this.drawerToggleClickHandler}></HomeNav>
@@ -68,35 +145,16 @@ export class home extends Component {
                     <DropdownItem eventKey="2">Most Viewed</DropdownItem>
                     <DropdownItem eventKey="3">Most Liked</DropdownItem>
                   </DropdownButton>
-
-                  <a href="/createpost">
-                    <Button variant="secondary" className="createBtn">
+                    <Button variant="secondary" className="createBtn" href="/createPost">
                       New Topic
                     </Button>
-                  </a>
                 </ButtonToolbar>
               </Row>
-              {posts}
-              <ul className="breadcrumb">
-                <li>
-                  <NavButton number="1" />
-                </li>
-                <li>
-                  <NavButton number="2" />
-                </li>
-                <li>
-                  <NavButton number="3" />
-                </li>
-                <li>
-                  <NavButton number="4" />
-                </li>
-                <li>
-                  <NavButton number={<i className="fas fa-angle-right" />} />
-                </li>
-              </ul>
+              <Posts posts={currentPosts} loading={isLoaded} error={error} handleUpvote={this.handleUpvote}></Posts>
+              <Pagination postsPerPage={postsPerPage} totalPosts={items.length} paginate={paginate}></Pagination>
             </Col>
             <Col lg={4} md={4}>
-              <SideBlock></SideBlock>
+              <SideBlock categoryClick={this.categoryClick}></SideBlock>
               <Poll></Poll>
             </Col>
           </Row>

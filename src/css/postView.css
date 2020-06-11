@@ -63,6 +63,7 @@ a {
 .up {
   color: #1abc9c;
   font-size: 12px;
+  cursor: pointer;
 }
 
 .up i, .down i {
@@ -74,6 +75,7 @@ a {
   color: #db7a7a;
   font-size: 12px;
   margin-left: 20px;
+  cursor: pointer;
 }
 
 .post-info-bot .next a {

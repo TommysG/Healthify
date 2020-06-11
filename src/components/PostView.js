@@ -1,8 +1,9 @@
 import React from "react";
 import "../css/postView.css";
 
-const PostView = ({ id, title, date, content, style }) => {
-  let postStyle = `post + ${style}`;
+
+const PostView = (props) => {
+  let postStyle = `post + ${props.style}`;
 
   return (
     <div className={postStyle}>
@@ -16,24 +17,24 @@ const PostView = ({ id, title, date, content, style }) => {
           </div>
         </div>
         <div className="post-text left">
-          <div className="user-name">Posted by: user1234</div>
-          <h2>{title}</h2>
-          <p>{content}</p>
+  <div className="user-name">Posted by: {props.user}</div>
+          <h2>{props.title}</h2>
+          <p>{props.content}</p>
         </div>
         <div className="clearfix"></div>
       </div>
       <div className="post-info-bot">
         <div className="likeblock left">
-          <a href="#index" className="up">
-            <i className="fa fa-thumbs-o-up"></i>25
-          </a>
-          <a href="#index" className="down">
-            <i className="fa fa-thumbs-o-down"></i>3
-          </a>
+          <span className="up" onClick={props.upvoteClick}>
+            <i className="fa fa-thumbs-o-up" ></i>{props.upvotes}
+          </span>
+          <span className="down" onClick={props.downvoteClick}>
+            <i className="fa fa-thumbs-o-down" ></i>{props.downvotes}
+          </span>
         </div>
 
         <div className="posted left">
-          <i className="fa fa-clock-o"></i> {date}
+          <i className="fa fa-clock-o"></i> {props.date}
         </div>
 
         <div className="clearfix"></div>

@@ -3,7 +3,7 @@ import React from "react";
 import "../css/reply.css";
 import { Button } from "react-bootstrap";
 
-const Reply = () => {
+const Reply = (props) => {
   return (
     <div className="post">
       <form action="#" className="form-reply" method="post">
@@ -20,9 +20,11 @@ const Reply = () => {
             <div className="textwraper">
               <div className="postreply">Post a Reply</div>
               <textarea
-                name="reply"
+                name= {props.name}
                 id="reply"
                 placeholder="Type your message here"
+                value={props.val}
+                onChange={props.replyChange}
               ></textarea>
             </div>
           </div>
@@ -32,9 +34,9 @@ const Reply = () => {
           <div className="right post-reply">
             <div className="left">
               <Button
-                type="submit"
                 variant="secondary"
                 className="reply-button"
+                onClick={props.replyClick}
               >
                 Reply
               </Button>
