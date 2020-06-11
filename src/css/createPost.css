@@ -115,3 +115,7 @@
   outline: 0;
   border: none !important;
 }
+
+.post .category-item{
+  text-decoration: none !important;
+}
