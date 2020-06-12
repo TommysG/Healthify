@@ -1,12 +1,17 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 
-const NavButton = ({ number, onClick }) => {
+const NavButton = ({ number, onClick, selected }) => {
+  let style = "";
+
+  if (selected === number) {
+    style = "active";
+  }
+
   return (
     <div>
-      <Button variant="secondary" className="page-button" onClick={onClick}>
+      <button className={`page-button ` + style} onClick={onClick}>
         {number}
-      </Button>
+      </button>
     </div>
   );
 };

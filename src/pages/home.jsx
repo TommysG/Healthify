@@ -23,9 +23,11 @@ export class home extends Component {
     items: [],
     isLoaded: false,
     error: null,
-    currentPage: 1,
+    currentPage: sessionStorage.getItem("currentPage")
+      ? sessionStorage.getItem("currentPage")
+      : 1,
     postsPerPage: 5,
-    postUpvotes: 0
+    postUpvotes: 0,
   };
 
   drawerToggleClickHandler = () => {
@@ -41,88 +43,92 @@ export class home extends Component {
   //shows posts
   showPosts = () => {
     fetch("http://localhost:3100/api/posts", {
-      "method": "GET",
-      "headers": {
+      method: "GET",
+      headers: {
         "content-type": "application/json",
-        "accept": "application/json"
+        accept: "application/json",
       },
       // "body": JSON.stringify({
       //   name: this.state.name,
       //   notes: this.state.notes
       // })
     })
-    .then(response => response.json())
-    .then(response => {
-      console.log(response);
-      this.setState({
-        isLoaded: true,
-        items: response
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      this.setState({
-        isLoaded: true,
-        error: err
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          isLoaded: true,
+          items: response,
+        });
       })
-    });
-  }
+      .catch((err) => {
+        console.log(err);
+        this.setState({
+          isLoaded: true,
+          error: err,
+        });
+      });
+  };
 
-  componentDidMount(){
-    this.showPosts()
+  componentDidMount() {
+    this.showPosts();
   }
 
   //check if votes are updated
   //and updates the posts component
-  componentDidUpdate(prevProps, prevState){
+  componentDidUpdate(prevProps, prevState) {
     //check if number of upvotes changed
     if (prevState.postUpvotes !== this.state.postUpvotes) {
-      console.log("upvotes before: " + prevState.postUpvotes)
-      console.log("upvotes now: " + this.state.postUpvotes)
-      this.showPosts() // fetching again all the posts
+      console.log("upvotes before: " + prevState.postUpvotes);
+      console.log("upvotes now: " + this.state.postUpvotes);
+      this.showPosts(); // fetching again all the posts
     }
   }
 
   //handles upvote on posts
-   handleUpvote = (e) => {
-     console.log(e.target.id)
+  handleUpvote = (e) => {
+    console.log(e.target.id);
     fetch("http://localhost:3100/api/upvotePost", {
-      "method": "POST",
-      "headers": {
+      method: "POST",
+      headers: {
         "content-type": "application/json",
-        "accept": "application/json"
+        accept: "application/json",
       },
-      "body": JSON.stringify({
-        "user_id": "user2@gmail.com",
-        "post_id": e.target.id 
+      body: JSON.stringify({
+        user_id: "user2@gmail.com",
+        post_id: e.target.id,
+      }),
+    })
+      .then((response) => {
+        console.log(response);
+        this.setState({ postUpvotes: this.state.postUpvotes + 1 });
       })
-    })
-    .then(response => {
-      console.log(response)
-      this.setState({postUpvotes: this.state.postUpvotes + 1})
-    })
-    .catch(err => {
-      console.log(err);
-    });
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   //handle click on categories
-  categoryClick = (event) =>{
-    console.log(event.target.innerText)
-  }
+  categoryClick = (event) => {
+    console.log(event.target.innerText);
+  };
 
   render() {
     let backdrop;
-    const {isLoaded, error, items } = this.state;
-    const {currentPage, postsPerPage} = this.state;
-    
-     // Get current posts
+    const { isLoaded, error, items } = this.state;
+    const { currentPage, postsPerPage } = this.state;
+
+    // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = items.slice(indexOfFirstPost, indexOfLastPost);
 
     //change page
-    const paginate = pageNumber => this.setState({currentPage: pageNumber})
+    const paginate = (pageNumber) => {
+      this.setState({ currentPage: pageNumber });
+      sessionStorage.setItem("currentPage", pageNumber);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
 
     //handles responsive sideDrawer
     if (this.state.sideDrawerOpen) {
@@ -145,13 +151,27 @@ export class home extends Component {
                     <DropdownItem eventKey="2">Most Viewed</DropdownItem>
                     <DropdownItem eventKey="3">Most Liked</DropdownItem>
                   </DropdownButton>
-                    <Button variant="secondary" className="createBtn" href="/createPost">
-                      New Topic
-                    </Button>
+                  <Button
+                    variant="secondary"
+                    className="createBtn"
+                    href="/createPost"
+                  >
+                    New Topic
+                  </Button>
                 </ButtonToolbar>
               </Row>
-              <Posts posts={currentPosts} loading={isLoaded} error={error} handleUpvote={this.handleUpvote}></Posts>
-              <Pagination postsPerPage={postsPerPage} totalPosts={items.length} paginate={paginate}></Pagination>
+              <Posts
+                posts={currentPosts}
+                loading={isLoaded}
+                error={error}
+                handleUpvote={this.handleUpvote}
+              ></Posts>
+              <Pagination
+                postsPerPage={postsPerPage}
+                totalPosts={items.length}
+                paginate={paginate}
+                select={this.state.currentPage}
+              ></Pagination>
             </Col>
             <Col lg={4} md={4}>
               <SideBlock categoryClick={this.categoryClick}></SideBlock>

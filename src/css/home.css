@@ -51,8 +51,22 @@ ul.breadcrumb li {
   font-family: "Open Sans Semibold", sans-serif;
   border-radius: 2px;
   display: block;
-  padding: 0 8px;
+  padding: 2px 10px;
   margin-right: 10px;
+  background-color: #6c757d;
+  border: none;
+  color: white;
+}
+
+.active {
+  background: cornflowerblue;
+  border: none;
+}
+
+.page-button:focus {
+  border: none;
+  outline: 0;
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15)
 }
 
 @media (min-width: 768px) and (max-width: 991px) {

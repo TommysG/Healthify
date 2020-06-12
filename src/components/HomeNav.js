@@ -9,6 +9,10 @@ import DropdownItem from "react-bootstrap/DropdownItem";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { Link } from "react-router-dom";
 
+const logout = (e) => {
+  localStorage.setItem("auth", "no");
+};
+
 const HomeNav = (props) => {
   return (
     <div>
@@ -45,7 +49,12 @@ const HomeNav = (props) => {
                   <DropdownItem eventKey="1" as={Link} to="/home/settings">
                     Settings
                   </DropdownItem>
-                  <DropdownItem eventKey="2" as={Link} to="/">
+                  <DropdownItem
+                    eventKey="2"
+                    as={Link}
+                    to="/login"
+                    onClick={(e) => logout(e)}
+                  >
                     Logout
                   </DropdownItem>
                 </DropdownButton>

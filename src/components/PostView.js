@@ -1,7 +1,6 @@
 import React from "react";
 import "../css/postView.css";
 
-
 const PostView = (props) => {
   let postStyle = `post + ${props.style}`;
 
@@ -17,7 +16,7 @@ const PostView = (props) => {
           </div>
         </div>
         <div className="post-text left">
-  <div className="user-name">Posted by: {props.user}</div>
+          <div className="user-name">Posted by: {props.user}</div>
           <h2>{props.title}</h2>
           <p>{props.content}</p>
         </div>
@@ -26,10 +25,12 @@ const PostView = (props) => {
       <div className="post-info-bot">
         <div className="likeblock left">
           <span className="up" onClick={props.upvoteClick}>
-            <i className="fa fa-thumbs-o-up" ></i>{props.upvotes}
+            <i className="fa fa-thumbs-o-up"></i>
+            {props.upvotes}
           </span>
           <span className="down" onClick={props.downvoteClick}>
-            <i className="fa fa-thumbs-o-down" ></i>{props.downvotes}
+            <i className="fa fa-thumbs-o-down"></i>
+            {props.downvotes}
           </span>
         </div>
 
