@@ -50,30 +50,36 @@ class CreatePostComponent extends Component {
   handleClick = (event) => {
     event.preventDefault();
     const { title, body, category } = this.state;
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log(user.userEmail);
 
-    fetch("http://localhost:3100/api/post", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-      },
-      body: JSON.stringify({
-        user_id: "user2@gmail.com",
-        title: title,
-        body: body,
-        category: this.apostropheFix(category),
-      }),
-    })
-      .then((response) => {
-        console.log(response);
-        if (response.status === 201) {
-          console.log("Succesfully Posted");
-          this.setRedirect();
-        }
+    if (title && body && category) {
+      fetch("http://localhost:3100/api/post", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify({
+          user_id: user.email,
+          title: this.apostropheFix(title),
+          body: this.apostropheFix(body),
+          category: this.apostropheFix(category),
+        }),
       })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((response) => {
+          console.log(response);
+          if (response.status === 201) {
+            console.log("Succesfully Posted");
+            this.setRedirect();
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("empty fields");
+    }
   };
 
   handleInputChange = (event) => {

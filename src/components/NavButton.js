@@ -3,7 +3,7 @@ import React from "react";
 const NavButton = ({ number, onClick, selected }) => {
   let style = "";
 
-  if (selected === number) {
+  if (parseInt(selected) === number) {
     style = "active";
   }
 

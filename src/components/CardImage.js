@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/card.css";
 
-export const CardImage = ({ className, img, category, title }) => {
+export const CardImage = ({ className, img, category, title, date }) => {
   return (
     <div className={`${className}`}>
       <div className="feature-image relative">
@@ -15,7 +15,7 @@ export const CardImage = ({ className, img, category, title }) => {
         <h4>{title}</h4>
         <ul className="meta">
           <li>Tommys Gian</li>
-          <li>03 April, 2020</li>
+          <li>{date}</li>
         </ul>
       </div>
     </div>

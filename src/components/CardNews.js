@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/card.css";
 
-export const CardNews = ({ className, img, category, title }) => {
+export const CardNews = ({ className, img, category, title, body, date }) => {
   return (
     <div className="single-latest-post row align-items-center">
       <div className="col-lg-5 ">
@@ -17,12 +17,9 @@ export const CardNews = ({ className, img, category, title }) => {
         <h4>{title}</h4>
         <ul className="meta">
           <li>Tommys Gian</li>
-          <li>03 April, 2020</li>
+          <li>{date}</li>
         </ul>
-        <p className="excert">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt.
-        </p>
+        <p className="excert">{body}</p>
       </div>
     </div>
   );

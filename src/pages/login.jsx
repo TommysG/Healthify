@@ -18,11 +18,12 @@ export class login extends Component {
     sideDrawerOpen: false,
     redirect: false,
     auth: false,
+    user: [],
   };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.auth !== this.state.auth) {
-      localStorage.setItem("auth", "yes");
+      localStorage.setItem("user", JSON.stringify(this.state.user));
       this.setState({ redirect: true });
     }
   }
@@ -39,8 +40,14 @@ export class login extends Component {
     Auth(userData).then((result) => {
       if (result.status === 200) {
         console.log("Logged in successfully");
-        console.log(result);
-        this.setState({ auth: true });
+        console.log(result.body);
+        const user = {
+          email: result.body.email,
+          username: result.body.username,
+          role: result.body.role,
+        };
+
+        this.setState({ auth: true, user: user });
       } else {
         console.log("Wrong credentials");
       }

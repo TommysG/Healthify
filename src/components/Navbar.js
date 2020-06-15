@@ -1,6 +1,6 @@
 import "../css/navbar.css";
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import React from "react";
 
@@ -10,10 +10,18 @@ const Navbar = (props) => {
       <nav className="topnav">
         <label className="logo">Healthify</label>
         <div className="nav-buttons">
-          <Link to="/login">Login</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/about">About</Link>
-          <Link to="/">Home</Link>
+          <NavLink exact to="/login">
+            Login
+          </NavLink>
+          <NavLink exact to="/contact">
+            Contact
+          </NavLink>
+          <NavLink exact to="/about">
+            About
+          </NavLink>
+          <NavLink exact to="/">
+            Home
+          </NavLink>
         </div>
         <i
           className="fas fa-bars fa-2x menu"
