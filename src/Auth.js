@@ -10,9 +10,9 @@ export function Auth(userData) {
       },
       body: JSON.stringify(userData),
     })
-      .then((response) => {
-        resolve(response);
-      })
+      .then((r) =>
+        r.json().then((data) => resolve({ status: r.status, body: data }))
+      )
       .catch((err) => {
         reject(err);
       });

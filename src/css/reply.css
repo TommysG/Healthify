@@ -18,6 +18,7 @@
   width: 610px;
   width: 100%;
   outline: 0;
+  color: #4d4d4d;
 }
 
 .notechbox {
@@ -42,9 +43,7 @@
   margin-bottom: 10px;
 }
 
-.reply-button:hover,
-.reply-button:active,
-.reply-button:focus {
+.reply-button:hover, .reply-button:active, .reply-button:focus {
   background-color: rgb(92, 136, 218) !important;
   outline: 0;
   border: none !important;

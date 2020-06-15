@@ -11,11 +11,12 @@ import SideDrawerHome from "../components/SideDrawer/SideDrawerHome";
 
 import { Link } from "react-router-dom";
 
-import newsfile from "../news.json";
-
 export class news extends Component {
   state = {
     sideDrawerOpen: false,
+    news: [],
+    isLoaded: false,
+    error: null,
   };
 
   drawerToggleClickHandler = () => {
@@ -28,60 +29,107 @@ export class news extends Component {
     this.setState({ sideDrawerOpen: false });
   };
 
+  componentDidMount() {
+    this.showNews();
+  }
+
+  showNews = () => {
+    fetch("http://localhost:3100/api/postsPerCategory/" + 6, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        this.setState({ news: response, isLoaded: true });
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setState({ isLoaded: true, error: err });
+      });
+  };
+
+  dateConvertion(date) {
+    return new Intl.DateTimeFormat("en-GB", {
+      year: "numeric",
+      month: "long",
+      day: "2-digit",
+    }).format(new Date(date));
+  }
+
   render() {
     let backdrop;
+    const { news, isLoaded, error } = this.state;
+    let allNews, featured, featuredRight, featuredDown;
 
     if (this.state.sideDrawerOpen) {
       backdrop = <BackdropHome click={this.backdropClickHandler} />;
     }
-    const allNews = newsfile.map((item) => (
-      <CardNews
-        key={item.id}
-        className="featured-post"
-        img={item.image}
-        category={item.category}
-        title={<Link to={`/news/viewnews/${item.id}`}>{item.title}</Link>}
-      ></CardNews>
-    ));
 
-    const featured = (
-      <CardImage
-        className="featured-post"
-        img={newsfile[0].image}
-        category={newsfile[0].category}
-        title={
-          <Link to={`/news/viewnews/${newsfile[0].id}`}>
-            {newsfile[0].title}
-          </Link>
-        }
-      ></CardImage>
-    );
+    if (error) {
+      allNews = <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      allNews = <div>Loading...</div>;
+    } else {
+      allNews = news.map((item) => (
+        <CardNews
+          key={item.post_id}
+          className="featured-post"
+          img={item.imgUrl}
+          date={this.dateConvertion(item.createdAt)}
+          category={item.category}
+          body={item.body}
+          title={
+            <Link to={`/news/viewnews/${item.post_id}`}>{item.title}</Link>
+          }
+        ></CardNews>
+      ));
 
-    const featuredRight = (
-      <CardImage
-        className="single-top-post"
-        img={newsfile[1].image}
-        category={newsfile[1].category}
-        title={
-          <Link to={`/news/viewnews/${newsfile[1].id}`}>
-            {newsfile[1].title}
-          </Link>
-        }
-      ></CardImage>
-    );
+      featured = (
+        <CardImage
+          className="featured-post"
+          img={news[0].imgUrl}
+          category={news[0].category}
+          date={this.dateConvertion(news[0].createdAt)}
+          title={
+            <Link to={`/news/viewnews/${news[0].post_id}`}>
+              {news[0].title}
+            </Link>
+          }
+        ></CardImage>
+      );
 
-    const featuredDown = (
-      <CardImage
-        className="single-top-post sp-10"
-        img={newsfile[2].image}
-        category={newsfile[2].category}
-        title={
-          <Link to={`/news/viewnews/${newsfile[2].id}`}>
-            {newsfile[2].title}
-          </Link>
-        }
-      ></CardImage>
-    );
+      featuredRight = (
+        <CardImage
+          className="single-top-post"
+          img={news[1].imgUrl}
+          category={news[1].category}
+          date={this.dateConvertion(news[1].createdAt)}
+          title={
+            <Link to={`/news/viewnews/${news[1].post_id}`}>
+              {news[1].title}
+            </Link>
+          }
+        ></CardImage>
+      );
+
+      featuredDown = (
+        <CardImage
+          className="single-top-post sp-10"
+          img={news[2].imgUrl}
+          category={news[2].category}
+          date={this.dateConvertion(news[2].createdAt)}
+          title={
+            <Link to={`/news/viewnews/${news[2].post_id}`}>
+              {news[2].title}
+            </Link>
+          }
+        ></CardImage>
+      );
+    }
 
     return (
       <div>

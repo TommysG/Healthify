@@ -12,6 +12,9 @@ import newsfile from "../news.json";
 export class viewNews extends Component {
   state = {
     sideDrawerOpen: false,
+    newsPost: [],
+    isLoaded: false,
+    error: null,
   };
 
   drawerToggleClickHandler = () => {
@@ -23,27 +26,57 @@ export class viewNews extends Component {
   backdropClickHandler = () => {
     this.setState({ sideDrawerOpen: false });
   };
+
+  componentDidMount() {
+    this.loadNewsPost();
+  }
+
+  loadNewsPost = () => {
+    let url1 = "http://localhost:3100/api/post/" + this.props.match.params.id;
+
+    fetch(url1, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        this.setState({ newsPost: response, isLoaded: true });
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setState({ isLoaded: true, error: err });
+      });
+  };
+
   render() {
+    const { newsPost, isLoaded, error } = this.state;
     let backdrop;
+    let post;
 
     if (this.state.sideDrawerOpen) {
       backdrop = <BackdropHome click={this.backdropClickHandler} />;
     }
 
-    const newsContent = newsfile.map((item) => {
-      if (item.id.toString() === this.props.match.params.id)
-        return (
-          <NewsView
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            category={item.category}
-            image={item.image}
-            content={item.content}
-          ></NewsView>
-        );
-      return <div key={item.id}></div>;
-    });
+    if (error) {
+      post = <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      post = <div>Loading...</div>;
+    } else {
+      post = (
+        <NewsView
+          key={newsPost.post_id}
+          id={newsPost.post_id}
+          title={newsPost.title}
+          category={newsPost.category}
+          image={newsPost.imgUrl}
+          content={newsPost.body}
+        ></NewsView>
+      );
+    }
 
     return (
       <div className="news">
@@ -51,7 +84,7 @@ export class viewNews extends Component {
         <SideDrawerHome show={this.state.sideDrawerOpen} />
         {backdrop}
         <Container className="news-container">
-          <Col>{newsContent}</Col>
+          <Col>{post}</Col>
         </Container>
         <Footer />
       </div>

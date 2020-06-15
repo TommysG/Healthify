@@ -1,7 +1,32 @@
 import React from "react";
 import "../css/post.css";
 
-const Post = ({ id, title, body, user, replies,upvotes, time, handleUpvote }) => {
+const Post = ({
+  id,
+  title,
+  body,
+  user,
+  replies,
+  upvotes,
+  time,
+  handleUpvote,
+  postsVoted,
+}) => {
+  let postVoted = `fas fa-heart`;
+
+  postsVoted.map((post) => {
+    if (post.post_id === id) {
+      if (post.vote === 1) {
+        postVoted = `fas fa-heart tapped`;
+      } else if (post.vote === -1) {
+        postVoted = `fas fa-heart-broken`;
+      } else {
+        postVoted = `fas fa-heart`;
+      }
+    }
+    return null;
+  });
+
   return (
     <div className="post">
       <div className="wrapper left">
@@ -26,7 +51,7 @@ const Post = ({ id, title, body, user, replies,upvotes, time, handleUpvote }) =>
           </div>
         </div>
         <div className="likes">
-          <i className="fas fa-heart" id={id} onClick={handleUpvote}></i>
+          <i className={postVoted} id={id} onClick={handleUpvote}></i>
           {upvotes}
         </div>
         <div className="time">

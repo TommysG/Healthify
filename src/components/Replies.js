@@ -1,5 +1,5 @@
 import React from "react";
-import PostView from "./PostView";
+import ReplyView from "./ReplyView";
 
 const manageDate = (date) => {
   let diff = new Date().getTime() - new Date(date).getTime();
@@ -25,7 +25,16 @@ const manageDate = (date) => {
   return Math.floor(seconds) + "s";
 };
 
-const Replies = ({ replies, loading, error }) => {
+const Replies = ({
+  replies,
+  loading,
+  error,
+  upvote,
+  downvote,
+  votes,
+  deleteReply,
+  editReply,
+}) => {
   let postReplies;
 
   //show posts
@@ -35,7 +44,7 @@ const Replies = ({ replies, loading, error }) => {
     postReplies = <div>Loading...</div>;
   } else {
     postReplies = replies.map((item) => (
-      <PostView
+      <ReplyView
         key={item.reply_id}
         user={item.user_id}
         id={item.reply_id}
@@ -43,8 +52,12 @@ const Replies = ({ replies, loading, error }) => {
         content={item.comment}
         date={manageDate(item.createdAt)}
         upvotes={item.totalVotes}
-        // upvoteClick = {(e) => this.upvote(e, item.reply_id)}
-      ></PostView>
+        upvoteClick={(e) => upvote(e, item.reply_id)}
+        downvoteClick={(e) => downvote(e, item.reply_id)}
+        votes={votes}
+        deleteReply={(e) => deleteReply(e, item.reply_id)}
+        editReply={(e) => editReply(e, item.reply_id)}
+      ></ReplyView>
     ));
   }
 

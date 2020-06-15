@@ -16,19 +16,32 @@ import { Poll } from "../components/Poll";
 import Footer from "../components/Footer";
 import { Posts } from "../components/Posts";
 import Pagination from "../components/Pagination";
+import { Link } from "react-router-dom";
 
 export class home extends Component {
-  state = {
-    sideDrawerOpen: false,
-    items: [],
-    isLoaded: false,
-    error: null,
-    currentPage: sessionStorage.getItem("currentPage")
-      ? sessionStorage.getItem("currentPage")
-      : 1,
-    postsPerPage: 5,
-    postUpvotes: 0,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sideDrawerOpen: false,
+      user: localStorage.getItem("user")
+        ? JSON.parse(localStorage.getItem("user"))
+        : [],
+      items: [],
+      allItems: [],
+      userPostsVoted: [],
+      selectedCategory: sessionStorage.getItem("selectedCategory")
+        ? sessionStorage.getItem("selectedCategory")
+        : "All",
+      isLoaded: false,
+      error: null,
+      currentPage: sessionStorage.getItem("currentPage")
+        ? sessionStorage.getItem("currentPage")
+        : 1,
+      postsPerPage: 5,
+      postUpvotes: 0,
+    };
+  }
 
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
@@ -42,23 +55,19 @@ export class home extends Component {
 
   //shows posts
   showPosts = () => {
-    fetch("http://localhost:3100/api/posts", {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-      },
-      // "body": JSON.stringify({
-      //   name: this.state.name,
-      //   notes: this.state.notes
-      // })
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
+    let url1 = "http://localhost:3100/api/posts";
+    let url2 =
+      "http://localhost:3100/api/userPostsVotes/" + this.state.user.email;
+
+    Promise.all([fetch(url1), fetch(url2)])
+      .then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json()]))
+      .then(([data1, data2]) => {
+        console.log(data1);
         this.setState({
           isLoaded: true,
-          items: response,
+          items: data1,
+          allItems: data1,
+          userPostsVoted: data2,
         });
       })
       .catch((err) => {
@@ -71,7 +80,11 @@ export class home extends Component {
   };
 
   componentDidMount() {
-    this.showPosts();
+    if (this.state.selectedCategory === "All") {
+      this.showPosts();
+    } else {
+      this.loadPostPerCategory(this.categoryCode(this.state.selectedCategory));
+    }
   }
 
   //check if votes are updated
@@ -81,12 +94,36 @@ export class home extends Component {
     if (prevState.postUpvotes !== this.state.postUpvotes) {
       console.log("upvotes before: " + prevState.postUpvotes);
       console.log("upvotes now: " + this.state.postUpvotes);
-      this.showPosts(); // fetching again all the posts
+      //this.showPosts(); // fetching again all the posts
+      const catCode = this.categoryCode(this.state.selectedCategory);
+      catCode !== -1 ? this.loadPostPerCategory(catCode) : this.showPosts();
     }
   }
 
+  categoryCode = (category) => {
+    switch (category) {
+      case "All":
+        return -1;
+      case "Men's health":
+        return 0;
+      case "Women's health":
+        return 1;
+      case "Child's health":
+        return 2;
+      case "General":
+        return 3;
+      case "Mental health":
+        return 4;
+      case "Medicines":
+        return 5;
+      default:
+        return false;
+    }
+  };
+
   //handles upvote on posts
   handleUpvote = (e) => {
+    console.log("upvoting as " + this.state.user.email);
     console.log(e.target.id);
     fetch("http://localhost:3100/api/upvotePost", {
       method: "POST",
@@ -95,7 +132,7 @@ export class home extends Component {
         accept: "application/json",
       },
       body: JSON.stringify({
-        user_id: "user2@gmail.com",
+        user_id: this.state.user.email,
         post_id: e.target.id,
       }),
     })
@@ -110,12 +147,62 @@ export class home extends Component {
 
   //handle click on categories
   categoryClick = (event) => {
-    console.log(event.target.innerText);
+    console.log(event.target.id);
+
+    let categoryName = event.target.innerText;
+    let postsPerCat = [];
+
+    this.setState({ currentPage: 1, selectedCategory: categoryName });
+    sessionStorage.setItem("currentPage", 1);
+    sessionStorage.setItem("selectedCategory", categoryName);
+
+    if (categoryName === "All") {
+      this.showPosts();
+    } else {
+      this.state.allItems.filter((item) => {
+        if (item.category === categoryName) {
+          console.log(item.category);
+          postsPerCat.push(item);
+        }
+        return null;
+      });
+      this.setState({
+        items: postsPerCat,
+      });
+    }
+  };
+
+  loadPostPerCategory = (categoryCode) => {
+    let url1 = "http://localhost:3100/api/postsPerCategory/" + categoryCode;
+    let url2 =
+      "http://localhost:3100/api/userPostsVotes/" + this.state.user.email;
+    let url3 = "http://localhost:3100/api/posts";
+
+    Promise.all([fetch(url1), fetch(url2), fetch(url3)])
+      .then(([res1, res2, res3]) =>
+        Promise.all([res1.json(), res2.json(), res3.json()])
+      )
+      .then(([data1, data2, data3]) => {
+        console.log(data1);
+        this.setState({
+          items: data1,
+          userPostsVoted: data2,
+          allItems: data3,
+          isLoaded: true,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setState({
+          isLoaded: true,
+          error: err,
+        });
+      });
   };
 
   render() {
     let backdrop;
-    const { isLoaded, error, items } = this.state;
+    const { isLoaded, error, items, userPostsVoted } = this.state;
     const { currentPage, postsPerPage } = this.state;
 
     // Get current posts
@@ -151,17 +238,16 @@ export class home extends Component {
                     <DropdownItem eventKey="2">Most Viewed</DropdownItem>
                     <DropdownItem eventKey="3">Most Liked</DropdownItem>
                   </DropdownButton>
-                  <Button
-                    variant="secondary"
-                    className="createBtn"
-                    href="/createPost"
-                  >
-                    New Topic
-                  </Button>
+                  <Link to="/home/createpost">
+                    <Button variant="secondary" className="createBtn">
+                      New Topic
+                    </Button>
+                  </Link>
                 </ButtonToolbar>
               </Row>
               <Posts
                 posts={currentPosts}
+                postsVoted={userPostsVoted}
                 loading={isLoaded}
                 error={error}
                 handleUpvote={this.handleUpvote}
@@ -174,7 +260,10 @@ export class home extends Component {
               ></Pagination>
             </Col>
             <Col lg={4} md={4}>
-              <SideBlock categoryClick={this.categoryClick}></SideBlock>
+              <SideBlock
+                selected={this.state.selectedCategory}
+                categoryClick={this.categoryClick}
+              ></SideBlock>
               <Poll></Poll>
             </Col>
           </Row>

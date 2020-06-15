@@ -33,6 +33,10 @@
   background-color: #4e545d;
 }
 
+.topnav a.active:hover {
+  background-color: #5882d1;
+}
+
 .topnav .menu {
   color: white;
 }

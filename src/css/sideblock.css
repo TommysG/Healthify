@@ -6,12 +6,13 @@
   position: relative;
 }
 
-.side-block a:hover {
+.side-block span:hover {
   text-decoration: underline;
   color: cornflowerblue;
+  cursor: pointer;
 }
 
-.side-block a:hover + span {
+.side-block span:hover + span {
   background-color: cornflowerblue;
 }
 
@@ -37,6 +38,15 @@
   padding: 20px;
 }
 
+.side-block .selected {
+  text-decoration: underline;
+  color: cornflowerblue;
+}
+
+.side-block .selected + span {
+  background-color: cornflowerblue !important;
+}
+
 .list {
   margin: 0px;
   padding: 0px;
@@ -48,7 +58,7 @@
   line-height: 30px;
 }
 
-ul li a {
+ul li span {
   color: #363838;
 }
 

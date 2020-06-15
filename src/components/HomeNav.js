@@ -7,10 +7,10 @@ import Col from "react-bootstrap/Col";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const logout = (e) => {
-  localStorage.setItem("auth", "no");
+  localStorage.removeItem("user");
 };
 
 const HomeNav = (props) => {
@@ -31,8 +31,12 @@ const HomeNav = (props) => {
                 </a>
               </Col>
               <nav className="topnav-home">
-                <Link to="/news">News</Link>
-                <Link to="/home">Forum</Link>
+                <NavLink exact to="/news">
+                  News
+                </NavLink>
+                <NavLink exact to="/home">
+                  Forum
+                </NavLink>
               </nav>
               <Search></Search>
             </Col>

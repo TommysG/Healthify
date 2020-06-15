@@ -101,3 +101,21 @@ a.up:hover {
   text-decoration: none;
   color: #1de4bd;
 }
+
+.postVote {
+  font-weight: 600 !important;
+}
+
+.delete-reply, .delete-post {
+  float: right;
+}
+
+.delete-reply .invisible, .delete-post .invisible {
+  display: none;
+  visibility: hidden;
+}
+
+.fa-trash {
+  color: #db7a7a;
+  cursor: pointer;
+}
