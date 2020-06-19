@@ -24,8 +24,8 @@ import "react-toastify/dist/ReactToastify.css";
 const sortOptions = ["Most recent", "Most liked", "Most replied"];
 
 export class home extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
     this.state = {
       sideDrawerOpen: false,
@@ -46,24 +46,29 @@ export class home extends Component {
       postsPerPage: 5,
       postUpvotes: 0,
       sortBy: sortOptions[0],
+      pollVotes: [],
+			pollAnswers: [],
+			pollQuestions: [],
     };
   }
 
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    });
-  };
 
-  backdropClickHandler = () => {
-    this.setState({ sideDrawerOpen: false });
-  };
+	drawerToggleClickHandler = () => {
+		this.setState((prevState) => {
+			return { sideDrawerOpen: !prevState.sideDrawerOpen };
+		});
+	};
 
-  //shows posts
-  showPosts = () => {
-    let url1 = "http://localhost:3100/api/posts";
-    let url2 =
-      "http://localhost:3100/api/userPostsVotes/" + this.state.user.email;
+	backdropClickHandler = () => {
+		this.setState({ sideDrawerOpen: false });
+	};
+
+	//shows posts
+	showPosts = () => {
+		let url1 = "http://localhost:3100/api/posts";
+		let url2 =
+			"http://localhost:3100/api/userPostsVotes/" + this.state.user.email;
+
 
     Promise.all([fetch(url1), fetch(url2)])
       .then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json()]))
@@ -125,75 +130,139 @@ export class home extends Component {
       this.loadPostPerCategory(this.categoryCode(this.state.selectedCategory));
     }
   }
+		Promise.all([fetch(url1), fetch(url2)])
+			.then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json()]))
+			.then(([data1, data2]) => {
+				console.log(data1);
+				this.setState({
+					isLoaded: true,
+					items: data1,
+					allItems: data1,
+					userPostsVoted: data2,
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+				this.setState({
+					isLoaded: true,
+					error: err,
+				});
+			});
+	};
 
-  //check if votes are updated
-  //and updates the posts component
-  componentDidUpdate(prevProps, prevState) {
-    //check if number of upvotes changed
-    if (prevState.postUpvotes !== this.state.postUpvotes) {
-      console.log("upvotes before: " + prevState.postUpvotes);
-      console.log("upvotes now: " + this.state.postUpvotes);
-      //this.showPosts(); // fetching again all the posts
-      const catCode = this.categoryCode(this.state.selectedCategory);
-      catCode !== -1 ? this.loadPostPerCategory(catCode) : this.showPosts();
-    }
-  }
+	fetchPollData = () => {
+		fetch("http://localhost:3100/api/poll/8", {
+			method: "GET",
+			headers: {
+				"content-type": "application/json",
+				accept: "application/json",
+			},
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				this.setState({
+					pollQuestion: response.poll.poll,
+					pollAnswers: response.poll.answers,
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 
-  categoryCode = (category) => {
-    switch (category) {
-      case "All":
-        return -1;
-      case "Men's health":
-        return 0;
-      case "Women's health":
-        return 1;
-      case "Child's health":
-        return 2;
-      case "General":
-        return 3;
-      case "Mental health":
-        return 4;
-      case "Medicines":
-        return 5;
-      default:
-        return false;
-    }
-  };
+	fetchPollVotes = () => {
+		console.log("Poll votes: ");
+		fetch("http://localhost:3100/api/pollVotes/8", {
+			method: "GET",
+			headers: {
+				"content-type": "application/json",
+				accept: "application/json",
+			},
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				this.setState({
+					pollVotes: response,
+				});
+				console.log(this.state.pollVotes);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 
-  //handles upvote on posts
-  handleUpvote = (e) => {
-    console.log("upvoting as " + this.state.user.email);
-    console.log(e.target.id);
-    fetch("http://localhost:3100/api/upvotePost", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-      },
-      body: JSON.stringify({
-        user_id: this.state.user.email,
-        post_id: e.target.id,
-      }),
-    })
-      .then((response) => {
-        console.log(response);
-        this.setState({ postUpvotes: this.state.postUpvotes + 1 });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+	componentDidMount() {
+		this.fetchPollData();
+		this.fetchPollVotes();
+		if (this.state.selectedCategory === "All") {
+			this.showPosts();
+		} else {
+			this.loadPostPerCategory(this.categoryCode(this.state.selectedCategory));
+		}
+	}
 
-  //handle click on categories
-  categoryClick = (event) => {
-    console.log(event.target.id);
+	//check if votes are updated
+	//and updates the posts component
+	componentDidUpdate(prevProps, prevState) {
+		//check if number of upvotes changed
+		if (prevState.postUpvotes !== this.state.postUpvotes) {
+			console.log("upvotes before: " + prevState.postUpvotes);
+			console.log("upvotes now: " + this.state.postUpvotes);
+			//this.showPosts(); // fetching again all the posts
+			const catCode = this.categoryCode(this.state.selectedCategory);
+			catCode !== -1 ? this.loadPostPerCategory(catCode) : this.showPosts();
+		}
+	}
 
-    let categoryName = event.target.innerText;
-    let postsPerCat = [];
+	categoryCode = (category) => {
+		switch (category) {
+			case "All":
+				return -1;
+			case "Men's health":
+				return 0;
+			case "Women's health":
+				return 1;
+			case "Child's health":
+				return 2;
+			case "General":
+				return 3;
+			case "Mental health":
+				return 4;
+			case "Medicines":
+				return 5;
+			default:
+				return false;
+		}
+	};
 
-    this.setState({ currentPage: 1, selectedCategory: categoryName });
-    sessionStorage.setItem("currentPage", 1);
-    sessionStorage.setItem("selectedCategory", categoryName);
+	//handles upvote on posts
+	handleUpvote = (e) => {
+		console.log("upvoting as " + this.state.user.email);
+		console.log(e.target.id);
+		fetch("http://localhost:3100/api/upvotePost", {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+				accept: "application/json",
+			},
+			body: JSON.stringify({
+				user_id: this.state.user.email,
+				post_id: e.target.id,
+			}),
+		})
+			.then((response) => {
+				console.log(response);
+				this.setState({ postUpvotes: this.state.postUpvotes + 1 });
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+	//handle click on categories
+	categoryClick = (event) => {
+		console.log(event.target.id);
+
 
     if (categoryName === "All") {
       this.showPosts();
@@ -213,11 +282,13 @@ export class home extends Component {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  loadPostPerCategory = (categoryCode) => {
-    let url1 = "http://localhost:3100/api/postsPerCategory/" + categoryCode;
-    let url2 =
-      "http://localhost:3100/api/userPostsVotes/" + this.state.user.email;
-    let url3 = "http://localhost:3100/api/posts";
+		let categoryName = event.target.innerText;
+		let postsPerCat = [];
+
+		this.setState({ currentPage: 1, selectedCategory: categoryName });
+		sessionStorage.setItem("currentPage", 1);
+		sessionStorage.setItem("selectedCategory", categoryName);
+
 
     Promise.all([fetch(url1), fetch(url2), fetch(url3)])
       .then(([res1, res2, res3]) =>
@@ -264,22 +335,63 @@ export class home extends Component {
     const { isLoaded, error, items, userPostsVoted } = this.state;
     const { currentPage, postsPerPage } = this.state;
 
-    // Get current posts
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = items.slice(indexOfFirstPost, indexOfLastPost);
+		if (categoryName === "All") {
+			this.showPosts();
+		} else {
+			this.state.allItems.filter((item) => {
+				if (item.category === categoryName) {
+					console.log(item.category);
+					postsPerCat.push(item);
+				}
+				return null;
+			});
+			this.setState({
+				items: postsPerCat,
+			});
+		}
+	};
 
-    //change page
-    const paginate = (pageNumber) => {
-      this.setState({ currentPage: pageNumber });
-      sessionStorage.setItem("currentPage", pageNumber);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+	loadPostPerCategory = (categoryCode) => {
+		let url1 = "http://localhost:3100/api/postsPerCategory/" + categoryCode;
+		let url2 =
+			"http://localhost:3100/api/userPostsVotes/" + this.state.user.email;
+		let url3 = "http://localhost:3100/api/posts";
 
-    //handles responsive sideDrawer
-    if (this.state.sideDrawerOpen) {
-      backdrop = <BackdropHome click={this.backdropClickHandler} />;
-    }
+		Promise.all([fetch(url1), fetch(url2), fetch(url3)])
+			.then(([res1, res2, res3]) =>
+				Promise.all([res1.json(), res2.json(), res3.json()])
+			)
+			.then(([data1, data2, data3]) => {
+				console.log(data1);
+				this.setState({
+					items: data1,
+					userPostsVoted: data2,
+					allItems: data3,
+					isLoaded: true,
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+				this.setState({
+					isLoaded: true,
+					error: err,
+				});
+			});
+	};
+
+	render() {
+		let answers = [];
+		let votes = [];
+
+		this.state.pollVotes.map((item) => {
+			votes.push(item.votes);
+			return null;
+		});
+    
+    this.state.pollAnswers.map((item) => {
+			answers.push(item.answer);
+			return null;
+		});
 
     return (
       <Container className="home" fluid={true}>
@@ -338,7 +450,13 @@ export class home extends Component {
                 selected={this.state.selectedCategory}
                 categoryClick={this.categoryClick}
               ></SideBlock>
-              <Poll></Poll>
+              <Poll
+								question={this.state.pollQuestion}
+								ans1={answers[0]}
+								ans2={answers[1]}
+								ans3={answers[2]}
+								votes={votes}
+							/>
             </Col>
           </Row>
         </Container>
