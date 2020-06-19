@@ -11,6 +11,10 @@ import { Container, Row, Col } from "react-bootstrap";
 import Replies from "../components/Replies";
 import Pagination from "../components/Pagination";
 import { Redirect } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export class viewPost extends Component {
   state = {
@@ -72,6 +76,72 @@ export class viewPost extends Component {
     this.loadPostData();
   }
 
+  notifyReply = () => {
+    toast.info(
+      <span>
+        <i
+          className="fa fa-check"
+          style={{ paddingRight: "20px" }}
+          aria-hidden="true"
+        ></i>
+        Reply successfuly posted
+      </span>,
+      {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+  };
+
+  notifyDeletePost = () => {
+    toast.info(
+      <span>
+        <i
+          className="fa fa-check"
+          style={{ paddingRight: "20px" }}
+          aria-hidden="true"
+        ></i>
+        Post successfuly deleted
+      </span>,
+      {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+  };
+
+  notifyDeleteReply = () => {
+    toast.info(
+      <span>
+        <i
+          className="fa fa-check"
+          style={{ paddingRight: "20px" }}
+          aria-hidden="true"
+        ></i>
+        Reply successfuly deleted
+      </span>,
+      {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+  };
+
   loadPostData() {
     console.log("POST ID IS: " + this.props.match.params.id);
     const url1 = "http://localhost:3100/api/post/" + this.props.match.params.id;
@@ -93,15 +163,17 @@ export class viewPost extends Component {
       .then(([res1, res2, res3, res4]) =>
         Promise.all([res1.json(), res2.json(), res3.json(), res4.json()])
       )
-      .then(([data1, data2, data3, data4]) =>
+      .then(([data1, data2, data3, data4]) => {
         this.setState({
           post: data1,
           postReplies: data2,
           userPostVotes: data3,
           userRepliesVotes: data4,
-          isLoaded: true,
-        })
-      )
+        });
+        setTimeout(() => {
+          this.setState({ isLoaded: true });
+        }, 200);
+      })
       .catch((err) => {
         console.log(err);
         this.setState({
@@ -196,11 +268,15 @@ export class viewPost extends Component {
         comment: this.state.replyText,
       }),
     })
-      .then((response) =>
-        this.setState({
-          repliesCount: this.state.repliesCount + 1,
-        })
-      )
+      .then((response) => {
+        console.log(response);
+        if (response.status === 201) {
+          this.setState({
+            repliesCount: this.state.repliesCount + 1,
+          });
+          this.notifyReply();
+        }
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -302,7 +378,10 @@ export class viewPost extends Component {
     })
       .then((response) => {
         console.log(response);
-        this.setState({ redirect: true });
+        if (response.status === 200) {
+          this.setState({ redirect: true });
+          this.notifyDeletePost();
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -321,7 +400,10 @@ export class viewPost extends Component {
     })
       .then((response) => {
         console.log(response);
-        this.setState({ repliesCount: this.state.repliesCount - 1 });
+        if (response.status === 200) {
+          this.setState({ repliesCount: this.state.repliesCount - 1 });
+          this.notifyDeleteReply();
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -361,7 +443,7 @@ export class viewPost extends Component {
     //change page
     const paginate = (pageNumber) => {
       this.setState({ currentPage: pageNumber });
-      window.scrollTo({ top: 350, behavior: "smooth" });
+      window.scrollTo({ top: 150, behavior: "smooth" });
     };
 
     if (this.state.sideDrawerOpen) {
@@ -384,7 +466,17 @@ export class viewPost extends Component {
     if (error) {
       post = <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      post = <div>Loading...</div>;
+      post = (
+        <div
+          style={{
+            textAlign: "center",
+            paddingTop: "50px",
+            paddingBottom: "100px",
+          }}
+        >
+          <Spinner animation="border" style={{ color: "cornflowerblue" }} />
+        </div>
+      );
     } else {
       post = (
         <PostView
@@ -393,6 +485,8 @@ export class viewPost extends Component {
           user={mainPost.user_id}
           title={mainPost.title}
           content={mainPost.body}
+          userAvatar={mainPost.avatar}
+          userRole={mainPost.role}
           date={this.manageDate(mainPost.createdAt)}
           upvotes={mainPost.totalVotes}
           style={`style`}
@@ -430,6 +524,17 @@ export class viewPost extends Component {
                 val={this.state.replyText}
                 replyChange={this.inputHandleChange}
                 replyClick={this.handleReplyClick}
+              />
+              <ToastContainer
+                position="top-right"
+                autoClose={4000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
               />
               <Pagination
                 postsPerPage={postsPerPage}

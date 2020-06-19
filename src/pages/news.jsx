@@ -10,6 +10,7 @@ import BackdropHome from "../components/Backdrop/BackdropHome";
 import SideDrawerHome from "../components/SideDrawer/SideDrawerHome";
 
 import { Link } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
 
 export class news extends Component {
   state = {
@@ -44,7 +45,10 @@ export class news extends Component {
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
-        this.setState({ news: response, isLoaded: true });
+        this.setState({ news: response });
+        setTimeout(() => {
+          this.setState({ isLoaded: true });
+        }, 200);
       })
       .catch((err) => {
         console.log(err);
@@ -72,7 +76,35 @@ export class news extends Component {
     if (error) {
       allNews = <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      allNews = <div>Loading...</div>;
+      allNews = (
+        <div
+          style={{
+            textAlign: "center",
+            paddingTop: "50px",
+            paddingBottom: "100px",
+          }}
+        >
+          <Spinner
+            animation="border"
+            style={{ color: "cornflowerblue", width: "100px", height: "100px" }}
+          />
+        </div>
+      );
+
+      featured = (
+        <div
+          style={{
+            textAlign: "center",
+            paddingTop: "50px",
+            paddingBottom: "100px",
+          }}
+        >
+          <Spinner
+            animation="border"
+            style={{ color: "cornflowerblue", width: "100px", height: "100px" }}
+          />
+        </div>
+      );
     } else {
       allNews = news.map((item) => (
         <CardNews

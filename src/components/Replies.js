@@ -41,7 +41,7 @@ const Replies = ({
   if (error) {
     postReplies = <div>Error: {error.message}</div>;
   } else if (!loading) {
-    postReplies = <div>Loading...</div>;
+    postReplies = <div></div>;
   } else {
     postReplies = replies.map((item) => (
       <ReplyView
@@ -50,6 +50,8 @@ const Replies = ({
         id={item.reply_id}
         title={item.title}
         content={item.comment}
+        userAvatar={item.avatar}
+        userRole={item.role}
         date={manageDate(item.createdAt)}
         upvotes={item.totalVotes}
         upvoteClick={(e) => upvote(e, item.reply_id)}

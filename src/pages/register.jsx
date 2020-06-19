@@ -21,7 +21,8 @@ export class register extends Component {
     userEmail: "",
     userPassword: "",
     userConfPassword: "",
-    userIsDoc: false,
+    avatar: "",
+    isDoctor: false,
     redirect: false,
     auth: false,
   };
@@ -44,7 +45,11 @@ export class register extends Component {
         username: this.state.username,
         pwd: Base64.encode(this.state.userPassword),
         repeatPwd: Base64.encode(this.state.userPassword),
-        role: "user",
+        role: this.state.isDoctor ? "doctor" : "user",
+        avatar:
+          "/images/avatars/" +
+          this.state.username.charAt(0).toLowerCase() +
+          ".png",
       }),
     })
       .then((response) => {
@@ -53,7 +58,7 @@ export class register extends Component {
           const user = {
             email: this.state.userEmail,
             username: this.state.username,
-            role: "user",
+            role: this.state.isDoctor ? "doctor" : "user",
           };
           localStorage.setItem("user", JSON.stringify(user));
           this.setState({ auth: true });
@@ -115,6 +120,10 @@ export class register extends Component {
     console.log("clicked");
   };
 
+  checkboxHandle = (e) => {
+    this.setState({ isDoctor: !this.state.isDoctor });
+  };
+
   render() {
     let backdrop;
 
@@ -174,7 +183,11 @@ export class register extends Component {
                 />
                 <label className="checkbox">
                   Doctor
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    name="isDoctor"
+                    onChange={(e) => this.checkboxHandle(e)}
+                  />
                   <span className="checkmark"></span>
                 </label>
                 <button className="signup-btn" onClick={this.signUp}>

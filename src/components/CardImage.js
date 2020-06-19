@@ -14,7 +14,7 @@ export const CardImage = ({ className, img, category, title, date }) => {
         </ul>
         <h4>{title}</h4>
         <ul className="meta">
-          <li>Tommys Gian</li>
+          <li>Healthify Team</li>
           <li>{date}</li>
         </ul>
       </div>

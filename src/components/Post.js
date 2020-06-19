@@ -11,8 +11,15 @@ const Post = ({
   time,
   handleUpvote,
   postsVoted,
+  userAvatar,
+  userRole,
 }) => {
   let postVoted = `fas fa-heart`;
+  let postUserRole = ``;
+
+  if (userRole === "doctor") {
+    postUserRole = "isDoctor";
+  }
 
   postsVoted.map((post) => {
     if (post.post_id === id) {
@@ -28,11 +35,11 @@ const Post = ({
   });
 
   return (
-    <div className="post">
+    <div className={"post " + postUserRole}>
       <div className="wrapper left">
         <div className="user-info left">
           <div className="avatar">
-            <img src="/images/avatar.jpg" alt="avatar"></img>
+            <img src={userAvatar} alt="avatar"></img>
           </div>
         </div>
         <div className="post-text left">

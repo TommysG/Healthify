@@ -1,136 +1,71 @@
 .main-container {
 	background-color: #ecf0f1;
 	line-height: 1.5;
-}
-
-.display-container {
-	margin-bottom: 50px;
-}
-
-.basicInfo-container {
-	padding: 10px;
-}
-
-.Pass-conatiner {
-	padding: 10px;
-}
-
-#selected {
-	background-color: transparent;
-	margin-right: 30px;
-	border-bottom: 2px solid red;
-	border-right: none;
-	border-left: none;
-	border-top: none;
-	font-weight: bold;
-	outline: 0;
-}
-
-#unselected {
-	background-color: transparent;
-	margin-right: 30px;
-	border: none;
-	outline: 0;
-}
-
-.header-div {
-	padding-left: 10px;
-	margin-top: 30px;
-	margin-bottom: 5px;
-}
-
-.info-header {
-	color: gray;
-	width: 65%;
-	font-weight: bold;
-	margin-right: 10px;
-}
-
-.activity-header {
-	color: gray;
-	font-weight: bold;
-	width: 30%;
-	align-items: center;
-	justify-content: center;
-}
-
-.user-settings {
-	border-top: 1px solid lightgray;
-	border-left: 1px solid lightgray;
-	margin-bottom: 50px;
-	height: 300px;
-	width: 65%;
-	margin-right: 10px;
-}
-
-.pass-settings {
-	border: 1px solid lightgray;
-	margin-bottom: 50px;
-	height: 300px;
-	width: 65%;
-	margin-right: 10px;
-	padding-top: 20px;
-	padding-left: 20px;
-	background-color: white;
-}
-
-.activity-display {
-	border: 0.5px solid lightgrey;
-	background-color: white;
-	width: 30%;
-	height: 298px;
-	padding-left: 20px;
-	padding-top: 10px;
-}
-
-.containerr {
-	width: 700px;
-}
-
-.submit-button a[type="submit"] {
-	border: 0;
-	background: #82aada;
-	display: block;
-	margin: 20px auto;
-	text-align: center;
-	padding: 10px 5px;
-	width: 200px;
-	outline: none;
-	color: white;
-	font-style: sans-serif;
-	border-radius: 8px;
-	transition: 0.25 s;
-	cursor: pointer;
-}
-
-.submit-button a[type="submit"]:hover {
-	background-color: #485058;
-	text-decoration: none;
+	min-height: 100vh;
 }
 
 .react-tabs {
 	margin-top: 50px;
 }
 
-.react-tabs__tab {
-	position: unset;
-}
-
 .react-tabs__tab--selected {
 	background: transparent;
-	border: none;
-	border-bottom: 2px solid red;
+	border-color: transparent;
+	border-bottom: 2px solid cornflowerblue;
 }
 
 .react-tabs__tab:focus {
 	background-color: transparent;
-	border-bottom: 2px solid red;
+	border-color: transparent;
+	border-bottom: 2px solid cornflowerblue;
 	outline: 0;
 	box-shadow: none;
 }
 
-.save-settings {
-	margin-left: 25px;
-	padding: 7px 30px;
-	margin-bottom: 40px;
+.react-tabs__tab:focus:after {
+	content: "";
+	position: absolute;
+	height: 5px;
+	left: -4px;
+	right: -4px;
+	bottom: -5px;
+	background: transparent;
+}
+
+.rwt__tab {
+	width: 100%
+}
+
+.profile-settings {
+	box-shadow: 8px 12px 18px 0 rgba(25, 42, 70, .13);
+	background-color: #ecf0f1;
+	padding: 50px 120px 70px 120px;
+	margin-bottom: 50px;
+}
+
+.name-inputs {
+	display: flex;
+	margin-bottom: 15px;
+}
+
+.controls {
+	margin-bottom: 15px;
+}
+
+.firstname-input {
+	width: 100%;
+	margin-right: 100px;
+}
+
+.lastname-input {
+	width: 100%;
+}
+
+.checkbox-input {
+	margin-bottom: 15px;
+	display: flex;
+}
+
+.doctor-label {
+	margin-right: 10px;
 }

@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import "../css/postView.css";
 
 const ReplyView = (props) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const user = JSON.parse(localStorage.getItem("user"));
 
   let votes = props.votes;
   let replyLiked = ``,
     replyDisliked = ``;
+  let fromDoctor = ``;
 
   let visible = ``;
   if (user.email !== props.user) {
     visible = `invisible`;
+  }
+
+  if (props.userRole === "doctor") {
+    fromDoctor = "isDoctor";
   }
 
   votes.map((item) => {
@@ -24,15 +36,35 @@ const ReplyView = (props) => {
     return null;
   });
 
+  function dialog() {
+    return (
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete reply</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this reply?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button
+            variant="primary"
+            style={{ backgroundColor: "#dc3545", color: "white" }}
+            onClick={props.deleteReply}
+          >
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
   return (
-    <div className="post">
+    <div className={"post " + fromDoctor}>
       <div className="towrap">
         <div className="user-info left">
           <div className="avatar">
-            <img
-              src="http://forum.azyrusthemes.com/images/avatar.jpg"
-              alt="avatar"
-            ></img>
+            <img src={props.userAvatar} alt="avatar"></img>
           </div>
         </div>
         <div className="post-text left">
@@ -59,11 +91,12 @@ const ReplyView = (props) => {
         </div>
 
         <div className={"delete-reply " + visible}>
-          <i className="fa fa-trash" onClick={props.deleteReply}></i>
+          <i className="fa fa-trash" onClick={handleShow}></i>
         </div>
 
         <div className="clearfix"></div>
       </div>
+      {dialog()}
     </div>
   );
 };

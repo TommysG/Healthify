@@ -16,7 +16,7 @@ export const CardNews = ({ className, img, category, title, body, date }) => {
       <div className="col-lg-7 ">
         <h4>{title}</h4>
         <ul className="meta">
-          <li>Tommys Gian</li>
+          <li>Healthify Team</li>
           <li>{date}</li>
         </ul>
         <p className="excert">{body}</p>

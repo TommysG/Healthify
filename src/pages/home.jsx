@@ -18,6 +18,11 @@ import { Posts } from "../components/Posts";
 import Pagination from "../components/Pagination";
 import { Link } from "react-router-dom";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const sortOptions = ["Most recent", "Most liked", "Most replied"];
+
 export class home extends Component {
   constructor(props) {
     super(props);
@@ -40,6 +45,7 @@ export class home extends Component {
         : 1,
       postsPerPage: 5,
       postUpvotes: 0,
+      sortBy: sortOptions[0],
     };
   }
 
@@ -64,11 +70,13 @@ export class home extends Component {
       .then(([data1, data2]) => {
         console.log(data1);
         this.setState({
-          isLoaded: true,
-          items: data1,
-          allItems: data1,
+          items: this.sortPosts(data1, this.state.sortBy),
+          allItems: this.sortPosts(data1, this.state.sortBy),
           userPostsVoted: data2,
         });
+        setTimeout(() => {
+          this.setState({ isLoaded: true });
+        }, 200);
       })
       .catch((err) => {
         console.log(err);
@@ -79,7 +87,38 @@ export class home extends Component {
       });
   };
 
+  notify = () => {
+    toast.info(
+      <span>
+        <i
+          className="fa fa-check"
+          style={{ paddingRight: "20px" }}
+          aria-hidden="true"
+        ></i>
+        Post successfully created
+      </span>,
+      {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+  };
+
   componentDidMount() {
+    if (this.props.location.state) {
+      console.log("redirected from somewhere");
+      if (this.props.location.state.from === "createpost") {
+        console.log("redirected from createpost");
+        this.notify();
+        this.props.history.replace({ pathname: "/home", from: "home" });
+      }
+    }
+
     if (this.state.selectedCategory === "All") {
       this.showPosts();
     } else {
@@ -167,9 +206,11 @@ export class home extends Component {
         return null;
       });
       this.setState({
-        items: postsPerCat,
+        items: this.sortPosts(postsPerCat, this.state.sortBy),
       });
     }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   loadPostPerCategory = (categoryCode) => {
@@ -185,9 +226,9 @@ export class home extends Component {
       .then(([data1, data2, data3]) => {
         console.log(data1);
         this.setState({
-          items: data1,
+          items: this.sortPosts(data1, this.state.sortBy),
           userPostsVoted: data2,
-          allItems: data3,
+          allItems: this.sortPosts(data3, this.state.sortBy),
           isLoaded: true,
         });
       })
@@ -198,6 +239,24 @@ export class home extends Component {
           error: err,
         });
       });
+  };
+
+  handleSort = (eventKey, event) => {
+    console.log(sortOptions[eventKey]);
+    this.setState({ sortBy: sortOptions[eventKey] });
+    this.sortPosts(this.state.items, sortOptions[eventKey]);
+  };
+
+  sortPosts = (items, sortBy) => {
+    if (sortBy === "Most liked") {
+      items.sort((a, b) => (a.totalVotes < b.totalVotes ? 1 : -1));
+    } else if (sortBy === "Most replied") {
+      items.sort((a, b) => (a.repliesNum < b.repliesNum ? 1 : -1));
+    } else {
+      items.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+    }
+    this.setState({ items: items });
+    return items;
   };
 
   render() {
@@ -225,18 +284,33 @@ export class home extends Component {
     return (
       <Container className="home" fluid={true}>
         <HomeNav drawerClickHandler={this.drawerToggleClickHandler}></HomeNav>
+        <ToastContainer
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+        <ToastContainer />
         <SideDrawerHome show={this.state.sideDrawerOpen} />
         {backdrop}
-
         <Container className="post-container">
           <Row>
             <Col lg={8} md={8}>
               <Row className="header-row">
                 <ButtonToolbar className="btn-toolbar home-toolbar">
-                  <DropdownButton variant="secondary" title={"Sort By"}>
-                    <DropdownItem eventKey="1">Recent</DropdownItem>
-                    <DropdownItem eventKey="2">Most Viewed</DropdownItem>
-                    <DropdownItem eventKey="3">Most Liked</DropdownItem>
+                  <DropdownButton
+                    variant="secondary"
+                    title={this.state.sortBy}
+                    onSelect={this.handleSort.bind(this)}
+                  >
+                    <DropdownItem eventKey="0">Most recent</DropdownItem>
+                    <DropdownItem eventKey="1">Most liked</DropdownItem>
+                    <DropdownItem eventKey="2">Most replied</DropdownItem>
                   </DropdownButton>
                   <Link to="/home/createpost">
                     <Button variant="secondary" className="createBtn">

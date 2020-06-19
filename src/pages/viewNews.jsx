@@ -6,8 +6,7 @@ import Footer from "../components/Footer";
 import Col from "react-bootstrap/Col";
 import BackdropHome from "../components/Backdrop/BackdropHome";
 import SideDrawerHome from "../components/SideDrawer/SideDrawerHome";
-
-import newsfile from "../news.json";
+import Spinner from "react-bootstrap/Spinner";
 
 export class viewNews extends Component {
   state = {
@@ -44,7 +43,10 @@ export class viewNews extends Component {
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
-        this.setState({ newsPost: response, isLoaded: true });
+        this.setState({ newsPost: response });
+        setTimeout(() => {
+          this.setState({ isLoaded: true });
+        }, 200);
       })
       .catch((err) => {
         console.log(err);
@@ -64,7 +66,20 @@ export class viewNews extends Component {
     if (error) {
       post = <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      post = <div>Loading...</div>;
+      post = (
+        <div
+          style={{
+            textAlign: "center",
+            paddingTop: "100px",
+            paddingBottom: "150px",
+          }}
+        >
+          <Spinner
+            animation="border"
+            style={{ color: "cornflowerblue", width: "100px", height: "100px" }}
+          />
+        </div>
+      );
     } else {
       post = (
         <NewsView
