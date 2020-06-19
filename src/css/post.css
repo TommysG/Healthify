@@ -52,7 +52,6 @@
 }
 
 .post .avatar {
-  width: 37px;
   margin-left: 5px;
 }
 
@@ -61,6 +60,7 @@
 }
 
 .avatar img {
+  width: 37px;
   border-radius: 50%;
 }
 
@@ -90,9 +90,7 @@
   border-bottom: 1px solid rgb(241, 241, 241);
 }
 
-.fa-heart,
-.fa-clock,
-.fa-heart-broken {
+.fa-heart, .fa-clock, .fa-heart-broken {
   color: rgb(157, 166, 170);
   margin-right: 5px;
   font-size: 15px;
@@ -104,8 +102,7 @@
   text-align: center;
 }
 
-.time,
-.likes {
+.time, .likes {
   color: rgb(157, 166, 170);
   font-size: 12px;
   font-family: "Open Sans Regular", sans-serif;
@@ -114,8 +111,7 @@
   border-bottom: 1px solid rgb(241, 241, 241);
 }
 
-.fa-heart,
-.fa-heart-broken {
+.fa-heart, .fa-heart-broken {
   cursor: pointer;
 }
 
@@ -198,4 +194,8 @@
   .avatar {
     display: none;
   }
+}
+
+.isDoctor {
+  background-color: #ddedf5;
 }

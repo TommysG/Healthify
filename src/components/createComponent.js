@@ -43,7 +43,9 @@ class CreatePostComponent extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to="/home" />;
+      return (
+        <Redirect to={{ pathname: "/home", state: { from: "createpost" } }} />
+      );
     }
   };
 
@@ -128,6 +130,7 @@ class CreatePostComponent extends Component {
                   placeholder="Enter Topic Title"
                   className="form-control"
                   onChange={this.handleInputChange}
+                  autoComplete="off"
                 />
               </div>
 

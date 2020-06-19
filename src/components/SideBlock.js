@@ -55,6 +55,7 @@ class SideBlock extends Component {
 
   click = (event) => {
     sessionStorage.setItem("selectedCategory", event.target.innerText);
+    sessionStorage.setItem("currentPage", 1);
     this.setState({ redirect: true, cat: event.target.innerText });
   };
 

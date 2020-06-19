@@ -119,3 +119,8 @@ a.up:hover {
   color: #db7a7a;
   cursor: pointer;
 }
+
+.modal-header .close:focus {
+  outline: 0;
+  border: none;
+}

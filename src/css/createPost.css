@@ -75,21 +75,20 @@
   background-color: #f1f1f1;
   padding: 20px;
   font-size: 14px;
-  color: #989c9e;
+  color: #323232;
   font-family: "Open Sans Light", sans-serif;
   margin-bottom: 20px;
   height: 150px;
 }
 
-.form-newtopic input[type="text"],
-.form-newtopic input[type="password"] {
+.form-newtopic input[type="text"], .form-newtopic input[type="password"] {
   border-radius: 2px;
   box-shadow: none;
   border: none;
   background-color: #f1f1f1;
   padding: 20px;
   font-size: 14px;
-  color: #989c9e;
+  color: #323232;
   font-family: "Open Sans Light", sans-serif;
   margin-bottom: 20px;
   height: 50px;
@@ -107,15 +106,13 @@
   margin-bottom: 10px;
 }
 
-.post-button:hover,
-.post-button:active,
-.post-button:focus {
+.post-button:hover, .post-button:active, .post-button:focus {
   color: white;
   background-color: rgb(92, 136, 218) !important;
   outline: 0;
   border: none !important;
 }
 
-.post .category-item{
+.post .category-item {
   text-decoration: none !important;
 }

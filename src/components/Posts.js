@@ -1,6 +1,7 @@
 import React from "react";
 import Post from "./Post";
 import { Link } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
 
 const manageDate = (date) => {
   let diff = new Date().getTime() - new Date(date).getTime();
@@ -33,7 +34,20 @@ export const Posts = ({ posts, postsVoted, loading, error, handleUpvote }) => {
   if (error) {
     postItems = <div>Error: {error.message}</div>;
   } else if (!loading) {
-    postItems = <div>Loading...</div>;
+    postItems = (
+      <div
+        style={{
+          textAlign: "center",
+          paddingTop: "50px",
+          paddingBottom: "100px",
+        }}
+      >
+        <Spinner
+          animation="border"
+          style={{ color: "cornflowerblue", width: "70px", height: "70px" }}
+        />
+      </div>
+    );
   } else {
     postItems = posts.map((item) => (
       <Post
@@ -42,6 +56,8 @@ export const Posts = ({ posts, postsVoted, loading, error, handleUpvote }) => {
         title={<Link to={`/home/viewpost/${item.post_id}`}>{item.title}</Link>}
         user={item.user_id}
         body={item.body}
+        userAvatar={item.avatar}
+        userRole={item.role}
         replies={item.repliesNum}
         upvotes={item.totalVotes}
         time={manageDate(item.createdAt)}

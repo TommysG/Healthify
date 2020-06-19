@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import "../css/postView.css";
 
 const PostView = (props) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const user = JSON.parse(localStorage.getItem("user"));
 
   let postStyle = `post + ${props.style}`;
@@ -11,15 +18,35 @@ const PostView = (props) => {
     visible = `invisible`;
   }
 
+  function dialog() {
+    return (
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header className="close-Button" closeButton>
+          <Modal.Title>Delete post</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this post?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button
+            variant="primary"
+            style={{ backgroundColor: "#dc3545", color: "white" }}
+            onClick={props.deletePost}
+          >
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
   return (
     <div className={postStyle}>
       <div className="towrap">
         <div className="user-info left">
           <div className="avatar">
-            <img
-              src="http://forum.azyrusthemes.com/images/avatar.jpg"
-              alt="avatar"
-            ></img>
+            <img src={props.userAvatar} alt="avatar"></img>
           </div>
         </div>
         <div className="post-text left">
@@ -46,11 +73,12 @@ const PostView = (props) => {
         </div>
 
         <div className={"delete-post " + visible}>
-          <i className="fa fa-trash" onClick={props.deletePost}></i>
+          <i className="fa fa-trash" onClick={handleShow}></i>
         </div>
 
         <div className="clearfix"></div>
       </div>
+      {dialog()}
     </div>
   );
 };
