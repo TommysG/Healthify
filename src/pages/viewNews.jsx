@@ -89,6 +89,7 @@ export class viewNews extends Component {
           category={newsPost.category}
           image={newsPost.imgUrl}
           content={newsPost.body}
+          date={newsPost.createdAt}
         ></NewsView>
       );
     }

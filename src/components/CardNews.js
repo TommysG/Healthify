@@ -19,7 +19,7 @@ export const CardNews = ({ className, img, category, title, body, date }) => {
           <li>Healthify Team</li>
           <li>{date}</li>
         </ul>
-        <p className="excert">{body}</p>
+        <p className="excert">{body.substring(0, 200) + "..."}</p>
       </div>
     </div>
   );

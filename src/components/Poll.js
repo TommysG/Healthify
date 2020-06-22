@@ -106,7 +106,7 @@ export class Poll extends Component {
           style={{ paddingRight: "20px" }}
           aria-hidden="true"
         ></i>
-        You have already vote
+        You have already voted
       </span>,
       {
         position: "top-right",

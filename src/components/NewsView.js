@@ -1,7 +1,15 @@
 import React from "react";
 import "../css/card.css";
 
-export const NewsView = ({ title, category, image, content }) => {
+export const NewsView = ({ title, category, image, content, date }) => {
+  const dateConvertion = (date) => {
+    return new Intl.DateTimeFormat("en-GB", {
+      year: "numeric",
+      month: "long",
+      day: "2-digit",
+    }).format(new Date(date));
+  };
+
   return (
     <div className="news-view">
       <div className="news-image">
@@ -17,12 +25,12 @@ export const NewsView = ({ title, category, image, content }) => {
       </div>
 
       <div className="news-body">
-        <p>{content}</p>
+        <span style={{ whiteSpace: "pre-line" }}>{content}</span>
       </div>
       <div className="news-details top-post-details view-news-details">
         <ul className="meta">
           <li>Healthify team</li>
-          <li>03 April, 2018</li>
+          <li>{dateConvertion(date)}</li>
         </ul>
       </div>
     </div>

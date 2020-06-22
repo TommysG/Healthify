@@ -72,9 +72,16 @@ export class home extends Component {
     Promise.all([fetch(url1), fetch(url2)])
       .then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json()]))
       .then(([data1, data2]) => {
+        let posts = [];
+        data1.map((item) => {
+          if (item.category !== "News") {
+            posts.push(item);
+          }
+          return null;
+        });
         this.setState({
-          items: this.sortPosts(data1, this.state.sortBy),
-          allItems: this.sortPosts(data1, this.state.sortBy),
+          items: this.sortPosts(posts, this.state.sortBy),
+          allItems: this.sortPosts(posts, this.state.sortBy),
           userPostsVoted: data2,
           searching: false,
         });
@@ -285,7 +292,10 @@ export class home extends Component {
       .then(([data1, data2]) => {
         let searchedItems = [];
         data1.map((item) => {
-          if (item.title.includes(this.state.searchText)) {
+          if (
+            item.title.includes(this.state.searchText) &&
+            item.category !== "News"
+          ) {
             searchedItems.push(item);
           }
           return null;
@@ -328,6 +338,11 @@ export class home extends Component {
     //change page
     const paginate = (pageNumber) => {
       this.setState({ currentPage: pageNumber });
+      window.scrollTo({ top: 150, behavior: "smooth" });
+    };
+
+    const perPage = (itemsPerPage) => {
+      this.setState({ postsPerPage: itemsPerPage });
       window.scrollTo({ top: 150, behavior: "smooth" });
     };
 
@@ -388,6 +403,7 @@ export class home extends Component {
                 totalPosts={items.length}
                 paginate={paginate}
                 select={this.state.currentPage}
+                perPageHandle={perPage}
               ></Pagination>
             </Col>
             <Col lg={4} md={4}>
