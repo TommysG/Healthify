@@ -13,17 +13,6 @@ import { Base64 } from "js-base64";
 import ReactFacebookLogin from "react-facebook-login";
 import Spinner from "react-bootstrap/Spinner";
 import { GoogleLogin } from "react-google-login";
-import {
-  uniqueNamesGenerator,
-  adjectives,
-  colors,
-} from "unique-names-generator";
-
-const customConfig = {
-  dictionaries: [adjectives, colors],
-  separator: "",
-  length: 2,
-};
 
 export class login extends Component {
   constructor(props) {
@@ -178,7 +167,7 @@ export class login extends Component {
 
   responseFacebook = (response) => {
     let email = response.email;
-    let username = uniqueNamesGenerator(customConfig);
+    let username = email.substring(0, email.lastIndexOf("@"));
 
     if (response.status !== "unknown") {
       fetch("http://localhost:3100/api/user", {
@@ -230,7 +219,7 @@ export class login extends Component {
   responseGoogle = (response) => {
     console.log(response.profileObj);
     let email = response.profileObj.email;
-    let username = uniqueNamesGenerator(customConfig);
+    let username = email.substring(0, email.lastIndexOf("@"));
 
     if (!response.error) {
       fetch("http://localhost:3100/api/user", {

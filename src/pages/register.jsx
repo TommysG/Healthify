@@ -14,17 +14,6 @@ import Navbar from "../components/Navbar";
 import { Component } from "react";
 import ReactFacebookLogin from "react-facebook-login";
 import { GoogleLogin } from "react-google-login";
-import {
-  uniqueNamesGenerator,
-  adjectives,
-  colors,
-} from "unique-names-generator";
-
-const customConfig = {
-  dictionaries: [adjectives, colors],
-  separator: "",
-  length: 2,
-};
 
 export class register extends Component {
   state = {
@@ -190,7 +179,7 @@ export class register extends Component {
 
   responseFacebook = (response) => {
     let email = response.email;
-    let username = uniqueNamesGenerator(customConfig);
+    let username = email.substring(0, email.lastIndexOf("@"));
 
     if (response.status !== "unknown") {
       console.log(response);
@@ -255,7 +244,7 @@ export class register extends Component {
   responseGoogle = (response) => {
     console.log(response.profileObj);
     let email = response.profileObj.email;
-    let username = uniqueNamesGenerator(customConfig);
+    let username = email.substring(0, email.lastIndexOf("@"));
 
     if (!response.error) {
       fetch("http://localhost:3100/api/user", {
