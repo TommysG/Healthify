@@ -13,6 +13,18 @@ import { Base64 } from "js-base64";
 import Navbar from "../components/Navbar";
 import { Component } from "react";
 import ReactFacebookLogin from "react-facebook-login";
+import { GoogleLogin } from "react-google-login";
+import {
+  uniqueNamesGenerator,
+  adjectives,
+  colors,
+} from "unique-names-generator";
+
+const customConfig = {
+  dictionaries: [adjectives, colors],
+  separator: "",
+  length: 2,
+};
 
 export class register extends Component {
   state = {
@@ -25,6 +37,15 @@ export class register extends Component {
     isDoctor: false,
     redirect: false,
     auth: false,
+    validateName: "",
+    inputName: "label",
+    validateEmail: "",
+    inputEmail: "label",
+    validatePassword: "",
+    inputPassword: "label",
+    validateConfPassword: "",
+    inputConfPassword: "label",
+    userData: [],
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -34,46 +55,115 @@ export class register extends Component {
   }
 
   signUp = (event) => {
-    fetch("http://localhost:3100/api/user", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json",
-      },
-      body: JSON.stringify({
-        email: this.state.userEmail,
-        username: this.state.username,
-        pwd: Base64.encode(this.state.userPassword),
-        repeatPwd: Base64.encode(this.state.userPassword),
-        role: this.state.isDoctor ? "doctor" : "user",
-        avatar:
-          "/images/avatars/" +
-          this.state.username.charAt(0).toLowerCase() +
-          ".png",
-      }),
-    })
-      .then((response) => {
-        console.log(response);
-        if (response.status === 201) {
-          const user = {
-            email: this.state.userEmail,
-            username: this.state.username,
-            role: this.state.isDoctor ? "doctor" : "user",
-          };
-          localStorage.setItem("user", JSON.stringify(user));
-          this.setState({ auth: true });
-        }
+    if (this.state.userPassword.length > 5) {
+      fetch("http://localhost:3100/api/user", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify({
+          email: this.state.userEmail,
+          username: this.state.username,
+          pwd: Base64.encode(this.state.userPassword),
+          repeatPwd: Base64.encode(this.state.userConfPassword),
+          role: this.state.isDoctor ? "doctor" : "user",
+          avatar:
+            "/images/avatars/" +
+            this.state.username.charAt(0).toLowerCase() +
+            ".png",
+        }),
       })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((response) => {
+          console.log(response);
+          if (response.status === 201) {
+            const user = {
+              e: Base64.encode(this.state.userEmail),
+              u: Base64.encode(this.state.username),
+              r: this.state.isDoctor
+                ? Base64.encode("doctor")
+                : Base64.encode("user"),
+            };
+            localStorage.setItem(Base64.encode("user"), JSON.stringify(user));
+            this.setState({ auth: true });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  validateEmail = (email) => {
+    // eslint-disable-next-line
+    const expression = /(?!.*\.{2})^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([\t]*\r\n)?[\t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([\t]*\r\n)?[\t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+
+    return expression.test(String(email).toLowerCase());
+  };
+
+  validate = (event) => {
+    if (event.target.name === "username") {
+      if (!event.target.value) {
+        this.setState({
+          validateName: "Field required.",
+          inputName: "labelError",
+        });
+      } else if (event.target.value.length < 5) {
+        this.setState({
+          validateName: "Name should be at least 5 characters long.",
+          inputName: "labelError",
+        });
+      } else {
+        this.setState({ validateName: "", inputName: "label" });
+      }
+    } else if (event.target.name === "userEmail") {
+      if (!event.target.value) {
+        this.setState({
+          validateEmail: "Field required.",
+          inputEmail: "labelError",
+        });
+      } else if (!this.validateEmail(event.target.value)) {
+        this.setState({
+          validateEmail: "Enter a valid email.",
+          inputEmail: "labelError",
+        });
+      } else {
+        this.setState({ validateEmail: "", inputEmail: "label" });
+      }
+    } else if (event.target.name === "userPassword") {
+      if (!event.target.value) {
+        this.setState({
+          validatePassword: "Field required.",
+          inputPassword: "labelError",
+        });
+      } else if (event.target.value.length < 6) {
+        this.setState({
+          validatePassword: "Password should be at least 6 characters long.",
+          inputPassword: "labelError",
+        });
+      } else {
+        this.setState({ validatePassword: "", inputPassword: "label" });
+      }
+    } else if (event.target.name === "userConfPassword") {
+      if (event.target.value !== this.state.userPassword) {
+        this.setState({
+          validateConfPassword: "Passwords doesn't match.",
+          inputConfPassword: "labelError",
+        });
+      } else {
+        this.setState({ validateConfPassword: "", inputConfPassword: "label" });
+      }
+    }
   };
 
   getInputText = (event) => {
     event.preventDefault();
+
     this.setState({
       [event.target.name]: event.target.value,
     });
+
+    this.validate(event);
   };
 
   drawerToggleClickHandler = () => {
@@ -99,20 +189,131 @@ export class register extends Component {
   };
 
   responseFacebook = (response) => {
+    let email = response.email;
+    let username = uniqueNamesGenerator(customConfig);
+
     if (response.status !== "unknown") {
       console.log(response);
-      const userData = {
-        email: response.email,
-        username: response.name,
-        role: "user",
-      };
-      localStorage.setItem("user", JSON.stringify(userData));
 
-      this.setState({
-        username: response.name,
-        userEmail: response.email,
-        auth: true,
-      });
+      fetch("http://localhost:3100/api/user", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify({
+          email: response.email,
+          username: username,
+          pwd: Base64.encode("facebookpass"),
+          repeatPwd: Base64.encode("facebookpass"),
+          role: "user",
+          avatar: response.picture.data.url,
+          mediaConnected: true,
+        }),
+      })
+        .then((response) => {
+          console.log(response);
+          if (response.status === 201) {
+            const userData = {
+              e: Base64.encode(email),
+              u: Base64.encode(username),
+              r: Base64.encode("user"),
+            };
+            localStorage.setItem(
+              Base64.encode("user"),
+              JSON.stringify(userData)
+            );
+            this.setState({
+              username: username,
+              userEmail: email,
+              auth: true,
+            });
+          } else {
+            console.log("user already exists, logging in.");
+            const userData = {
+              e: Base64.encode(email),
+              u: Base64.encode(username),
+              r: Base64.encode("user"),
+            };
+            localStorage.setItem(
+              Base64.encode("user"),
+              JSON.stringify(userData)
+            );
+            this.setState({
+              username: username,
+              userEmail: email,
+              auth: true,
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  responseGoogle = (response) => {
+    console.log(response.profileObj);
+    let email = response.profileObj.email;
+    let username = uniqueNamesGenerator(customConfig);
+
+    if (!response.error) {
+      fetch("http://localhost:3100/api/user", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          username: username,
+          pwd: Base64.encode("googlepass"),
+          repeatPwd: Base64.encode("googlepass"),
+          role: "user",
+          avatar: response.profileObj.imageUrl,
+          mediaConnected: true,
+        }),
+      })
+        .then((response) => {
+          console.log(response);
+          if (response.status === 201) {
+            const userData = {
+              e: Base64.encode(email),
+              u: Base64.encode(username),
+              r: Base64.encode("user"),
+            };
+            localStorage.setItem(
+              Base64.encode("user"),
+              JSON.stringify(userData)
+            );
+
+            this.setState({
+              username: username,
+              userEmail: email,
+              auth: true,
+            });
+          } else {
+            console.log("user already exists, logging in.");
+            const userData = {
+              e: Base64.encode(email),
+              u: Base64.encode(username),
+              r: Base64.encode("user"),
+            };
+            localStorage.setItem(
+              Base64.encode("user"),
+              JSON.stringify(userData)
+            );
+
+            this.setState({
+              username: username,
+              userEmail: email,
+              auth: true,
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
@@ -140,6 +341,17 @@ export class register extends Component {
       />
     );
 
+    let glContent = (
+      <GoogleLogin
+        clientId="136742983571-78dlhp9sleetv02j1guegd8f2pn6ti45.apps.googleusercontent.com"
+        buttonText={<span>Continue with Google</span>}
+        onSuccess={this.responseGoogle}
+        onFailure={this.responseGoogle}
+        className="social-btn btn-google"
+        cookiePolicy={"single_host_origin"}
+      />
+    );
+
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
@@ -162,34 +374,49 @@ export class register extends Component {
                   label="Name"
                   name="username"
                   fnc={this.getInputText}
+                  classLabel={this.state.inputName}
                 />
+                <span className="validate-msg">{this.state.validateName}</span>
                 <Input
                   type="text"
                   label="Email"
                   name="userEmail"
                   fnc={this.getInputText}
+                  classLabel={this.state.inputEmail}
                 />
+                <span className="validate-msg">{this.state.validateEmail}</span>
                 <Input
                   type="password"
                   label="Password"
                   name="userPassword"
                   fnc={this.getInputText}
+                  classLabel={this.state.inputPassword}
                 />
+                <span className="validate-msg">
+                  {this.state.validatePassword}
+                </span>
                 <Input
                   type="password"
                   label="Type your password again"
                   name="userConfPassword"
                   fnc={this.getInputText}
+                  classLabel={this.state.inputConfPassword}
                 />
-                <label className="checkbox">
-                  Doctor
-                  <input
-                    type="checkbox"
-                    name="isDoctor"
-                    onChange={(e) => this.checkboxHandle(e)}
-                  />
-                  <span className="checkmark"></span>
-                </label>
+                <span className="validate-msg">
+                  {this.state.validateConfPassword}
+                </span>
+                <div className="checkbox-input">
+                  <label className="checkbox">
+                    Doctor
+                    <input
+                      type="checkbox"
+                      name="isDoctor"
+                      onChange={(e) => this.checkboxHandle(e)}
+                    />
+                    <span className="checkmark"></span>
+                  </label>
+                </div>
+
                 <button className="signup-btn" onClick={this.signUp}>
                   Sign Up
                 </button>
@@ -205,15 +432,7 @@ export class register extends Component {
               <div className="signup-social">
                 {this.renderRedirect()}
                 <div className="btn-container">{fbContent}</div>
-                <div className="btn-container">
-                  <button className="social-btn btn-google">
-                    <img
-                      alt="img"
-                      src="https://static.parastorage.com/services/login-statics/1.742.0/images/google-logo.svg"
-                    ></img>
-                    <span>Continue with Google</span>
-                  </button>
-                </div>
+                <div className="btn-container">{glContent}</div>
               </div>
             </Row>
           </div>

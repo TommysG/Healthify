@@ -23,7 +23,8 @@
   float: right;
 }
 
-.createBtn a, .createBtn a:hover {
+.createBtn a,
+.createBtn a:hover {
   color: white;
 }
 
@@ -56,6 +57,7 @@ ul.breadcrumb li {
   background-color: #6c757d;
   border: none;
   color: white;
+  margin-bottom: 10px;
 }
 
 .active {
@@ -66,11 +68,12 @@ ul.breadcrumb li {
 .page-button:focus {
   border: none;
   outline: 0;
-  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15)
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .home-container, .post-container {
+  .home-container,
+  .post-container {
     max-width: 970px;
   }
 }

@@ -21,7 +21,7 @@ export const NewsView = ({ title, category, image, content }) => {
       </div>
       <div className="news-details top-post-details view-news-details">
         <ul className="meta">
-          <li>Tommys Gian</li>
+          <li>Healthify team</li>
           <li>03 April, 2018</li>
         </ul>
       </div>

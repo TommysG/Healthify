@@ -1,71 +1,85 @@
 .search {
-	border: none;
-	box-shadow: none;
-	background-color: #f3f5f9;
-	outline: none;
-	color: #363838;
-	font-size: 14px;
-	padding: 8px 19px;
-	height: 38px;
-	transition: 0.3s;
-	width: 35%;
-	float: right;
+  border: none;
+  box-shadow: none;
+  background-color: #f3f5f9;
+  outline: none;
+  color: #646464;
+  font-size: 14px;
+  padding: 8px 19px;
+  height: 38px;
+  transition: 0.3s;
+  width: 35%;
+  float: right;
 }
 
 .search::placeholder {
-	color: #93969a;
-	font-size: 18px;
+  color: #93969a;
+  font-size: 16px;
+}
+
+.search-button:focus {
+  outline: 0;
+}
+
+.search-button:active {
+  background-color: #4e545a;
+  border: 1px solid #3d4146;
 }
 
 .inputWithIcon input[type="text"] {
-	padding-left: 50px;
+  padding-left: 50px;
 }
 
 .inputWithIcon {
-	position: relative;
-	height: 100%;
+  position: relative;
+  height: 100%;
 }
 
 .search-button .search-icon {
-	color: white;
-	padding: 4px;
-	font-size: 18px;
+  color: white;
+  padding: 4px;
+  font-size: 18px;
 }
 
 .search-box {
-	margin-top: 15px;
+  margin-top: 15px;
 }
 
 /* ________________________ */
 
 .filter-search {
-	display: flex;
-	float: right;
-	margin-top: 17px;
+  display: flex;
+  float: right;
+  margin-top: 17px;
 }
 
 .search-button {
-	border: solid 1px #6c757d;
-	box-shadow: none;
-	background-color: #6c757d;
-	color: #ffffff;
-	padding: 7px 8px;
-	text-align: center;
-	outline: none;
-	float: right;
-	padding-bottom: 3.5px;
+  border: solid 1px #6c757d;
+  box-shadow: none;
+  background-color: #6c757d;
+  color: #ffffff;
+  padding: 7px 8px;
+  text-align: center;
+  outline: none;
+  float: right;
+  padding-bottom: 3.5px;
+  transition: 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
 }
 
 .filter-button {
-	background-color: #6c757d;
-	border-radius: 20px 0px 0px 20px;
+  background-color: #6c757d;
+  border-radius: 20px 0px 0px 20px;
 }
 
 .filter-button .dropdown-toggle {
-	color: white;
+  color: white;
 }
 
 .search-field {
-	outline: none;
-	padding-left: 20px;
+  outline: none;
+  padding-left: 20px;
 }

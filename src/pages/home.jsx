@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Base64 } from "js-base64";
 
 const sortOptions = ["Most recent", "Most liked", "Most replied"];
 
@@ -29,8 +30,8 @@ export class home extends Component {
 
     this.state = {
       sideDrawerOpen: false,
-      user: localStorage.getItem("user")
-        ? JSON.parse(localStorage.getItem("user"))
+      user: localStorage.getItem(Base64.encode("user"))
+        ? JSON.parse(localStorage.getItem(Base64.encode("user")))
         : [],
       items: [],
       allItems: [],
@@ -46,10 +47,8 @@ export class home extends Component {
       postsPerPage: 5,
       postUpvotes: 0,
       sortBy: sortOptions[0],
-      pollQuestion: 0,
-      answers: [],
-      pollVotes: [],
-      pollLoaded: false,
+      searchText: "",
+      searching: false,
     };
   }
 
@@ -67,16 +66,17 @@ export class home extends Component {
   showPosts = () => {
     let url1 = "http://localhost:3100/api/posts";
     let url2 =
-      "http://localhost:3100/api/userPostsVotes/" + this.state.user.email;
+      "http://localhost:3100/api/userPostsVotes/" +
+      Base64.decode(this.state.user.e);
 
     Promise.all([fetch(url1), fetch(url2)])
       .then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json()]))
       .then(([data1, data2]) => {
-        console.log(data1);
         this.setState({
           items: this.sortPosts(data1, this.state.sortBy),
           allItems: this.sortPosts(data1, this.state.sortBy),
           userPostsVoted: data2,
+          searching: false,
         });
         setTimeout(() => {
           this.setState({ isLoaded: true });
@@ -91,39 +91,14 @@ export class home extends Component {
       });
   };
 
-  notify = () => {
-    toast.info(
-      <span>
-        <i
-          className="fa fa-check"
-          style={{ paddingRight: "20px" }}
-          aria-hidden="true"
-        ></i>
-        Post successfully created
-      </span>,
-      {
-        position: "top-right",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      }
-    );
-  };
-
   componentDidMount() {
-    if (this.props.location.state) {
-      console.log("redirected from somewhere");
-      if (this.props.location.state.from === "createpost") {
-        console.log("redirected from createpost");
-        this.notify();
-        this.props.history.replace({ pathname: "/home", from: "home" });
-      }
-    }
-
-    this.loadPoll();
+    // if (this.props.location.state) {
+    //   console.log("redirected from somewhere");
+    //   if (this.props.location.state.from === "createpost") {
+    //     console.log("redirected from createpost");
+    //     this.props.history.replace({ pathname: "/home", from: "home" });
+    //   }
+    // }
 
     if (this.state.selectedCategory === "All") {
       this.showPosts();
@@ -137,11 +112,16 @@ export class home extends Component {
   componentDidUpdate(prevProps, prevState) {
     //check if number of upvotes changed
     if (prevState.postUpvotes !== this.state.postUpvotes) {
-      console.log("upvotes before: " + prevState.postUpvotes);
-      console.log("upvotes now: " + this.state.postUpvotes);
-      //this.showPosts(); // fetching again all the posts
-      const catCode = this.categoryCode(this.state.selectedCategory);
-      catCode !== -1 ? this.loadPostPerCategory(catCode) : this.showPosts();
+      if (this.state.searching) {
+        console.log("load searched posts");
+        this.searchPosts();
+      } else {
+        console.log("upvotes before: " + prevState.postUpvotes);
+        console.log("upvotes now: " + this.state.postUpvotes);
+        //this.showPosts(); // fetching again all the posts
+        const catCode = this.categoryCode(this.state.selectedCategory);
+        catCode !== -1 ? this.loadPostPerCategory(catCode) : this.showPosts();
+      }
     }
   }
 
@@ -168,7 +148,7 @@ export class home extends Component {
 
   //handles upvote on posts
   handleUpvote = (e) => {
-    console.log("upvoting as " + this.state.user.email);
+    console.log("upvoting as " + Base64.decode(this.state.user.e));
     console.log(e.target.id);
     fetch("http://localhost:3100/api/upvotePost", {
       method: "POST",
@@ -177,7 +157,7 @@ export class home extends Component {
         accept: "application/json",
       },
       body: JSON.stringify({
-        user_id: this.state.user.email,
+        user_id: Base64.decode(this.state.user.e),
         post_id: e.target.id,
       }),
     })
@@ -188,6 +168,28 @@ export class home extends Component {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  notify = () => {
+    toast.success(
+      <span>
+        <i
+          className="fa fa-check"
+          style={{ paddingRight: "20px" }}
+          aria-hidden="true"
+        ></i>
+        Post successfully created
+      </span>,
+      {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
   };
 
   //handle click on categories
@@ -238,7 +240,8 @@ export class home extends Component {
   loadPostPerCategory = (categoryCode) => {
     let url1 = "http://localhost:3100/api/postsPerCategory/" + categoryCode;
     let url2 =
-      "http://localhost:3100/api/userPostsVotes/" + this.state.user.email;
+      "http://localhost:3100/api/userPostsVotes/" +
+      Base64.decode(this.state.user.e);
     let url3 = "http://localhost:3100/api/posts";
 
     Promise.all([fetch(url1), fetch(url2), fetch(url3)])
@@ -252,6 +255,7 @@ export class home extends Component {
           userPostsVoted: data2,
           allItems: this.sortPosts(data3, this.state.sortBy),
           isLoaded: true,
+          searching: false,
         });
       })
       .catch((err) => {
@@ -263,36 +267,55 @@ export class home extends Component {
       });
   };
 
-  loadPoll = () => {
-    let url1 = "http://localhost:3100/api/pollVotes/8";
-    let url2 = "http://localhost:3100/api/poll/8";
+  handleSearch = (event) => {
+    event.preventDefault();
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  searchPosts = () => {
+    let url1 = "http://localhost:3100/api/posts";
+    let url2 =
+      "http://localhost:3100/api/userPostsVotes/" +
+      Base64.decode(this.state.user.e);
+
     Promise.all([fetch(url1), fetch(url2)])
       .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
       .then(([data1, data2]) => {
+        let searchedItems = [];
+        data1.map((item) => {
+          if (item.title.includes(this.state.searchText)) {
+            searchedItems.push(item);
+          }
+          return null;
+        });
         this.setState({
-          pollVotes: data1,
-          pollQuestion: data2.poll.poll,
-          answers: data2.poll.answers,
-          pollLoaded: true,
+          items: this.sortPosts(searchedItems, this.state.sortBy),
+          allItems: this.sortPosts(searchedItems, this.state.sortBy),
+          userPostsVoted: data2,
+          searching: true,
         });
       })
       .catch((err) => {
         console.log(err);
+        this.setState({
+          isLoaded: true,
+          error: err,
+        });
       });
+  };
+
+  sumbitSearch = (event) => {
+    event.preventDefault();
+    this.setState({ selectedCategory: "All" });
+    sessionStorage.setItem("selectedCategory", "All");
+    this.searchPosts();
   };
 
   render() {
     let backdrop;
-    const {
-      isLoaded,
-      error,
-      items,
-      userPostsVoted,
-      pollQuestion,
-      answers,
-      pollLoaded,
-      pollVotes,
-    } = this.state;
+    const { isLoaded, error, items, userPostsVoted } = this.state;
     const { currentPage, postsPerPage } = this.state;
 
     // Get current posts
@@ -314,7 +337,11 @@ export class home extends Component {
 
     return (
       <Container className="home" fluid={true}>
-        <HomeNav drawerClickHandler={this.drawerToggleClickHandler}></HomeNav>
+        <HomeNav
+          drawerClickHandler={this.drawerToggleClickHandler}
+          handleSearch={this.handleSearch}
+          sumbitSearch={this.sumbitSearch}
+        ></HomeNav>
         <ToastContainer
           position="top-right"
           autoClose={4000}
@@ -326,7 +353,6 @@ export class home extends Component {
           draggable
           pauseOnHover
         />
-        <ToastContainer />
         <SideDrawerHome show={this.state.sideDrawerOpen} />
         {backdrop}
         <Container className="post-container">
@@ -369,12 +395,7 @@ export class home extends Component {
                 selected={this.state.selectedCategory}
                 categoryClick={this.categoryClick}
               ></SideBlock>
-              <Poll
-                question={pollQuestion}
-                answers={answers}
-                pollVotes={pollVotes}
-                pollLoaded={pollLoaded}
-              />
+              <Poll />
             </Col>
           </Row>
         </Container>

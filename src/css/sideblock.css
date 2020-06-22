@@ -6,13 +6,13 @@
   position: relative;
 }
 
-.side-block span:hover {
+.side-block .categories span:hover {
   text-decoration: underline;
   color: cornflowerblue;
   cursor: pointer;
 }
 
-.side-block span:hover + span {
+.side-block .categories span:hover+span {
   background-color: cornflowerblue;
 }
 
@@ -43,7 +43,7 @@
   color: cornflowerblue;
 }
 
-.side-block .selected + span {
+.side-block .selected+span {
   background-color: cornflowerblue !important;
 }
 
@@ -92,11 +92,13 @@ ul.list .badge {
 }
 
 /*poll of the week*/
+
 .side-block .block-poll {
   font-size: 14px;
   color: #363838;
   font-family: "Open Sans Light", sans-serif;
 }
+
 .side-block .block-poll {
   padding: 20px;
 }
@@ -153,15 +155,15 @@ td.chbox {
   display: none;
 }
 
-.poll input[type="radio"]:checked + label {
-  background: url(http://forum.azyrusthemes.com/images/radio.jpg) -31px 0 no-repeat;
+.poll input[type="radio"]:checked+label {
+  background: url(/images/radio.jpg) -31px 0 no-repeat;
 }
 
-.poll input[type="radio"] + label {
+.poll input[type="radio"]+label {
   display: inline-block;
   width: 31px;
   height: 31px;
-  background: url(http://forum.azyrusthemes.com/images/radio.jpg) 0 0 no-repeat;
+  background: url(/images/radio.jpg) 0 0 no-repeat;
   vertical-align: middle;
   cursor: pointer;
 }
@@ -169,4 +171,50 @@ td.chbox {
 .poll label {
   margin-bottom: 0;
   margin-left: 20px;
+}
+
+.progress-div .label1 {
+  position: absolute;
+  top: 120px;
+  padding-left: 10px;
+  color: white;
+}
+
+.progress-div .label2 {
+  position: absolute;
+  top: 173px;
+  padding-left: 10px;
+  color: white;
+}
+
+.progress-div .label3 {
+  position: absolute;
+  top: 225px;
+  padding-left: 10px;
+  color: white;
+}
+
+.colorLabel {
+  color: #464242!important;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 781px) {
+  .progress-div .label1 {
+    position: absolute;
+    top: 139px;
+    padding-left: 10px;
+    color: white;
+  }
+  .progress-div .label2 {
+    position: absolute;
+    top: 193px;
+    padding-left: 10px;
+    color: white;
+  }
+  .progress-div .label3 {
+    position: absolute;
+    top: 245px;
+    padding-left: 10px;
+    color: white;
+  }
 }

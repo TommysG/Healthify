@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/homenav.css";
 import Search from "../components/Search";
 import Container from "react-bootstrap/Container";
@@ -8,12 +8,58 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { Link, NavLink } from "react-router-dom";
+import { Base64 } from "js-base64";
 
 const logout = (e) => {
-  localStorage.removeItem("user");
+  localStorage.removeItem(Base64.encode("user"));
 };
 
 const HomeNav = (props) => {
+  let user = JSON.parse(localStorage.getItem(Base64.encode("user")));
+  const [userAvatar, setUserAvatar] = useState("");
+  const [username, setUsername] = useState("");
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    if (user) {
+      const url = "http://localhost:3100/api/user/" + Base64.decode(user.e);
+
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          accept: "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          setUserAvatar(response.avatar);
+          setUsername(response.username);
+          setLoaded(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  });
+
+  const loadAvatar = () => {
+    if (loaded) {
+      return (
+        <div style={{ display: "flex" }}>
+          <span className="nav-username">{username}</span>
+          <img
+            className="profile-img"
+            src={userAvatar}
+            alt="avatar"
+            height="37px"
+          ></img>
+        </div>
+      );
+    } else {
+      return <div></div>;
+    }
+  };
+
   return (
     <div>
       <img className="nav-image" src="/images/navimage.jpg" alt="logo"></img>
@@ -31,24 +77,22 @@ const HomeNav = (props) => {
                 </a>
               </Col>
               <nav className="topnav-home">
-                <NavLink exact to="/news">
+                <NavLink exact to="/home/news">
                   News
                 </NavLink>
                 <NavLink exact to="/home">
                   Forum
                 </NavLink>
               </nav>
-              <Search></Search>
+              <Search
+                handleSearch={props.handleSearch}
+                sumbitSearch={props.sumbitSearch}
+              ></Search>
             </Col>
             <Col lg={4} md={4} className="second-container">
               <ButtonToolbar className="btn-toolbar btn-container profile-container">
-                <i className="fas fa-bell notif-ico"></i>
-                <img
-                  className="profile-img"
-                  src="http://forum.azyrusthemes.com/images/avatar.jpg"
-                  alt="avatar"
-                  height="37px"
-                ></img>
+                {loadAvatar()}
+
                 <DropdownButton className="profile-button" title={""}>
                   <DropdownItem eventKey="1" as={Link} to="/home/settings">
                     Settings

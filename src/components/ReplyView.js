@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "../css/postView.css";
+import { Base64 } from "js-base64";
 
 const ReplyView = (props) => {
   const [show, setShow] = useState(false);
@@ -9,7 +10,7 @@ const ReplyView = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem(Base64.encode("user")));
 
   let votes = props.votes;
   let replyLiked = ``,
@@ -17,7 +18,7 @@ const ReplyView = (props) => {
   let fromDoctor = ``;
 
   let visible = ``;
-  if (user.email !== props.user) {
+  if (Base64.decode(user.e) !== props.user) {
     visible = `invisible`;
   }
 

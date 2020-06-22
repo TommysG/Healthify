@@ -15,12 +15,13 @@ import Spinner from "react-bootstrap/Spinner";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Base64 } from "js-base64";
 
 export class viewPost extends Component {
   state = {
     sideDrawerOpen: false,
-    user: localStorage.getItem("user")
-      ? JSON.parse(localStorage.getItem("user"))
+    user: localStorage.getItem(Base64.encode("user"))
+      ? JSON.parse(localStorage.getItem(Base64.encode("user")))
       : [],
     post: [],
     postReplies: [],
@@ -36,6 +37,7 @@ export class viewPost extends Component {
     postsPerPage: 5,
     redirect: false,
     replyChangeText: "",
+    userAvatar: "",
   };
 
   drawerToggleClickHandler = () => {
@@ -149,9 +151,10 @@ export class viewPost extends Component {
       "http://localhost:3100/api/postReplies/" + this.props.match.params.id;
 
     const url3 =
-      "http://localhost:3100/api/userPostsVotes/" + this.state.user.email;
+      "http://localhost:3100/api/userPostsVotes/" +
+      Base64.decode(this.state.user.e);
 
-    const user = this.state.user.email;
+    const user = Base64.decode(this.state.user.e);
     const post_id = this.props.match.params.id;
     const url4 =
       "http://localhost:3100/api/userPostVotes?user_id=" +
@@ -159,16 +162,32 @@ export class viewPost extends Component {
       "&post_id=" +
       post_id;
 
-    Promise.all([fetch(url1), fetch(url2), fetch(url3), fetch(url4)])
-      .then(([res1, res2, res3, res4]) =>
-        Promise.all([res1.json(), res2.json(), res3.json(), res4.json()])
+    const url5 =
+      "http://localhost:3100/api/user/" + Base64.decode(this.state.user.e);
+
+    Promise.all([
+      fetch(url1),
+      fetch(url2),
+      fetch(url3),
+      fetch(url4),
+      fetch(url5),
+    ])
+      .then(([res1, res2, res3, res4, res5]) =>
+        Promise.all([
+          res1.json(),
+          res2.json(),
+          res3.json(),
+          res4.json(),
+          res5.json(),
+        ])
       )
-      .then(([data1, data2, data3, data4]) => {
+      .then(([data1, data2, data3, data4, data5]) => {
         this.setState({
           post: data1,
           postReplies: data2,
           userPostVotes: data3,
           userRepliesVotes: data4,
+          userAvatar: data5.avatar,
         });
         setTimeout(() => {
           this.setState({ isLoaded: true });
@@ -187,7 +206,7 @@ export class viewPost extends Component {
     const urlReplies =
       "http://localhost:3100/api/postReplies/" + this.props.match.params.id;
 
-    const user = this.state.user.email;
+    const user = Base64.decode(this.state.user.e);
     const post_id = this.props.match.params.id;
     const urlVotes =
       "http://localhost:3100/api/userPostVotes?user_id=" +
@@ -209,7 +228,8 @@ export class viewPost extends Component {
   loadPost() {
     let url1 = "http://localhost:3100/api/post/" + this.props.match.params.id;
     let url2 =
-      "http://localhost:3100/api/userPostsVotes/" + this.state.user.email;
+      "http://localhost:3100/api/userPostsVotes/" +
+      Base64.decode(this.state.user.e);
 
     Promise.all([fetch(url1), fetch(url2)])
       .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
@@ -263,7 +283,7 @@ export class viewPost extends Component {
         accept: "application/json",
       },
       body: JSON.stringify({
-        user_id: this.state.user.email,
+        user_id: Base64.decode(this.state.user.e),
         post_id: this.props.match.params.id,
         comment: this.state.replyText,
       }),
@@ -290,7 +310,7 @@ export class viewPost extends Component {
         accept: "application/json",
       },
       body: JSON.stringify({
-        user_id: this.state.user.email,
+        user_id: Base64.decode(this.state.user.e),
         post_id: post,
       }),
     })
@@ -310,7 +330,7 @@ export class viewPost extends Component {
         accept: "application/json",
       },
       body: JSON.stringify({
-        user_id: this.state.user.email,
+        user_id: Base64.decode(this.state.user.e),
         post_id: post,
       }),
     })
@@ -331,7 +351,7 @@ export class viewPost extends Component {
         accept: "application/json",
       },
       body: JSON.stringify({
-        user_id: this.state.user.email,
+        user_id: Base64.decode(this.state.user.e),
         reply_id: reply,
       }),
     })
@@ -353,7 +373,7 @@ export class viewPost extends Component {
         accept: "application/json",
       },
       body: JSON.stringify({
-        user_id: this.state.user.email,
+        user_id: Base64.decode(this.state.user.e),
         reply_id: reply,
       }),
     })
@@ -430,6 +450,7 @@ export class viewPost extends Component {
     const postReplies = this.state.postReplies;
     const userPostVotes = this.state.userPostVotes;
     const userRepliesVotes = this.state.userRepliesVotes;
+    const userAvatar = this.state.userAvatar;
 
     const { currentPage, postsPerPage } = this.state;
 
@@ -524,6 +545,8 @@ export class viewPost extends Component {
                 val={this.state.replyText}
                 replyChange={this.inputHandleChange}
                 replyClick={this.handleReplyClick}
+                avatar={userAvatar}
+                isLoaded={isLoaded}
               />
               <ToastContainer
                 position="top-right"

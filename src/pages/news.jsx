@@ -115,7 +115,7 @@ export class news extends Component {
           category={item.category}
           body={item.body}
           title={
-            <Link to={`/news/viewnews/${item.post_id}`}>{item.title}</Link>
+            <Link to={`/home/news/viewnews/${item.post_id}`}>{item.title}</Link>
           }
         ></CardNews>
       ));
@@ -127,7 +127,7 @@ export class news extends Component {
           category={news[0].category}
           date={this.dateConvertion(news[0].createdAt)}
           title={
-            <Link to={`/news/viewnews/${news[0].post_id}`}>
+            <Link to={`/home/news/viewnews/${news[0].post_id}`}>
               {news[0].title}
             </Link>
           }
@@ -141,7 +141,7 @@ export class news extends Component {
           category={news[1].category}
           date={this.dateConvertion(news[1].createdAt)}
           title={
-            <Link to={`/news/viewnews/${news[1].post_id}`}>
+            <Link to={`/home/news/viewnews/${news[1].post_id}`}>
               {news[1].title}
             </Link>
           }
@@ -155,7 +155,7 @@ export class news extends Component {
           category={news[2].category}
           date={this.dateConvertion(news[2].createdAt)}
           title={
-            <Link to={`/news/viewnews/${news[2].post_id}`}>
+            <Link to={`/home/news/viewnews/${news[2].post_id}`}>
               {news[2].title}
             </Link>
           }

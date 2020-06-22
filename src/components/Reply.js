@@ -4,23 +4,24 @@ import "../css/reply.css";
 import { Button } from "react-bootstrap";
 
 const Reply = (props) => {
+  if (!props.isLoaded) {
+    return <div></div>;
+  }
+
   return (
     <div className="post">
       <form action="#" className="form-reply" method="post">
         <div className="topwrap">
           <div className="user-info left">
             <div className="avatar">
-              <img
-                src="http://forum.azyrusthemes.com/images/avatar.jpg"
-                alt="avatar"
-              ></img>
+              <img src={props.avatar} alt="avatar"></img>
             </div>
           </div>
           <div className="post-text left">
             <div className="textwraper">
               <div className="postreply">Post a Reply</div>
               <textarea
-                name= {props.name}
+                name={props.name}
                 id="reply"
                 placeholder="Type your message here"
                 value={props.val}

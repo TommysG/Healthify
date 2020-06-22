@@ -48,6 +48,12 @@ export const Posts = ({ posts, postsVoted, loading, error, handleUpvote }) => {
         />
       </div>
     );
+  } else if (posts.length === 0) {
+    return (
+      <div style={{ textAlign: "center", paddingTop: "100px" }}>
+        <span>No posts here.</span>
+      </div>
+    );
   } else {
     postItems = posts.map((item) => (
       <Post

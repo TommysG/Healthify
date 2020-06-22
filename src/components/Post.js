@@ -26,7 +26,7 @@ const Post = ({
       if (post.vote === 1) {
         postVoted = `fas fa-heart tapped`;
       } else if (post.vote === -1) {
-        postVoted = `fas fa-heart-broken`;
+        postVoted = `fas fa-heart-broken tapped`;
       } else {
         postVoted = `fas fa-heart`;
       }

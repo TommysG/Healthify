@@ -1,18 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/search.css";
-//import DropdownButton from "react-bootstrap/DropdownButton";
-//import DropdownItem from "react-bootstrap/DropdownItem";
+import { Redirect } from "react-router-dom";
 
-const Search = () => {
+const Search = (props) => {
+  const [redirect, setRedirect] = useState(false);
+  const renderRedirect = () => {
+    if (redirect) {
+      return <Redirect to="/home"></Redirect>;
+    }
+  };
   return (
     <div className="search-box">
-      {/*<DropdownButton className="filter-button" title={"Posts"}>
-				<DropdownItem eventKey="1">Articles</DropdownItem>
-	</DropdownButton>*/}
-      <button type="button" className="search-button">
-        <i className="fa fa-search search-icon"></i>
+      {renderRedirect()}
+      <button
+        type="button"
+        className="search-button"
+        onClick={
+          props.sumbitSearch
+            ? props.sumbitSearch
+            : () => {
+                setRedirect(true);
+              }
+        }
+      >
+        <i
+          className={
+            props.handleSearch
+              ? "fa fa-search search-icon"
+              : "fa fa-home search-icon"
+          }
+        ></i>
       </button>
-      <input className="search" placeholder="Searching"></input>
+      <input
+        className="search"
+        placeholder={props.handleSearch ? "Search" : "Nothing to search here."}
+        name="searchText"
+        onChange={props.handleSearch}
+      ></input>
     </div>
   );
 };

@@ -100,6 +100,10 @@ label {
   background-color: #4285f4;
 }
 
+.btn-google-login span {
+  margin-left: 14px !important;
+}
+
 .btn-google img {
   padding: 13px !important;
 }
@@ -129,6 +133,7 @@ label {
 
 .login-btn {
   color: #3899ec;
+  margin-top: 15px;
   border: 1px solid #3899ec;
   border-radius: 20px;
   background-color: transparent;

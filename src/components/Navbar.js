@@ -8,7 +8,9 @@ const Navbar = (props) => {
   return (
     <div>
       <nav className="topnav">
-        <label className="logo">Healthify</label>
+        <a className="logo" href="/">
+          Healthify
+        </a>
         <div className="nav-buttons">
           <NavLink exact to="/login">
             Login

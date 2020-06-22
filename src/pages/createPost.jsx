@@ -8,6 +8,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import BackdropHome from "../components/Backdrop/BackdropHome";
 import SideDrawerHome from "../components/SideDrawer/SideDrawerHome";
+import { Poll } from "../components/Poll";
+import { ToastContainer } from "react-toastify";
 
 import { Container } from "react-bootstrap";
 
@@ -33,6 +35,7 @@ export class createPost extends Component {
     }
     return (
       <div className="mainView">
+        <ToastContainer></ToastContainer>
         <HomeNav drawerClickHandler={this.drawerToggleClickHandler}></HomeNav>
         <SideDrawerHome show={this.state.sideDrawerOpen} />
         {backdrop}
@@ -43,6 +46,7 @@ export class createPost extends Component {
             </Col>
             <Col lg={4} md={4}>
               <SideBlock></SideBlock>
+              <Poll></Poll>
             </Col>
           </Row>
         </Container>

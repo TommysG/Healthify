@@ -35,6 +35,11 @@ export class settings extends Component {
     error: "",
     redirect: false,
     show: false,
+    settingsStatus: "",
+    usernameValidate: "",
+    oldPasswordValidate: "",
+    newPasswordValidate: "",
+    confirmPasswordValidate: "",
   };
 
   drawerToggleClickHandler = () => {
@@ -65,8 +70,8 @@ export class settings extends Component {
   }
 
   loadUser = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    fetch("http://localhost:3100/api/user/" + user.email, {
+    const user = JSON.parse(localStorage.getItem(Base64.encode("user")));
+    fetch("http://localhost:3100/api/user/" + Base64.decode(user.e), {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -92,9 +97,10 @@ export class settings extends Component {
   };
 
   myPosts = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    let url1 = "http://localhost:3100/api/userPosts/" + user.email;
-    let url2 = "http://localhost:3100/api/userPostsVotes/" + user.email;
+    const user = JSON.parse(localStorage.getItem(Base64.encode("user")));
+    let url1 = "http://localhost:3100/api/userPosts/" + Base64.decode(user.e);
+    let url2 =
+      "http://localhost:3100/api/userPostsVotes/" + Base64.decode(user.e);
 
     Promise.all([fetch(url1), fetch(url2)])
       .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
@@ -146,10 +152,50 @@ export class settings extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
+
+    if (event.target.name === "username") {
+      if (!event.target.value) {
+        this.setState({ usernameValidate: "Username required." });
+      } else if (event.target.value.length < 5) {
+        this.setState({
+          usernameValidate: "Username should be at least 5 characters long.",
+        });
+      } else {
+        this.setState({ usernameValidate: "" });
+      }
+    } else if (event.target.name === "oldPassword") {
+      if (!event.target.value) {
+        this.setState({ oldPasswordValidate: "Field required." });
+      } else if (event.target.value.length < 6) {
+        this.setState({
+          oldPasswordValidate: "Password should be at least 6 characters long.",
+        });
+      } else {
+        this.setState({ oldPasswordValidate: "" });
+      }
+    } else if (event.target.name === "newPassword") {
+      if (!event.target.value) {
+        this.setState({ newPasswordValidate: "Field required." });
+      } else if (event.target.value.length < 6) {
+        this.setState({
+          newPasswordValidate: "Password should be at least 6 characters long.",
+        });
+      } else {
+        this.setState({ newPasswordValidate: "" });
+      }
+    } else if (event.target.name === "repeatPassword") {
+      if (!event.target.value) {
+        this.setState({ confirmPasswordValidate: "Field required." });
+      } else if (event.target.value !== this.state.newPassword) {
+        this.setState({ confirmPasswordValidate: "Password doesn't match." });
+      } else {
+        this.setState({ confirmPasswordValidate: "" });
+      }
+    }
   };
 
   saveChanges = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem(Base64.encode("user")));
     fetch("http://localhost:3100/api/user", {
       method: "PUT",
       headers: {
@@ -157,7 +203,7 @@ export class settings extends Component {
         accept: "application/json",
       },
       body: JSON.stringify({
-        email: user.email,
+        email: Base64.decode(user.e),
         username: this.state.username,
         name: this.state.firstName,
         surname: this.state.lastName,
@@ -167,6 +213,13 @@ export class settings extends Component {
     })
       .then((response) => {
         console.log(response);
+        if (response.status === 200) {
+          this.setState({ settingsStatus: "Profile successfully updated" });
+        } else {
+          this.setState({
+            settingsStatus: "Error updating profile. Username may be exists.",
+          });
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -180,7 +233,7 @@ export class settings extends Component {
           accept: "application/json",
         },
         body: JSON.stringify({
-          email: user.email,
+          email: Base64.decode(user.e),
           oldPwd: Base64.encode(this.state.oldPassword),
           pwd: Base64.encode(this.state.newPassword),
           repeatPwd: Base64.encode(this.state.repeatPassword),
@@ -206,8 +259,8 @@ export class settings extends Component {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
+          localStorage.removeItem(Base64.encode("user"));
           this.setState({ redirect: true });
-          localStorage.removeItem("user");
         }
       })
       .catch((err) => {
@@ -219,7 +272,6 @@ export class settings extends Component {
     if (this.state.redirect) {
       return <Redirect to="/login"></Redirect>;
     }
-    return null;
   }
 
   checkboxHandle = (e) => {
@@ -259,6 +311,9 @@ export class settings extends Component {
               name="username"
               onChange={this.handleInputChange}
             />
+            <span style={{ color: "rgb(255, 53, 71)" }}>
+              {this.state.usernameValidate}
+            </span>
           </div>
 
           <div className="name-inputs">
@@ -319,6 +374,9 @@ export class settings extends Component {
               name="oldPassword"
               onChange={this.handleInputChange}
             />
+            <span style={{ color: "rgb(255, 53, 71)" }}>
+              {this.state.oldPasswordValidate}
+            </span>
           </div>
 
           <div className="controls">
@@ -330,6 +388,9 @@ export class settings extends Component {
               name="newPassword"
               onChange={this.handleInputChange}
             />
+            <span style={{ color: "rgb(255, 53, 71)" }}>
+              {this.state.newPasswordValidate}
+            </span>
           </div>
 
           <div className="controls">
@@ -341,6 +402,9 @@ export class settings extends Component {
               name="repeatPassword"
               onChange={this.handleInputChange}
             />
+            <span style={{ color: "rgb(255, 53, 71)" }}>
+              {this.state.confirmPasswordValidate}
+            </span>
           </div>
         </Container>
       );
@@ -375,6 +439,15 @@ export class settings extends Component {
     const buttons = () => {
       return (
         <div>
+          <span
+            style={
+              this.state.settingsStatus.charAt(0) === "E"
+                ? { color: "rgb(255, 53, 71)" }
+                : { color: "green" }
+            }
+          >
+            {this.state.settingsStatus}
+          </span>
           <Button
             variant="secondary"
             style={{ float: "right", marginBottom: "50px" }}

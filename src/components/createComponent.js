@@ -5,6 +5,8 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { Redirect } from "react-router-dom";
+import { Base64 } from "js-base64";
+import { toast } from "react-toastify";
 
 const categories = [
   "Men's health",
@@ -23,7 +25,30 @@ class CreatePostComponent extends Component {
       body: null,
       category: categories[0],
       redirect: false,
+      userAvatar: "",
+      avatarLoaded: false,
+      titleInput: "",
+      BodyInput: "",
     };
+  }
+
+  componentDidMount() {
+    const user = JSON.parse(localStorage.getItem(Base64.encode("user")));
+
+    fetch("http://localhost:3100/api/user/" + Base64.decode(user.e), {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        this.setState({ userAvatar: response.avatar, avatarLoaded: true });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   handleSelect(eventKey, event) {
@@ -39,21 +64,42 @@ class CreatePostComponent extends Component {
     this.setState({
       redirect: true,
     });
+    this.notify();
+  };
+
+  notify = () => {
+    toast.info(
+      <span>
+        <i
+          className="fa fa-check"
+          style={{ paddingRight: "20px" }}
+          aria-hidden="true"
+        ></i>
+        Post successfully created
+      </span>,
+      {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
   };
 
   renderRedirect = () => {
     if (this.state.redirect) {
-      return (
-        <Redirect to={{ pathname: "/home", state: { from: "createpost" } }} />
-      );
+      return <Redirect to="/home" />;
     }
   };
 
   handleClick = (event) => {
     event.preventDefault();
     const { title, body, category } = this.state;
-    const user = JSON.parse(localStorage.getItem("user"));
-    console.log(user.userEmail);
+    const user = JSON.parse(localStorage.getItem(Base64.encode("user")));
+    //console.log(user.e);
 
     if (title && body && category) {
       fetch("http://localhost:3100/api/post", {
@@ -63,7 +109,7 @@ class CreatePostComponent extends Component {
           accept: "application/json",
         },
         body: JSON.stringify({
-          user_id: user.email,
+          user_id: Base64.decode(user.e),
           title: this.apostropheFix(title),
           body: this.apostropheFix(body),
           category: this.apostropheFix(category),
@@ -89,20 +135,47 @@ class CreatePostComponent extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
+
+    if (event.target.name === "title") {
+      if (!event.target.value) {
+        this.setState({ titleInput: "Field required." });
+      } else if (event.target.value.length < 5) {
+        this.setState({
+          titleInput: "Title should be at least 5 characters long.",
+        });
+      } else {
+        this.setState({ titleInput: "" });
+      }
+    } else if (event.target.name === "body") {
+      if (!event.target.value) {
+        this.setState({ BodyInput: "Field required." });
+      } else if (event.target.value.length < 5) {
+        this.setState({
+          BodyInput: "Body should be at least 5 characters long.",
+        });
+      } else {
+        this.setState({ BodyInput: "" });
+      }
+    }
   };
 
   render() {
+    const { userAvatar, avatarLoaded } = this.state;
+
+    const showAvatar = () => {
+      if (!avatarLoaded) {
+        return <div></div>;
+      } else {
+        return <img src={userAvatar} alt="avatar"></img>;
+      }
+    };
+
     return (
       <div className="post">
         <form action="#" className="form-newtopic" method="post">
           <div className="topwrap">
             <div className="user-info left">
-              <div className="avatar">
-                <img
-                  src="http://forum.azyrusthemes.com/images/avatar.jpg"
-                  alt="avatar"
-                ></img>
-              </div>
+              <div className="avatar">{showAvatar()}</div>
             </div>
             <div className="post-text left">
               <ButtonToolbar className="btn-toolbar home-toolbar">
@@ -127,21 +200,27 @@ class CreatePostComponent extends Component {
                 <input
                   name="title"
                   type="text"
-                  placeholder="Enter Topic Title"
+                  placeholder="Enter topic title"
                   className="form-control"
                   onChange={this.handleInputChange}
                   autoComplete="off"
                 />
+                <span style={{ color: "rgb(255, 53, 71)" }}>
+                  {this.state.titleInput}
+                </span>
               </div>
 
               <div>
                 <textarea
                   name="body"
                   id="desc"
-                  placeholder="Description"
+                  placeholder="Enter some details"
                   className="form-control"
                   onChange={this.handleInputChange}
                 ></textarea>
+                <span style={{ color: "rgb(255, 53, 71)" }}>
+                  {this.state.BodyInput}
+                </span>
               </div>
             </div>
           </div>
