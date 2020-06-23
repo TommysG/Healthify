@@ -34,6 +34,7 @@ export class news extends Component {
     this.showNews();
   }
 
+  //requests posts and filters only the news
   showNews = () => {
     fetch("http://localhost:3100/api/postsPerCategory/" + 6, {
       method: "GET",
@@ -56,6 +57,7 @@ export class news extends Component {
       });
   };
 
+  //converts date according to prefs
   dateConvertion(date) {
     return new Intl.DateTimeFormat("en-GB", {
       year: "numeric",

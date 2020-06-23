@@ -32,6 +32,7 @@ class CreatePostComponent extends Component {
     };
   }
 
+  //on component did mount loads user's avatar
   componentDidMount() {
     const user = JSON.parse(localStorage.getItem(Base64.encode("user")));
 
@@ -51,15 +52,18 @@ class CreatePostComponent extends Component {
       });
   }
 
+  //handles category selection
   handleSelect(eventKey, event) {
     console.log(categories[eventKey]);
     this.setState({ category: categories[eventKey] });
   }
 
+  //fix for mysql db
   apostropheFix = (value) => {
     return value.replace(/'/g, "''");
   };
 
+  //set redirect to true
   setRedirect = () => {
     this.setState({
       redirect: true,
@@ -67,6 +71,7 @@ class CreatePostComponent extends Component {
     this.notify();
   };
 
+  //notify on successfully post created
   notify = () => {
     toast.info(
       <span>
@@ -95,6 +100,7 @@ class CreatePostComponent extends Component {
     }
   };
 
+  //post request when user taps post
   handleClick = (event) => {
     event.preventDefault();
     const { title, body, category } = this.state;
@@ -130,6 +136,7 @@ class CreatePostComponent extends Component {
     }
   };
 
+  //handles text change
   handleInputChange = (event) => {
     event.preventDefault();
     this.setState({
@@ -162,6 +169,7 @@ class CreatePostComponent extends Component {
   render() {
     const { userAvatar, avatarLoaded } = this.state;
 
+    //renders avatar when is received from db
     const showAvatar = () => {
       if (!avatarLoaded) {
         return <div></div>;

@@ -52,17 +52,19 @@ export class home extends Component {
     };
   }
 
+  //handles responsive drawer click
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
       return { sideDrawerOpen: !prevState.sideDrawerOpen };
     });
   };
 
+  //handles the backdrop which closes on tap the drawer
   backdropClickHandler = () => {
     this.setState({ sideDrawerOpen: false });
   };
 
-  //shows posts
+  //shows posts and fetch userPostsVotes
   showPosts = () => {
     let url1 = "http://localhost:3100/api/posts";
     let url2 =
@@ -125,13 +127,15 @@ export class home extends Component {
       } else {
         console.log("upvotes before: " + prevState.postUpvotes);
         console.log("upvotes now: " + this.state.postUpvotes);
-        //this.showPosts(); // fetching again all the posts
+        // fetching again all the posts
+
         const catCode = this.categoryCode(this.state.selectedCategory);
         catCode !== -1 ? this.loadPostPerCategory(catCode) : this.showPosts();
       }
     }
   }
 
+  //returns the category code according to category name
   categoryCode = (category) => {
     switch (category) {
       case "All":
@@ -177,6 +181,7 @@ export class home extends Component {
       });
   };
 
+  //toast when a post is successfully created
   notify = () => {
     toast.success(
       <span>
@@ -205,9 +210,11 @@ export class home extends Component {
     let categoryName = event.target.innerText;
     let postsPerCat = [];
 
+    //if category is all show all posts
     if (categoryName === "All") {
       this.showPosts();
     } else {
+      //filter posts according to clicked category
       this.state.allItems.filter((item) => {
         if (item.category === categoryName) {
           console.log(item.category);
@@ -222,16 +229,19 @@ export class home extends Component {
 
     window.scrollTo({ top: 0, behavior: "smooth" });
     this.setState({ currentPage: 1, selectedCategory: categoryName });
+    //add items to session storage
     sessionStorage.setItem("currentPage", 1);
     sessionStorage.setItem("selectedCategory", categoryName);
   };
 
+  //sort posts according to choice clicked
   handleSort = (eventKey, event) => {
     console.log(sortOptions[eventKey]);
     this.setState({ sortBy: sortOptions[eventKey] });
     this.sortPosts(this.state.items, sortOptions[eventKey]);
   };
 
+  //checks sort choice and returns sorted items
   sortPosts = (items, sortBy) => {
     if (sortBy === "Most liked") {
       items.sort((a, b) => (a.totalVotes < b.totalVotes ? 1 : -1));
@@ -244,6 +254,7 @@ export class home extends Component {
     return items;
   };
 
+  //load posts according to category selected
   loadPostPerCategory = (categoryCode) => {
     let url1 = "http://localhost:3100/api/postsPerCategory/" + categoryCode;
     let url2 =
@@ -274,6 +285,7 @@ export class home extends Component {
       });
   };
 
+  //handles text change on search
   handleSearch = (event) => {
     event.preventDefault();
     this.setState({
@@ -281,6 +293,7 @@ export class home extends Component {
     });
   };
 
+  //filters posts according to searched text
   searchPosts = () => {
     let url1 = "http://localhost:3100/api/posts";
     let url2 =
@@ -316,6 +329,7 @@ export class home extends Component {
       });
   };
 
+  //handles search button click
   sumbitSearch = (event) => {
     event.preventDefault();
     this.setState({ selectedCategory: "All" });
@@ -341,11 +355,13 @@ export class home extends Component {
       window.scrollTo({ top: 150, behavior: "smooth" });
     };
 
+    //set posts per page
     const perPage = (itemsPerPage) => {
       this.setState({ postsPerPage: itemsPerPage });
       window.scrollTo({ top: 150, behavior: "smooth" });
     };
 
+    //handles side drawer
     if (this.state.sideDrawerOpen) {
       backdrop = <BackdropHome click={this.backdropClickHandler} />;
     }

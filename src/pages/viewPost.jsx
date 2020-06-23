@@ -50,6 +50,7 @@ export class viewPost extends Component {
     this.setState({ sideDrawerOpen: false });
   };
 
+  // returns date to seconds/minutes/hours/days
   manageDate(date) {
     let diff = new Date().getTime() - new Date(date).getTime();
     var seconds = Math.abs(diff) / 1000;
@@ -78,6 +79,7 @@ export class viewPost extends Component {
     this.loadPostData();
   }
 
+  //toast when reply is succesfully posted
   notifyReply = () => {
     toast.info(
       <span>
@@ -100,6 +102,7 @@ export class viewPost extends Component {
     );
   };
 
+  //toast on delete post
   notifyDeletePost = () => {
     toast.info(
       <span>
@@ -122,6 +125,7 @@ export class viewPost extends Component {
     );
   };
 
+  //toast on delete reply
   notifyDeleteReply = () => {
     toast.info(
       <span>
@@ -144,6 +148,7 @@ export class viewPost extends Component {
     );
   };
 
+  //load post and replies of the post
   loadPostData() {
     console.log("POST ID IS: " + this.props.match.params.id);
     const url1 = "http://localhost:3100/api/post/" + this.props.match.params.id;
@@ -202,6 +207,7 @@ export class viewPost extends Component {
       });
   }
 
+  //load post's replies and user votes
   loadReplies() {
     const urlReplies =
       "http://localhost:3100/api/postReplies/" + this.props.match.params.id;
@@ -225,6 +231,7 @@ export class viewPost extends Component {
       });
   }
 
+  //loads only the post requested
   loadPost() {
     let url1 = "http://localhost:3100/api/post/" + this.props.match.params.id;
     let url2 =
@@ -242,11 +249,15 @@ export class viewPost extends Component {
       });
   }
 
+  //update componenets
   componentDidUpdate(prevProps, prevState) {
+    //if replies changed
     if (prevState.repliesCount !== this.state.repliesCount) {
+      //if replies are more than before new one added
       if (prevState.repliesCount < this.state.repliesCount) {
         console.log("New post added");
       } else if (prevState.repliesCount > this.state.repliesCount) {
+        //reply deleted
         console.log("Post deleted");
       }
       this.loadReplies();
@@ -266,6 +277,7 @@ export class viewPost extends Component {
     }
   }
 
+  //handes the text change
   inputHandleChange = (event) => {
     event.preventDefault();
     this.setState({
@@ -273,6 +285,7 @@ export class viewPost extends Component {
     });
   };
 
+  //post request when user tap post on reply
   handleReplyClick = (event) => {
     event.preventDefault();
 
@@ -302,6 +315,7 @@ export class viewPost extends Component {
       });
   };
 
+  //upvotes a post when the user taps on upvote button
   upvotePost = (post) => {
     fetch("http://localhost:3100/api/upvotePost", {
       method: "POST",
@@ -322,6 +336,7 @@ export class viewPost extends Component {
       });
   };
 
+  //downvotes a post when the user taps on downvote button
   downvotePost = (post) => {
     fetch("http://localhost:3100/api/downvotePost", {
       method: "POST",
@@ -342,6 +357,7 @@ export class viewPost extends Component {
       });
   };
 
+  //upvotes reply
   upvoteReply = (e, reply) => {
     console.log(reply);
     fetch("http://localhost:3100/api/upvoteReply", {
@@ -364,6 +380,7 @@ export class viewPost extends Component {
       });
   };
 
+  //downvotes reply
   downvoteReply = (e, reply) => {
     console.log(reply);
     fetch("http://localhost:3100/api/downvoteReply", {
@@ -386,6 +403,7 @@ export class viewPost extends Component {
       });
   };
 
+  //deletes post according to post_id
   deletePost = (post) => {
     console.log(post);
     const url = "http://localhost:3100/api/post/" + post;
@@ -408,6 +426,7 @@ export class viewPost extends Component {
       });
   };
 
+  //deletes reply according to reply_id
   deleteReply = (e, reply) => {
     console.log(reply);
     const url = "http://localhost:3100/api/reply/" + reply;
@@ -434,6 +453,7 @@ export class viewPost extends Component {
     console.log(reply);
   };
 
+  //renders redirect to home
   renderRedirect() {
     if (this.state.redirect) {
       return <Redirect to="/home"></Redirect>;
@@ -467,6 +487,7 @@ export class viewPost extends Component {
       window.scrollTo({ top: 150, behavior: "smooth" });
     };
 
+    //change posts per page and scrolls on top smoothly
     const perPage = (itemsPerPage) => {
       this.setState({ postsPerPage: itemsPerPage });
       window.scrollTo({ top: 150, behavior: "smooth" });
@@ -489,6 +510,7 @@ export class viewPost extends Component {
       return null;
     });
 
+    //creates postView and then renders it
     if (error) {
       post = <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
