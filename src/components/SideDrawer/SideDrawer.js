@@ -14,10 +14,32 @@ const sideDrawer = (props) => {
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/">About</a>
+          <span
+            href="#about"
+            onClick={() => {
+              window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: "smooth",
+              });
+              props.goBack();
+            }}
+          >
+            About
+          </span>
         </li>
         <li>
-          <a href="/">Contact</a>
+          <span
+            href="#contact"
+            onClick={() => {
+              window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: "smooth",
+              });
+              props.goBack();
+            }}
+          >
+            Contact
+          </span>
         </li>
         <li>
           <a href="/login">Login</a>

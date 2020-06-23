@@ -15,12 +15,28 @@ const Navbar = (props) => {
           <NavLink exact to="/login">
             Login
           </NavLink>
-          <NavLink exact to="/contact">
+          <a
+            href="#contact"
+            onClick={() =>
+              window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: "smooth",
+              })
+            }
+          >
             Contact
-          </NavLink>
-          <NavLink exact to="/about">
+          </a>
+          <a
+            href="#about"
+            onClick={() =>
+              window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: "smooth",
+              })
+            }
+          >
             About
-          </NavLink>
+          </a>
           <NavLink exact to="/">
             Home
           </NavLink>

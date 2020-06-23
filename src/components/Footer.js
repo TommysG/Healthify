@@ -8,22 +8,18 @@ const Footer = () => {
       <Container className="foot-container">
         <Row>
           <Col md={4}>
-            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">
-              Footer Content
-            </h5>
+            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">About</h5>
             <p>
-              Here you can use rows and columns to organize your footer content.
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              This is a website, made for educational purposes from CSD AUTH
+              students. It's a health forum, where people and doctors can join
+              and create a big community, with a view to improve levels of
+              health and well-being.
             </p>
           </Col>
-          <Col md={2} className="auto">
-            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-          </Col>
-          <Col md={2} className="auto">
-            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-          </Col>
-          <Col md={2} className="auto">
-            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+          <Col md={6} className="auto">
+            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">
+              Contact us
+            </h5>
           </Col>
         </Row>
       </Container>

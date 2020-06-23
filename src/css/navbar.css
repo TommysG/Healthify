@@ -56,4 +56,7 @@
   .menu {
     display: block;
   }
+  .decor {
+    display: none;
+  }
 }

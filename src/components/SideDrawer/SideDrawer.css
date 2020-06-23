@@ -39,18 +39,19 @@
   transform: translateX(0);
 }
 
-.side-drawer a, .side-drawer-home a {
+.side-drawer a, .side-drawer-home a, .side-drawer span, .side-drawer-home span {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
   color: white;
   display: block;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 /* When you mouse over the navigation links, change their color */
 
-.side-drawer a:hover, .side-drawer-home a:hover {
+.side-drawer a:hover, .side-drawer-home a:hover, .side-drawer span:hover, .side-drawer-home span:hover {
   color: cornflowerblue;
 }
 
@@ -63,7 +64,7 @@
   background-color: rgb(123, 162, 235);
 }
 
-.side-drawer ul li:hover a, .side-drawer-home ul li:hover a {
+.side-drawer ul li:hover a, .side-drawer-home ul li:hover a, .side-drawer ul li:hover span, .side-drawer-home ul li:hover span {
   color: white;
 }
 

@@ -9,9 +9,13 @@ import SideDrawer from "../components/SideDrawer/SideDrawer";
 import Footer from "../components/Footer";
 
 export class welcome extends Component {
-  state = {
-    sideDrawerOpen: false,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sideDrawerOpen: false,
+    };
+  }
 
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
@@ -26,6 +30,35 @@ export class welcome extends Component {
   render() {
     let backdrop;
 
+    // console.log("window inner height: ", window.innerHeight);
+
+    // console.log(
+    //   "document Element client hieght: ",
+    //   document.documentElement.clientHeight
+    // );
+
+    // console.log(
+    //   "document Element scroll hieght: ",
+    //   document.documentElement.scrollHeight
+    // );
+
+    // console.log(
+    //   "document Element offset height: ",
+    //   document.documentElement.offsetHeight
+    // );
+
+    // console.log(
+    //   "document element scrolltop: ",
+    //   document.documentElement.scrollTop
+    // );
+
+    // console.log("window page Y Offset: ", window.pageYOffset);
+
+    // console.log(
+    //   "window document body offsetheight: ",
+    //   window.document.body.offsetHeight
+    // );
+
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
@@ -33,9 +66,13 @@ export class welcome extends Component {
     return (
       <div className="Main">
         <Navbar drawerClickHandler={this.drawerToggleClickHandler} />
-        <SideDrawer show={this.state.sideDrawerOpen} />
+        <SideDrawer
+          show={this.state.sideDrawerOpen}
+          goBack={() =>
+            this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen })
+          }
+        />
         {backdrop}
-        {/*<img className="background" src="images/doctors.png" alt="logo"></img>*/}
         <div className="background-image">
           <img className="decor" src="images/decor.png" alt="logo"></img>
         </div>

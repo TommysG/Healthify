@@ -467,6 +467,11 @@ export class viewPost extends Component {
       window.scrollTo({ top: 150, behavior: "smooth" });
     };
 
+    const perPage = (itemsPerPage) => {
+      this.setState({ postsPerPage: itemsPerPage });
+      window.scrollTo({ top: 150, behavior: "smooth" });
+    };
+
     if (this.state.sideDrawerOpen) {
       backdrop = <BackdropHome click={this.backdropClickHandler} />;
     }
@@ -564,6 +569,7 @@ export class viewPost extends Component {
                 totalPosts={postReplies.length}
                 paginate={paginate}
                 select={this.state.currentPage}
+                perPageHandle={perPage}
               ></Pagination>
             </Col>
             <Col lg={4} md={4}>

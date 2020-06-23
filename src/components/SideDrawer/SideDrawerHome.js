@@ -1,26 +1,35 @@
 import React from "react";
 
 import "./SideDrawer.css";
+import { Link } from "react-router-dom";
+import { Base64 } from "js-base64";
 
 const sideDrawer = (props) => {
   let drawerClasses = "side-drawer-home";
   if (props.show) {
     drawerClasses = "side-drawer-home open";
   }
+
+  const logout = (e) => {
+    localStorage.removeItem(Base64.encode("user"));
+  };
+
   return (
     <nav className={drawerClasses}>
       <ul>
         <li>
-          <a href="/home">Forum</a>
+          <Link to="/home">Forum</Link>
         </li>
         <li>
-          <a href="/news">News</a>
+          <Link to="/home/news">News</Link>
         </li>
         <li>
-          <a href="/home/settings">Settings</a>
+          <Link to="/home/settings">Settings</Link>
         </li>
         <li>
-          <a href="/">Logout</a>
+          <Link to="/login" onClick={logout}>
+            Logout
+          </Link>
         </li>
       </ul>
     </nav>
