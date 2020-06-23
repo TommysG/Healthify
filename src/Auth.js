@@ -1,5 +1,5 @@
 export function Auth(userData) {
-  let authUrl = "http://localhost:3100/api/validate";
+  let authUrl = "http://83.212.77.220:3100/api/validate";
 
   return new Promise((resolve, reject) => {
     fetch(authUrl, {
