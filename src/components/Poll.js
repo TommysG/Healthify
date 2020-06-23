@@ -30,9 +30,9 @@ export class Poll extends Component {
   //Gets poll data from the database (question, answers, votes)
   loadPoll = () => {
     const user = JSON.parse(localStorage.getItem(Base64.encode("user")));
-    let url1 = "http://localhost:3100/api/pollVotes/8";
-    let url2 = "http://localhost:3100/api/poll/8";
-    let url3 = "http://localhost:3100/api/userVote";
+    let url1 = "http://83.212.77.220:3100/api/pollVotes/8";
+    let url2 = "http://83.212.77.220:3100/api/poll/8";
+    let url3 = "http://83.212.77.220:3100/api/userVote";
     Promise.all([
       fetch(url1),
       fetch(url2),
@@ -73,7 +73,7 @@ export class Poll extends Component {
   userVote = (event) => {
     const user = JSON.parse(localStorage.getItem(Base64.encode("user")));
     console.log("Voted: " + event.target.value);
-    fetch("http://localhost:3100/api/pollVote", {
+    fetch("http://83.212.77.220:3100/api/pollVote", {
       method: "POST",
       headers: {
         "content-type": "application/json",

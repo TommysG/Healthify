@@ -151,24 +151,25 @@ export class viewPost extends Component {
   //load post and replies of the post
   loadPostData() {
     console.log("POST ID IS: " + this.props.match.params.id);
-    const url1 = "http://localhost:3100/api/post/" + this.props.match.params.id;
+    const url1 =
+      "http://83.212.77.220:3100/api/post/" + this.props.match.params.id;
     const url2 =
-      "http://localhost:3100/api/postReplies/" + this.props.match.params.id;
+      "http://83.212.77.220:3100/api/postReplies/" + this.props.match.params.id;
 
     const url3 =
-      "http://localhost:3100/api/userPostsVotes/" +
+      "http://83.212.77.220:3100/api/userPostsVotes/" +
       Base64.decode(this.state.user.e);
 
     const user = Base64.decode(this.state.user.e);
     const post_id = this.props.match.params.id;
     const url4 =
-      "http://localhost:3100/api/userPostVotes?user_id=" +
+      "http://83.212.77.220:3100/api/userPostVotes?user_id=" +
       user +
       "&post_id=" +
       post_id;
 
     const url5 =
-      "http://localhost:3100/api/user/" + Base64.decode(this.state.user.e);
+      "http://83.212.77.220:3100/api/user/" + Base64.decode(this.state.user.e);
 
     Promise.all([
       fetch(url1),
@@ -210,12 +211,12 @@ export class viewPost extends Component {
   //load post's replies and user votes
   loadReplies() {
     const urlReplies =
-      "http://localhost:3100/api/postReplies/" + this.props.match.params.id;
+      "http://83.212.77.220:3100/api/postReplies/" + this.props.match.params.id;
 
     const user = Base64.decode(this.state.user.e);
     const post_id = this.props.match.params.id;
     const urlVotes =
-      "http://localhost:3100/api/userPostVotes?user_id=" +
+      "http://83.212.77.220:3100/api/userPostVotes?user_id=" +
       user +
       "&post_id=" +
       post_id;
@@ -233,9 +234,10 @@ export class viewPost extends Component {
 
   //loads only the post requested
   loadPost() {
-    let url1 = "http://localhost:3100/api/post/" + this.props.match.params.id;
+    let url1 =
+      "http://83.212.77.220:3100/api/post/" + this.props.match.params.id;
     let url2 =
-      "http://localhost:3100/api/userPostsVotes/" +
+      "http://83.212.77.220:3100/api/userPostsVotes/" +
       Base64.decode(this.state.user.e);
 
     Promise.all([fetch(url1), fetch(url2)])
@@ -289,7 +291,7 @@ export class viewPost extends Component {
   handleReplyClick = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:3100/api/reply", {
+    fetch("http://83.212.77.220:3100/api/reply", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -317,7 +319,7 @@ export class viewPost extends Component {
 
   //upvotes a post when the user taps on upvote button
   upvotePost = (post) => {
-    fetch("http://localhost:3100/api/upvotePost", {
+    fetch("http://83.212.77.220:3100/api/upvotePost", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -338,7 +340,7 @@ export class viewPost extends Component {
 
   //downvotes a post when the user taps on downvote button
   downvotePost = (post) => {
-    fetch("http://localhost:3100/api/downvotePost", {
+    fetch("http://83.212.77.220:3100/api/downvotePost", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -360,7 +362,7 @@ export class viewPost extends Component {
   //upvotes reply
   upvoteReply = (e, reply) => {
     console.log(reply);
-    fetch("http://localhost:3100/api/upvoteReply", {
+    fetch("http://83.212.77.220:3100/api/upvoteReply", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -383,7 +385,7 @@ export class viewPost extends Component {
   //downvotes reply
   downvoteReply = (e, reply) => {
     console.log(reply);
-    fetch("http://localhost:3100/api/downvoteReply", {
+    fetch("http://83.212.77.220:3100/api/downvoteReply", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -406,7 +408,7 @@ export class viewPost extends Component {
   //deletes post according to post_id
   deletePost = (post) => {
     console.log(post);
-    const url = "http://localhost:3100/api/post/" + post;
+    const url = "http://83.212.77.220:3100/api/post/" + post;
     fetch(url, {
       method: "DELETE",
       headers: {
@@ -429,7 +431,7 @@ export class viewPost extends Component {
   //deletes reply according to reply_id
   deleteReply = (e, reply) => {
     console.log(reply);
-    const url = "http://localhost:3100/api/reply/" + reply;
+    const url = "http://83.212.77.220:3100/api/reply/" + reply;
     fetch(url, {
       method: "DELETE",
       headers: {

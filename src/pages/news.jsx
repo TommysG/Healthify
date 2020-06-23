@@ -36,7 +36,7 @@ export class news extends Component {
 
   //requests posts and filters only the news
   showNews = () => {
-    fetch("http://localhost:3100/api/postsPerCategory/" + 6, {
+    fetch("http://83.212.77.220:3100/api/postsPerCategory/" + 6, {
       method: "GET",
       headers: {
         "content-type": "application/json",

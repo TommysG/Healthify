@@ -66,9 +66,9 @@ export class home extends Component {
 
   //shows posts and fetch userPostsVotes
   showPosts = () => {
-    let url1 = "http://localhost:3100/api/posts";
+    let url1 = "http://83.212.77.220:3100/api/posts";
     let url2 =
-      "http://localhost:3100/api/userPostsVotes/" +
+      "http://83.212.77.220:3100/api/userPostsVotes/" +
       Base64.decode(this.state.user.e);
 
     Promise.all([fetch(url1), fetch(url2)])
@@ -161,7 +161,7 @@ export class home extends Component {
   handleUpvote = (e) => {
     console.log("upvoting as " + Base64.decode(this.state.user.e));
     console.log(e.target.id);
-    fetch("http://localhost:3100/api/upvotePost", {
+    fetch("http://83.212.77.220:3100/api/upvotePost", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -256,11 +256,11 @@ export class home extends Component {
 
   //load posts according to category selected
   loadPostPerCategory = (categoryCode) => {
-    let url1 = "http://localhost:3100/api/postsPerCategory/" + categoryCode;
+    let url1 = "http://83.212.77.220:3100/api/postsPerCategory/" + categoryCode;
     let url2 =
-      "http://localhost:3100/api/userPostsVotes/" +
+      "http://83.212.77.220:3100/api/userPostsVotes/" +
       Base64.decode(this.state.user.e);
-    let url3 = "http://localhost:3100/api/posts";
+    let url3 = "http://83.212.77.220:3100/api/posts";
 
     Promise.all([fetch(url1), fetch(url2), fetch(url3)])
       .then(([res1, res2, res3]) =>
@@ -295,9 +295,9 @@ export class home extends Component {
 
   //filters posts according to searched text
   searchPosts = () => {
-    let url1 = "http://localhost:3100/api/posts";
+    let url1 = "http://83.212.77.220:3100/api/posts";
     let url2 =
-      "http://localhost:3100/api/userPostsVotes/" +
+      "http://83.212.77.220:3100/api/userPostsVotes/" +
       Base64.decode(this.state.user.e);
 
     Promise.all([fetch(url1), fetch(url2)])

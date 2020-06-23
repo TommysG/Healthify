@@ -36,7 +36,7 @@ class CreatePostComponent extends Component {
   componentDidMount() {
     const user = JSON.parse(localStorage.getItem(Base64.encode("user")));
 
-    fetch("http://localhost:3100/api/user/" + Base64.decode(user.e), {
+    fetch("http://83.212.77.220:3100/api/user/" + Base64.decode(user.e), {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -108,7 +108,7 @@ class CreatePostComponent extends Component {
     //console.log(user.e);
 
     if (title && body && category) {
-      fetch("http://localhost:3100/api/post", {
+      fetch("http://83.212.77.220:3100/api/post", {
         method: "POST",
         headers: {
           "content-type": "application/json",

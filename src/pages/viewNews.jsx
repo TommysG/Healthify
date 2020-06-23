@@ -32,7 +32,8 @@ export class viewNews extends Component {
 
   //request post(news topic) according to id
   loadNewsPost = () => {
-    let url1 = "http://localhost:3100/api/post/" + this.props.match.params.id;
+    let url1 =
+      "http://83.212.77.220:3100/api/post/" + this.props.match.params.id;
 
     fetch(url1, {
       method: "GET",

@@ -20,7 +20,7 @@ class SideBlock extends Component {
 
   //loads category posts number
   loadCategoryPostNumber() {
-    let url1 = "http://localhost:3100/api/postsCountPerCategory";
+    let url1 = "http://83.212.77.220:3100/api/postsCountPerCategory";
 
     fetch(url1)
       .then((response) => response.json())

@@ -48,7 +48,7 @@ export class register extends Component {
   //Adds user to database given the input is correct.
   signUp = (event) => {
     if (this.state.userPassword.length > 5) {
-      fetch("http://localhost:3100/api/user", {
+      fetch("http://83.212.77.220:3100/api/user", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -194,7 +194,7 @@ export class register extends Component {
     if (response.status !== "unknown") {
       console.log(response);
 
-      fetch("http://localhost:3100/api/user", {
+      fetch("http://83.212.77.220:3100/api/user", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -258,7 +258,7 @@ export class register extends Component {
     let username = email.substring(0, email.lastIndexOf("@"));
 
     if (!response.error) {
-      fetch("http://localhost:3100/api/user", {
+      fetch("http://83.212.77.220:3100/api/user", {
         method: "POST",
         headers: {
           "content-type": "application/json",
