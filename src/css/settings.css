@@ -39,7 +39,7 @@
 .profile-settings {
 	box-shadow: 8px 12px 18px 0 rgba(25, 42, 70, .13);
 	background-color: #ecf0f1;
-	padding: 50px 120px 70px 120px;
+	padding: 50px;
 	margin-bottom: 50px;
 }
 
@@ -54,7 +54,7 @@
 
 .firstname-input {
 	width: 100%;
-	margin-right: 100px;
+	margin-right: 10px;
 }
 
 .lastname-input {

@@ -557,7 +557,7 @@ export class viewPost extends Component {
         <Container className="post-container">
           {this.renderRedirect()}
           <Row>
-            <Col lg={8} md={8}>
+            <Col lg={8} md={8} style={{ paddingBottom: "50px" }}>
               {post}
               <Replies
                 replies={currentPosts}
@@ -596,7 +596,7 @@ export class viewPost extends Component {
                 perPageHandle={perPage}
               ></Pagination>
             </Col>
-            <Col lg={4} md={4}>
+            <Col lg={4} md={4} style={{ paddingBottom: "50px" }}>
               <SideBlock></SideBlock>
               <Poll />
             </Col>

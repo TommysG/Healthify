@@ -388,7 +388,7 @@ export class home extends Component {
         {backdrop}
         <Container className="post-container">
           <Row>
-            <Col lg={8} md={8}>
+            <Col lg={8} md={8} style={{ paddingBottom: "50px" }}>
               <Row className="header-row">
                 <ButtonToolbar className="btn-toolbar home-toolbar">
                   <DropdownButton
@@ -422,7 +422,7 @@ export class home extends Component {
                 perPageHandle={perPage}
               ></Pagination>
             </Col>
-            <Col lg={4} md={4}>
+            <Col lg={4} md={4} style={{ paddingBottom: "50px" }}>
               <SideBlock
                 selected={this.state.selectedCategory}
                 categoryClick={this.categoryClick}

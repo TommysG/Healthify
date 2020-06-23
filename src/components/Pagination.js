@@ -28,7 +28,7 @@ const Pagination = ({
         ))}
         <div className="dropdown">
           <button className="dropbtn">
-            Posts
+            Replies
             <i className="fa fa-caret-down" style={{ marginLeft: "10px" }}></i>
           </button>
           <div className="dropdown-content">
