@@ -18,6 +18,7 @@ class SideBlock extends Component {
     this.loadCategoryPostNumber();
   }
 
+  //loads category posts number
   loadCategoryPostNumber() {
     let url1 = "http://localhost:3100/api/postsCountPerCategory";
 
@@ -32,6 +33,7 @@ class SideBlock extends Component {
       .catch((err) => console.log(err));
   }
 
+  //total posts count
   caclAllPosts = (postsCount) => {
     const all =
       parseInt(postsCount.mensHealthCount) +
@@ -43,6 +45,7 @@ class SideBlock extends Component {
     return all;
   };
 
+  // renders redirect to home when redirect is set to true
   renderRedirect = () => {
     if (this.state.redirect)
       return (
@@ -53,6 +56,7 @@ class SideBlock extends Component {
       );
   };
 
+  //saves selected category to session storage and changes selected category to the clicked one
   click = (event) => {
     sessionStorage.setItem("selectedCategory", event.target.innerText);
     sessionStorage.setItem("currentPage", 1);

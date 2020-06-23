@@ -30,6 +30,7 @@ export class viewNews extends Component {
     this.loadNewsPost();
   }
 
+  //request post(news topic) according to id
   loadNewsPost = () => {
     let url1 = "http://localhost:3100/api/post/" + this.props.match.params.id;
 
@@ -63,6 +64,7 @@ export class viewNews extends Component {
       backdrop = <BackdropHome click={this.backdropClickHandler} />;
     }
 
+    //create newsview and then renders it
     if (error) {
       post = <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
