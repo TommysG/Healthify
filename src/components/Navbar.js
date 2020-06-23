@@ -1,6 +1,6 @@
 import "../css/navbar.css";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import React from "react";
 
@@ -15,8 +15,8 @@ const Navbar = (props) => {
           <NavLink exact to="/login">
             Login
           </NavLink>
-          <a
-            href="#contact"
+          <Link
+            to="/"
             onClick={() =>
               window.scrollTo({
                 top: document.documentElement.scrollHeight,
@@ -25,9 +25,9 @@ const Navbar = (props) => {
             }
           >
             Contact
-          </a>
-          <a
-            href="#about"
+          </Link>
+          <Link
+            to="/"
             onClick={() =>
               window.scrollTo({
                 top: document.documentElement.scrollHeight,
@@ -36,7 +36,7 @@ const Navbar = (props) => {
             }
           >
             About
-          </a>
+          </Link>
           <NavLink exact to="/">
             Home
           </NavLink>

@@ -100,6 +100,7 @@
   transition: all 0.2s ease-in-out;
   width: 47px;
   height: 47px;
+  border: none;
 }
 
 .btn-fb {
@@ -121,6 +122,18 @@
 .btn-tw {
   color: #fff;
   background-color: #55acee;
+}
+
+.fa-instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.contact-footer a {
+  color: white;
+}
+
+.contact-footer a:hover {
+  color: rgb(179, 179, 179);
 }
 
 .btn-gplus {
@@ -146,6 +159,10 @@
 .btn-floating:hover {
   -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-floating:focus {
+  outline: 0;
 }
 
 .footer-copyright {

@@ -16,10 +16,48 @@ const Footer = () => {
               health and well-being.
             </p>
           </Col>
-          <Col md={6} className="auto">
+          <Col md={4} className="auto contact-footer">
             <h5 className="font-weight-bold text-uppercase mt-3 mb-4">
               Contact us
             </h5>
+            <a href="mailto: healthifycsd@gmail.com">
+              <i style={{ marginRight: "10px" }} className="fa fa-envelope"></i>
+              healthifycsd@gmail.com
+            </a>
+          </Col>
+          <Col md={2} className="auto contact-footer">
+            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">
+              Sources
+            </h5>
+            <div style={{ display: "grid" }}>
+              <a
+                href="https://unsplash.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ paddingBottom: "10px" }}
+              >
+                <i className="fa fa-globe" style={{ marginRight: "10px" }}></i>
+                UNSPLASH
+              </a>
+              <a
+                href="https://www.bbc.com/news/health"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ paddingBottom: "10px" }}
+              >
+                <i className="fa fa-globe" style={{ marginRight: "10px" }}></i>
+                BBC NEWS
+              </a>
+              <a
+                href="https://edition.cnn.com/health"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ paddingBottom: "10px" }}
+              >
+                <i className="fa fa-globe" style={{ marginRight: "10px" }}></i>
+                CNN NEWS
+              </a>
+            </div>
           </Col>
         </Row>
       </Container>
@@ -28,18 +66,33 @@ const Footer = () => {
       <Container>
         <ul className="list-unstyled list-inline text-center">
           <li className="list-inline-item">
-            <a className="btn-floating btn-fb" href="#index">
+            <a
+              className="btn-floating btn-fb"
+              href="https://www.facebook.com/Healthify-109747880789796"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-facebook-f"> </i>
             </a>
           </li>
           <li className="list-inline-item">
-            <a className="btn-floating btn-tw " href="#index">
+            <a
+              className="btn-floating btn-tw "
+              href="https://twitter.com/HealthifyC"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-twitter"> </i>
             </a>
           </li>
           <li className="list-inline-item">
-            <a className="btn-floating btn-gplus" href="#index">
-              <i className="fab fa-google-plus-g"> </i>
+            <a
+              className="btn-floating btn-gplus"
+              href="https://www.instagram.com/healthify_csd/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-instagram"> </i>
             </a>
           </li>
         </ul>

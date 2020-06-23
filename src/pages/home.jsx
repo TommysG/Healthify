@@ -357,7 +357,7 @@ export class home extends Component {
 
     //set posts per page
     const perPage = (itemsPerPage) => {
-      this.setState({ postsPerPage: itemsPerPage });
+      this.setState({ currentPage: 1, postsPerPage: itemsPerPage });
       window.scrollTo({ top: 150, behavior: "smooth" });
     };
 

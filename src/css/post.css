@@ -76,6 +76,10 @@
   line-height: 25px;
 }
 
+.post-text p {
+  white-space: pre-line;
+}
+
 .post-info {
   width: 15%;
   border-left: solid 1px #f1f1f1;
