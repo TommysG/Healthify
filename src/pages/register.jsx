@@ -35,6 +35,7 @@ export class register extends Component {
     validateConfPassword: "",
     inputConfPassword: "label",
     userData: [],
+    signUpValidate: "",
   };
 
   //Called when user enters correct credentials after failled attempt
@@ -67,7 +68,7 @@ export class register extends Component {
         }),
       })
         .then((response) => {
-          console.log(response);
+          //console.log(response);
           if (response.status === 201) {
             const user = {
               e: Base64.encode(this.state.userEmail),
@@ -77,11 +78,18 @@ export class register extends Component {
                 : Base64.encode("user"),
             };
             localStorage.setItem(Base64.encode("user"), JSON.stringify(user));
-            this.setState({ auth: true });
+            this.setState({
+              auth: true,
+              signUpValidate: "Signed up successfully.",
+            });
+          } else {
+            this.setState({
+              signUpValidate: "Email, username or both are in use.",
+            });
           }
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         });
     }
   };
@@ -192,7 +200,7 @@ export class register extends Component {
     let username = email.substring(0, email.lastIndexOf("@"));
 
     if (response.status !== "unknown") {
-      console.log(response);
+      // console.log(response);
 
       fetch("http://83.212.77.220:3100/api/user", {
         method: "POST",
@@ -211,7 +219,7 @@ export class register extends Component {
         }),
       })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           if (response.status === 201) {
             const userData = {
               e: Base64.encode(email),
@@ -228,7 +236,7 @@ export class register extends Component {
               auth: true,
             });
           } else {
-            console.log("user already exists, logging in.");
+            // console.log("user already exists, logging in.");
             const userData = {
               e: Base64.encode(email),
               u: Base64.encode(username),
@@ -246,14 +254,14 @@ export class register extends Component {
           }
         })
         .catch((err) => {
-          console.log(err);
+          //console.log(err);
         });
     }
   };
 
   //Allows user to sign up with their Google account
   responseGoogle = (response) => {
-    console.log(response.profileObj);
+    //console.log(response.profileObj);
     let email = response.profileObj.email;
     let username = email.substring(0, email.lastIndexOf("@"));
 
@@ -275,7 +283,7 @@ export class register extends Component {
         }),
       })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           if (response.status === 201) {
             const userData = {
               e: Base64.encode(email),
@@ -293,7 +301,7 @@ export class register extends Component {
               auth: true,
             });
           } else {
-            console.log("user already exists, logging in.");
+            // console.log("user already exists, logging in.");
             const userData = {
               e: Base64.encode(email),
               u: Base64.encode(username),
@@ -312,7 +320,7 @@ export class register extends Component {
           }
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         });
     }
   };
@@ -446,6 +454,17 @@ export class register extends Component {
                 <button className="signup-btn" onClick={this.signUp}>
                   Sign Up
                 </button>
+                <div style={{ marginTop: "15px", marginBottom: "15px" }}>
+                  <span
+                    style={
+                      this.state.signUpValidate.charAt(0) === "S"
+                        ? { color: "green" }
+                        : { color: "red" }
+                    }
+                  >
+                    {this.state.signUpValidate}
+                  </span>
+                </div>
                 <div className="sm-btns">
                   {smallFbButton}
                   {smallGlButton}

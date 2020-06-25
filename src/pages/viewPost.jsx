@@ -150,7 +150,7 @@ export class viewPost extends Component {
 
   //load post and replies of the post
   loadPostData() {
-    console.log("POST ID IS: " + this.props.match.params.id);
+    //console.log("POST ID IS: " + this.props.match.params.id);
     const url1 =
       "http://83.212.77.220:3100/api/post/" + this.props.match.params.id;
     const url2 =
@@ -224,7 +224,7 @@ export class viewPost extends Component {
     Promise.all([fetch(urlReplies), fetch(urlVotes)])
       .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
       .then(([data1, data2]) => {
-        console.log(data2);
+        //console.log(data2);
         this.setState({ postReplies: data1, userRepliesVotes: data2 });
       })
       .catch((err) => {
@@ -243,7 +243,7 @@ export class viewPost extends Component {
     Promise.all([fetch(url1), fetch(url2)])
       .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
       .then(([data1, data2]) => {
-        console.log(data1);
+        // console.log(data1);
         this.setState({ post: data1, userPostVotes: data2 });
       })
       .catch((err) => {
@@ -269,12 +269,12 @@ export class viewPost extends Component {
     }
 
     if (prevState.postVotes !== this.state.postVotes) {
-      console.log("Post votes changed");
+      // console.log("Post votes changed");
       this.loadPost();
     }
 
     if (prevState.replyVotes !== this.state.replyVotes) {
-      console.log("Reply votes changed");
+      // console.log("Reply votes changed");
       this.loadReplies();
     }
   }
@@ -304,7 +304,7 @@ export class viewPost extends Component {
       }),
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.status === 201) {
           this.setState({
             repliesCount: this.state.repliesCount + 1,
@@ -361,7 +361,7 @@ export class viewPost extends Component {
 
   //upvotes reply
   upvoteReply = (e, reply) => {
-    console.log(reply);
+    // console.log(reply);
     fetch("http://83.212.77.220:3100/api/upvoteReply", {
       method: "POST",
       headers: {
@@ -374,7 +374,7 @@ export class viewPost extends Component {
       }),
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.setState({ replyVotes: this.state.replyVotes + 1 });
       })
       .catch((err) => {
@@ -384,7 +384,7 @@ export class viewPost extends Component {
 
   //downvotes reply
   downvoteReply = (e, reply) => {
-    console.log(reply);
+    //console.log(reply);
     fetch("http://83.212.77.220:3100/api/downvoteReply", {
       method: "POST",
       headers: {
@@ -397,7 +397,7 @@ export class viewPost extends Component {
       }),
     })
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         this.setState({ replyVotes: this.state.replyVotes - 1 });
       })
       .catch((err) => {
@@ -407,7 +407,7 @@ export class viewPost extends Component {
 
   //deletes post according to post_id
   deletePost = (post) => {
-    console.log(post);
+    //  console.log(post);
     const url = "http://83.212.77.220:3100/api/post/" + post;
     fetch(url, {
       method: "DELETE",

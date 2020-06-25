@@ -92,7 +92,6 @@ export class home extends Component {
         }, 200);
       })
       .catch((err) => {
-        console.log(err);
         this.setState({
           isLoaded: true,
           error: err,
@@ -122,11 +121,11 @@ export class home extends Component {
     //check if number of upvotes changed
     if (prevState.postUpvotes !== this.state.postUpvotes) {
       if (this.state.searching) {
-        console.log("load searched posts");
+        //console.log("load searched posts");
         this.searchPosts();
       } else {
-        console.log("upvotes before: " + prevState.postUpvotes);
-        console.log("upvotes now: " + this.state.postUpvotes);
+        //  console.log("upvotes before: " + prevState.postUpvotes);
+        //   console.log("upvotes now: " + this.state.postUpvotes);
         // fetching again all the posts
 
         const catCode = this.categoryCode(this.state.selectedCategory);
@@ -159,8 +158,6 @@ export class home extends Component {
 
   //handles upvote on posts
   handleUpvote = (e) => {
-    console.log("upvoting as " + Base64.decode(this.state.user.e));
-    console.log(e.target.id);
     fetch("http://83.212.77.220:3100/api/upvotePost", {
       method: "POST",
       headers: {
@@ -173,11 +170,10 @@ export class home extends Component {
       }),
     })
       .then((response) => {
-        console.log(response);
         this.setState({ postUpvotes: this.state.postUpvotes + 1 });
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
@@ -206,7 +202,6 @@ export class home extends Component {
 
   //handle click on categories
   categoryClick = (event) => {
-    console.log(event.target.id);
     let categoryName = event.target.innerText;
     let postsPerCat = [];
 
@@ -217,7 +212,6 @@ export class home extends Component {
       //filter posts according to clicked category
       this.state.allItems.filter((item) => {
         if (item.category === categoryName) {
-          console.log(item.category);
           postsPerCat.push(item);
         }
         return null;
@@ -236,7 +230,6 @@ export class home extends Component {
 
   //sort posts according to choice clicked
   handleSort = (eventKey, event) => {
-    console.log(sortOptions[eventKey]);
     this.setState({ sortBy: sortOptions[eventKey] });
     this.sortPosts(this.state.items, sortOptions[eventKey]);
   };
@@ -267,7 +260,6 @@ export class home extends Component {
         Promise.all([res1.json(), res2.json(), res3.json()])
       )
       .then(([data1, data2, data3]) => {
-        console.log(data1);
         this.setState({
           items: this.sortPosts(data1, this.state.sortBy),
           userPostsVoted: data2,
@@ -277,7 +269,6 @@ export class home extends Component {
         });
       })
       .catch((err) => {
-        console.log(err);
         this.setState({
           isLoaded: true,
           error: err,
@@ -321,7 +312,6 @@ export class home extends Component {
         });
       })
       .catch((err) => {
-        console.log(err);
         this.setState({
           isLoaded: true,
           error: err,

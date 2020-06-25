@@ -64,8 +64,8 @@ export class login extends Component {
 
       Auth(userData).then((result) => {
         if (result.status === 200) {
-          console.log("Logged in successfully");
-          console.log(result.body);
+          //  console.log("Logged in successfully");
+          //   console.log(result.body);
           const user = {
             e: Base64.encode(result.body.email),
             u: Base64.encode(result.body.username),
@@ -222,14 +222,14 @@ export class login extends Component {
           }
         })
         .catch((err) => {
-          console.log(err);
+          //console.log(err);
         });
     }
   };
 
   //Allows user to log in with google account
   responseGoogle = (response) => {
-    console.log(response.profileObj);
+    //console.log(response.profileObj);
     let email = response.profileObj.email;
     let username = email.substring(0, email.lastIndexOf("@"));
 
@@ -251,7 +251,7 @@ export class login extends Component {
         }),
       })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           if (response.status === 201) {
             const userData = {
               e: Base64.encode(email),
@@ -278,7 +278,7 @@ export class login extends Component {
           }
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         });
     }
   };

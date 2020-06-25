@@ -61,7 +61,7 @@ export class Poll extends Component {
         });
       })
       .catch((err) => {
-        console.log(err);
+        //console.log(err);
         this.setState({
           pollLoaded: true,
           pollError: err,
@@ -86,7 +86,7 @@ export class Poll extends Component {
       }),
     })
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         if (response.status === 400) {
           this.notifyHasVoted();
         } else {
@@ -98,7 +98,7 @@ export class Poll extends Component {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
@@ -183,7 +183,7 @@ export class Poll extends Component {
       colorLabel3 = `colorLabel`;
 
     if (pollError) {
-      console.log("ERROR ON GETTING POLL DATA");
+      //console.log("ERROR ON GETTING POLL DATA");
     } else if (!pollLoaded) {
       return (
         <div
